@@ -8,6 +8,6 @@ class TrangThai extends Model {
 	public $timestamps = false;
 	protected $table = 'trangthai';
 	protected $fillable = [
-		'MaTT', 'TenTT', '',
+		'MaTT', 'TenTT',
 	];
 }
