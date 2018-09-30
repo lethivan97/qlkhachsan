@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="image/favicon.png" type="image/png">
-    <title>Hotel</title>
+    <title>@yield('title','Hotel')</title>
     <!-- Bootstrap CSS -->
-    @include('layouts._share.css')
+    @include('layouts._share.client.css')
 </head>
 <body>
     <!--================Header Area =================-->
-    @include('layouts._share.header')
+    @include('layouts._share.client.header')
     <!--================Header Area =================-->
 
     <!--================Banner Area =================-->
@@ -20,10 +20,15 @@
             <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
             <div class="container">
                 <div class="banner_content text-center">
-                    <h6>Away from monotonous life</h6>
-                    <h2>Relax Your Mind</h2>
-                    <p>If you are looking at blank cassettes on the web, you may be very confused at the<br> difference in price. You may see some for as low as $.17 each.</p>
-                    <a href="#" class="btn theme_btn button_hover">Get Started</a>
+                    <h6>Chào mừng đến với khách sạn</h6>
+                    <h2>Royal Hotel</h2>
+                    <p>Chào Mừng Quý Khách Đến Khách Sạn Royal Hotel Ha noi.
+                    Khách sạn Royal Hotel sẽ là ngôi nhà thứ 2 trong chuyến đi của quý khách tới thủ đô Hà Nội. </p>
+                    <p>
+                        Quý khách sẽ có một địa chỉ lưu trú thật ấm cúng, tiện nghi tại Hà Nội.
+                        Tọa lạc tại Vị trí Trung tâm Hà Nội với trên 58 phòng khách sạn trang thiết bị hiện đại trong tòa nhà cao 14 tầng bao gồm cả tầng hầm để xe và nhà hàng, quán bar tại tầng 2 và tầng 3 của tòa nhà và rất nhiều dịch vụ khác .  Để đặt phòng quý khách vui lòng liên hệ trực tiếp bộ phận đặt phòng: Điện thoại: (+84-24) 3944 6188 - Hotline: +84933534999
+                    </p>
+                    <a href="#" class="btn theme_btn button_hover">E-mail: levan.hy.97@gmail.com</a>
                 </div>
             </div>
         </div>
@@ -352,12 +357,12 @@
     <!--================ Recent Area  =================-->
 
     <!--================ start footer Area  =================-->
-    @include('layouts._share.footer')
+    @include('layouts._share.client.footer')
     <!--================ End footer Area  =================-->
 
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    @include('layouts._share.js')
+    @include('layouts._share.client.js')
 </body>
 </html>
