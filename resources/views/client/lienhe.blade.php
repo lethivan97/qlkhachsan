@@ -1,5 +1,30 @@
-@extends('index')
-@section('content')
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="image/favicon.png" type="image/png">
+    <title>@yield('title','Hotel')</title>
+    <!-- Bootstrap CSS -->
+    @include('layouts._share.client.css')
+</head>
+<body>
+@include('layouts._share.client.header')
+
+<section class="breadcrumb_area">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+    <div class="container">
+        <div class="page-cover text-center">
+            <h2 class="page-cover-tittle">Liên hệ với chúng tôi</h2>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="active">Liên hệ</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
 <!--================Contact Area =================-->
 <section class="contact_area section_gap">
     <div class="container">
@@ -55,4 +80,13 @@
     </div>
 </section>
         <!--================Contact Area =================-->
-@endsection
+ <!--================ start footer Area  =================-->
+    @include('layouts._share.client.footer')
+    <!--================ End footer Area  =================-->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    @include('layouts._share.client.js')
+</body>
+</html>

@@ -10,8 +10,6 @@
     @include('layouts._share.client.css')
 </head>
 <body>
-    <!-- content page -->
-    @yield("content")
 
     <!--================Header Area =================-->
     @include('layouts._share.client.header')
