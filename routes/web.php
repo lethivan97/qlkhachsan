@@ -17,3 +17,7 @@ Route::get('/', function () {
 Route::get('admin', function () {
 	return view('admin.index');
 })->name('admin');
+
+Route::get('lienhe', function(){
+	return view('client.lienhe');
+})->name('lienhe');
