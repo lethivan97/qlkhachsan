@@ -16,8 +16,8 @@ $loaiPhong = LoaiPhong::all();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 <ul class="nav navbar-nav menu_nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="{{route('home')}}">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('gioithieu')}}">Giới thiệu</a></li>
 
                     <li class="nav-item submenu dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Loại phòng & Giá phòng</a>
@@ -27,8 +27,8 @@ $loaiPhong = LoaiPhong::all();
                             <?php endforeach?>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Dịch vụ khách sạn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('dichvu')}}">Dịch vụ khách sạn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Đăng nhập</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Đăng ký</a></li>
                 </ul>

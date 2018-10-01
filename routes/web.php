@@ -13,11 +13,13 @@
 
 Route::get('/', function () {
 	return view('index');
-});
-Route::get('admin', function () {
-	return view('admin.index');
-})->name('admin');
-
-Route::get('lienhe', function(){
+})->name('home');
+Route::get('lienhe', function () {
 	return view('client.lienhe');
 })->name('lienhe');
+Route::get('gioithieu', function () {
+	return view('client.gioithieu');
+})->name('gioithieu');
+Route::get('dichvu', function () {
+	return view('client.dichvu');
+})->name('dichvu');
