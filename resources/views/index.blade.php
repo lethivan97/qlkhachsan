@@ -10,6 +10,7 @@
     @include('layouts._share.client.css')
 </head>
 <body>
+
     <!--================Header Area =================-->
     @include('layouts._share.client.header')
     <!--================Header Area =================-->
