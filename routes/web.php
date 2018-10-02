@@ -10,16 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-
-Route::get('/', function () {
-	return view('index');
-})->name('home');
-Route::get('lienhe', function () {
-	return view('client.lienhe');
-})->name('lienhe');
-Route::get('gioithieu', function () {
-	return view('client.gioithieu');
-})->name('gioithieu');
-Route::get('dichvu', function () {
-	return view('client.dichvu');
-})->name('dichvu');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('lienhe', 'HomeController@lienHe')->name('lienhe');
+Route::get('gioithieu', 'HomeController@gioiThieu')->name('gioithieu');
+Route::get('dichvu', 'HomeController@dichVu')->name('dichvu');
+Route::group(['prefix' => 'loaiphong'], function () {
+	Route::get('/', 'HomeController@loaiPhong')->name('loaiphong');
+	Route::get('{name?}', 'HomeController@phongDetail')->name('loaiphong.chitiet');
+});
+Route::view('login', 'auth.login');

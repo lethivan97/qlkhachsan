@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phong extends Model {
+class Image extends Model {
 	public $timestamps = false;
-	protected $table = 'phong';
+	protected $table = 'image';
 	protected $fillable = [
-		'MaPhong', 'MaTT', 'MaLoai', 'TenPhong', 'MoTa',
+		'ID', 'MaLoai', 'MaPhong', 'Url',
 	];
 }
