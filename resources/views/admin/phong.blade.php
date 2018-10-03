@@ -5,13 +5,15 @@
 	<h2>Danh sách phòng</h2>
 	<div class="row">
 		<div class="col-md-6">
-			<input type="text" style="width: 300px" id="search" placeholder="Nhập tên phòng" onkeyup="searchFunction();" class="form-control">
+    <form method="get" action="{{route('admin.phong')}}">
+		  <input type="text" style="width: 300px" id="search" name="key" placeholder="Nhập tên phòng" onkeyup="searchFunction();" class="form-control">
+		  <input type="submit" value="Lọc">
+	  </form>
 		</div>
 		<div class="col-md-6">
 			<button class="btn btn-info btn-sm" style="float: right;">Thêm mới</button>
 		</div>
 	</div>
-
 
 	<table class="table table-striped" id="tableId" style="margin-top: 20px">
 		<thead>
