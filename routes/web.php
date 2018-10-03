@@ -18,4 +18,5 @@ Route::group(['prefix' => 'loaiphong'], function () {
 	Route::get('/', 'HomeController@loaiPhong')->name('loaiphong');
 	Route::get('{name?}', 'HomeController@phongDetail')->name('loaiphong.chitiet');
 });
-Route::view('login', 'auth.login');
+Route::view('login', 'auth.login')->name('login');
+Route::view('register', 'auth.register')->name('register');

@@ -17,7 +17,7 @@ $listLoaiPhong = LoaiPhong::all();
                     Quý khách sẽ có một địa chỉ lưu trú thật ấm cúng, tiện nghi tại Hà Nội.
                     Tọa lạc tại Vị trí Trung tâm Hà Nội với trên 58 phòng khách sạn trang thiết bị hiện đại trong tòa nhà cao 14 tầng bao gồm cả tầng hầm để xe và nhà hàng, quán bar tại tầng 2 và tầng 3 của tòa nhà và rất nhiều dịch vụ khác .  Để đặt phòng quý khách vui lòng liên hệ trực tiếp bộ phận đặt phòng: Điện thoại: (+84-24) 3944 6188 - Hotline: +84933534999
                 </p>
-                <a href="#" class="btn theme_btn button_hover">E-mail: levan.hy.97@gmail.com</a>
+                <a class="btn theme_btn button_hover">E-mail: levan.hy.97@gmail.com</a>
             </div>
         </div>
     </div>

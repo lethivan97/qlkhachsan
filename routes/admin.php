@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-	return view('admin.index');
+	return view('admin');
 })->name('admin');
 ?>
 

@@ -8,6 +8,9 @@ use App\Models\LoaiPhong;
 	<div class="container">
 		<div class="page-cover text-center">
 			<h2 class="page-cover-tittle">Phòng {{$phong->TenLoai}}</h2>
+			<p>
+				<u>Hotel in Hanoi Vietnam, Khách sạn Royal Trung tâm Hà nội</u>
+			</p>
 			<ol class="breadcrumb">
 				<li><a href="{{route('home')}}">Trang chủ</a></li>
 				<li><a href="{{route('loaiphong')}}">Loại phòng & Giá Phòng</a></li>
@@ -19,6 +22,9 @@ use App\Models\LoaiPhong;
 <section class="about_history_area section_gap">
 	<div class="container">
 		<div class="row">
+			<div class="col-md-12">
+				<h3 style="text-transform: uppercase;text-align: center;margin-bottom: 50px">TIỆN NGHI PHÒNG {{$phong->TenLoai}}</h3>
+			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-1.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG KHÁCH</h4>
@@ -52,6 +58,15 @@ use App\Models\LoaiPhong;
 		</div>
 	</div>
 </section>
+<section class="about_history_area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 style="text-transform: uppercase;text-align: center;margin-bottom: 50px">Thông tin chi tiết</h3>
+			</div>
+		</div>
+	</div>
+</section>
 <section class="facilities_area section_gapv">
 	<div class="container">
 		<div class="row" style="margin: 50px;color: white">
@@ -71,8 +86,14 @@ use App\Models\LoaiPhong;
 
 			</div>
 			<div class="col-md-8">
-				<p>{{$phong->MoTaChiTiet}}</p>
-				<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+				<div style="margin-left: 50px">
+					<p>{{$phong->MoTaChiTiet}}</p>
+
+					<h3 class="text-info">Giá chỉ từ : $ {{$phong->DonGia}} </h3>
+
+					<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+
+				</div>
 			</div>
 		</div>
 

@@ -7,7 +7,7 @@
 		<div class="col-md-6" style="margin: 0 auto">
 			<form action="" method="post" >
 				<div class="text-center">
-					<h3 class="text-info">Login page</h3>
+					<h3 class="text-info">Đăng nhập</h3>
 				</div>
 				<div class="form-group">
 					<label for="">Email</label>
@@ -22,8 +22,8 @@
 					<label for="remember">Remember me</label>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-info btn-sm">Login</button>
-					<a href="index.php" class="btn btn-danger btn-sm">Cancel</a>
+					<button type="submit" class="btn btn-info btn-sm">Đăng nhập</button>
+					<a href="{{route('home')}}" class="btn btn-danger btn-sm">Thoát</a>
 				</div>
 			</form>
 		</div>

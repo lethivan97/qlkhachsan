@@ -30,8 +30,8 @@ $loaiPhong = LoaiPhong::all();
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('dichvu')}}">Dịch vụ khách sạn</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Đăng nhập</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Đăng ký</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Đăng ký</a></li>
                 </ul>
             </div>
         </nav>
