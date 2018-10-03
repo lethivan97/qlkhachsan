@@ -28,22 +28,27 @@ use App\Models\LoaiPhong;
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-1.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG KHÁCH</h4>
-				<p>Max : {{$phong->SLNguoi}}</p>
+				<p>Max : {{$phong->NguoiLon}} Người lớn
+					@if($phong->TreCon !== null)
+					+ {{$phong->TreCon}} Trẻ con
+					@endif
+				</p>
+
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-2.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG</h4>
-				<p>{{$phong->Giuong}}</p>
+				<p>{{$phong->Giuong}} Giường</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-3.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG PHỤ</h4>
-				<p>{{$phong->GiuongPhu}}</p>
+				<p>{{$phong->GiuongPhu}} Giường phụ</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-4.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG PHÒNG</h4>
-				<p>Max : {{$phong->SLPhong}}</p>
+				<p>Max : {{$phong->SLPhong}} Phòng</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-5.PNG')}}" height="64">
@@ -70,7 +75,7 @@ use App\Models\LoaiPhong;
 <section class="facilities_area section_gapv">
 	<div class="container">
 		<div class="row" style="margin: 50px;color: white">
-			<div class="col-md-4 row">
+			<div class="col-md-5 row">
 				<?php foreach (LoaiPhong::image($phong->images) as $key => $i): ?>
 					@if($key == 0)
 					<div class="accomodation_item text-center col-md-12">
@@ -85,7 +90,7 @@ use App\Models\LoaiPhong;
 				<?php endforeach?>
 
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-7">
 				<div style="margin-left: 50px">
 					<p>{{$phong->MoTaChiTiet}}</p>
 

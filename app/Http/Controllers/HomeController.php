@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\LoaiPhong;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 	function index() {
 		return view('index');
+	}
+	function timKiemPhong(Request $r) {
+		dd($r->all());
 	}
 	function lienHe() {
 		return view('client.lienhe');

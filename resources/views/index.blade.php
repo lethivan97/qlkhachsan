@@ -30,59 +30,77 @@ $listLoaiPhong = LoaiPhong::all();
                 <div class="col-md-9">
                     <div class="boking_table">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="book_tabel_item">
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker11'>
-                                            <input type='text' class="form-control" placeholder="Arrival Date"/>
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>
+                            <form class="row" method="post" style="width: 100%" method="">
+                                @csrf
+                                <div class="col-md-4">
+                                    <div class="book_tabel_item">
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker11'>
+                                                <input type='text' name="NgayDen" class="form-control" placeholder="Thời gian đến"/>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' name="NgayDi" class="form-control" placeholder="Thời gian đi"/>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' class="form-control" placeholder="Departure Date"/>
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="book_tabel_item">
+                                        <div class="input-group">
+                                            <select class="wide" name="NguoiLon">
+                                                <option data-display="Người lớn">Người lớn</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="1">4</option>
+                                                <option value="2">5</option>
+                                                <option value="3">6</option>
+                                                <option value="1">7</option>
+                                                <option value="2">8</option>
+                                                <option value="3">9</option>
+                                                <option value="3">10</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group">
+                                            <select class="wide" name="TreCon">
+                                                <option data-display="Trẻ em">Trẻ em</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="1">4</option>
+                                                <option value="2">5</option>
+                                                <option value="3">6</option>
+                                                <option value="1">7</option>
+                                                <option value="2">8</option>
+                                                <option value="3">9</option>
+                                                <option value="3">10</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="book_tabel_item">
-                                    <div class="input-group">
-                                        <select class="wide">
-                                            <option data-display="Adult">Adult</option>
-                                            <option value="1">Old</option>
-                                            <option value="2">Younger</option>
-                                            <option value="3">Potato</option>
-                                        </select>
-                                    </div>
-                                    <div class="input-group">
-                                        <select class="wide">
-                                            <option data-display="Child">Child</option>
-                                            <option value="1">Child</option>
-                                            <option value="2">Baby</option>
-                                            <option value="3">Child</option>
-                                        </select>
+                                <div class="col-md-4">
+                                    <div class="book_tabel_item">
+                                        <div class="input-group">
+                                            <select class="wide" name="MaLoai">
+                                                <option data-display="Loại Phòng">Loại Phòng</option>
+                                                <?php foreach ($listLoaiPhong as $item): ?>
+                                                    <option value="{{$item->MaLoai}}">{{$item->TenLoai}}</option>
+                                                <?php endforeach?>
+                                            </select>
+                                        </div>
+                                        <button class="book_now_btn button_hover" type="submit">Đặt phòng</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="book_tabel_item">
-                                    <div class="input-group">
-                                        <select class="wide">
-                                            <option data-display="Child">Number of Rooms</option>
-                                            <option value="1">Room 01</option>
-                                            <option value="2">Room 02</option>
-                                            <option value="3">Room 03</option>
-                                        </select>
-                                    </div>
-                                    <a class="book_now_btn button_hover" href="#">Đặt phòng</a>
-                                </div>
-                            </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
