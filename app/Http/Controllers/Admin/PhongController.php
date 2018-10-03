@@ -9,14 +9,20 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PhongController extends Controller
 {
-    public function index(){
-    	//$data = DB::table('Phong')->get();
-    	$data = DB::select('
-    		SELECT MaPhong, TenTT, TenLoai, TenPhong, Phong.MoTa 
-    		FROM Phong, TrangThai, LoaiPhong 
-    		WHERE Phong.MaTT = TrangThai.MaTT 
-    			AND Phong.MaLoai = LoaiPhong.MaLoai
-    		');
-    	return view('admin.phong', ['phongs' => $data]);
+
+    public function index(Request $request){
+        $result = $this->getAllPhong();
+        if($request->has('key'))
+            $result = $result->where('Phong.TenPhong', 'like', '%'.$request->key.'%'); 
+        
+        $result = $result->paginate(10);
+        return view('admin.phong', ['phongs' => $result]);
+    }
+
+    public function getAllPhong(){
+        $result = DB::table('Phong')->join('TrangThai', 'TrangThai.MaTT', '=', 'Phong.MaTT')
+                                    ->join('LoaiPhong', 'LoaiPhong.MaLoai', '=', 'Phong.MaLoai')
+                                    ->select('Phong.MaPhong', 'Phong.TenPhong', 'TrangThai.TenTT', 'LoaiPhong.TenLoai', 'Phong.MoTa');
+        return $result;
     }
 }
