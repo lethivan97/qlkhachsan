@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{route('adminphong')}}" class="nav-link">
               <i class="nav-icon fa fa-th"></i>
               <p>
                 Quản lý phòng
