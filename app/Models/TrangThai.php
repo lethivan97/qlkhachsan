@@ -10,4 +10,7 @@ class TrangThai extends Model {
 	protected $fillable = [
 		'MaTT', 'TenTT',
 	];
+	public function phong() {
+		return $this->hasMany('Phong', 'MaPhong', 'MaTT');
+	}
 }

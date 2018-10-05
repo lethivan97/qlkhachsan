@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phong_ThietBi extends Model
-{
-    public $timestamps = false;
-    protected $table = 'phong_thietbi';
-    protected $fillable = [
-    	'MaPhong', 'MaTB', 'SoLuong', 'GhiChu'
-    ];
+class Phong_ThietBi extends Model {
+	public $timestamps = false;
+	protected $table = 'phong_thietbi';
+	protected $fillable = [
+		'MaPhong', 'MaTB', 'SoLuong', 'GhiChu',
+	];
+	public function thietbi() {
+		return $this->belongsTo('ThietBi', 'MaTB', 'MaTB');
+	}
+	public function phong() {
+		return $this->belongsTo('Phong', 'MaPhong', 'MaPhong');
+	}
 }

@@ -12,4 +12,7 @@ class LoaiPhong extends Model {
 	public static function image($arr) {
 		return $listLoai = explode(",", $arr);
 	}
+	public function phong() {
+		return $this->hasMany('App\Models\Phong', 'MaLoai', 'MaLoai');
+	}
 }

@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ThietBi extends Model
-{
-    public $timestamps = false;
-    protected $table = 'thietbi';
-    protected $fillable = [
-    	'MaTB', 'TenTB', 'SoLuong'
-    ];
+class ThietBi extends Model {
+	public $timestamps = false;
+	protected $table = 'thietbi';
+	protected $fillable = [
+		'MaTB', 'TenTB', 'SoLuong',
+	];
+	public function phong_thietbi() {
+		return $this->hasMany('Phong_ThietBi', 'MaTB', 'MaTB');
+	}
 }
