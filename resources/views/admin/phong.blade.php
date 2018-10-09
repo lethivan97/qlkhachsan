@@ -28,7 +28,7 @@
 			@foreach($phongs as $row)
 			<tr>
 				<td>{{$row->MaPhong}}</td>
-				<td>{{$row->loaiphong->TenTT}}</td>
+				<td>{{$row->trangthai->TenTT}}</td>
 				<td>{{$row->MaLoai}}</td>
 				<td>{{$row->TenPhong}}</td>
 				<td>
