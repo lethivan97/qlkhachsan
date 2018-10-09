@@ -11,9 +11,9 @@ class Phong_ThietBi extends Model {
 		'MaPhong', 'MaTB', 'SoLuong', 'GhiChu',
 	];
 	public function thietbi() {
-		return $this->belongsTo('ThietBi', 'MaTB', 'MaTB');
+		return $this->belongsTo('App\Models\ThietBi', 'MaTB', 'MaTB');
 	}
 	public function phong() {
-		return $this->belongsTo('Phong', 'MaPhong', 'MaPhong');
+		return $this->belongsTo('App\Models\Phong', 'MaPhong', 'MaPhong');
 	}
 }

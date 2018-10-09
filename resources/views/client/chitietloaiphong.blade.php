@@ -94,7 +94,7 @@ use App\Models\LoaiPhong;
 				<div style="margin-left: 50px">
 					<p>{{$phong->MoTaChiTiet}}</p>
 
-					<h3 class="text-info">Giá chỉ từ : $ {{$phong->DonGia}} </h3>
+					<h3 class="text-info">Giá chỉ từ : $ {{$phong->DonGia}}/đêm </h3>
 
 					<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
 

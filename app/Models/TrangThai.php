@@ -11,6 +11,6 @@ class TrangThai extends Model {
 		'MaTT', 'TenTT',
 	];
 	public function phong() {
-		return $this->hasMany('Phong', 'MaPhong', 'MaTT');
+		return $this->hasMany('App\Models\Phong', 'MaPhong', 'MaTT');
 	}
 }

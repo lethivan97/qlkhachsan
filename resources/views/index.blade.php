@@ -96,7 +96,7 @@ $listLoaiPhong = LoaiPhong::all();
                                                 <?php endforeach?>
                                             </select>
                                         </div>
-                                        <button class="book_now_btn button_hover" type="submit">Đặt phòng</button>
+                                        <button class="book_now_btn button_hover" type="submit">Tìm kiếm</button>
                                     </div>
                                 </div>
                             </form>
@@ -130,7 +130,7 @@ $listLoaiPhong = LoaiPhong::all();
                             <a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
                         </div>
                         <a href="#"><h4 class="sec_h4">{{$item->TenLoai}}</h4></a>
-                        <h5>${{$item->DonGia}}</h5>
+                        <h5>${{$item->DonGia}}/đêm</h5>
                     </div>
                 </div>
             <?php endforeach?>

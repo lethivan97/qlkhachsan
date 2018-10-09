@@ -14,10 +14,10 @@ class Phong extends Model {
 		return $this->belongsTo('App\Models\LoaiPhong', 'MaLoai', 'MaPhong');
 	}
 	public function trangthai() {
-		return $this->belongsTo('TrangThai', 'MaTT', 'MaPhong');
+		return $this->belongsTo('App\Models\TrangThai', 'MaTT', 'MaPhong');
 	}
 	public function phong_thietbi() {
-		return $this->hasMany('Phong_ThietBi', 'MaPhong', 'MaPhong');
+		return $this->hasMany('App\Models\Phong_ThietBi', 'MaPhong', 'MaPhong');
 	}
 
 }

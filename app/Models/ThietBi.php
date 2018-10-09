@@ -11,6 +11,6 @@ class ThietBi extends Model {
 		'MaTB', 'TenTB', 'SoLuong',
 	];
 	public function phong_thietbi() {
-		return $this->hasMany('Phong_ThietBi', 'MaTB', 'MaTB');
+		return $this->hasMany('App\Models\Phong_ThietBi', 'MaTB', 'MaTB');
 	}
 }
