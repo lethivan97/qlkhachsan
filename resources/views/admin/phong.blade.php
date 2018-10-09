@@ -14,7 +14,6 @@
 			<button class="btn btn-info btn-sm" style="float: right;">Thêm mới</button>
 		</div>
 	</div>
-
 	<table class="table table-striped" id="tableId" style="margin-top: 20px">
 		<thead>
 			<tr>
@@ -29,8 +28,8 @@
 			@foreach($phongs as $row)
 			<tr>
 				<td>{{$row->MaPhong}}</td>
-				<td>{{$row->TenTT}}</td>
-				<td>{{$row->TenLoai}}</td>
+				<td>{{$row->loaiphong->TenTT}}</td>
+				<td>{{$row->MaLoai}}</td>
 				<td>{{$row->TenPhong}}</td>
 				<td>
 					<button class="btn btn-sm btn-primary">Sửa</button>
