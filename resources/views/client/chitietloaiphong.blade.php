@@ -78,17 +78,21 @@ use App\Models\LoaiPhong;
 			<div class="col-md-5 row">
 				<?php foreach (LoaiPhong::image($phong->images) as $key => $i): ?>
 					@if($key == 0)
-					<div class="accomodation_item text-center col-md-12">
+					<div class="text-center col-md-12">
 						<div class="hotel_img row">
 							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300">
 						</div>
 					</div>
 					@endif
-					<div class="col-md-3">
-						<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="60">
-					</div>
 				<?php endforeach?>
+				<div class="testimonial_slider owl-carousel">
+					@foreach(LoaiPhong::image($phong->images) as $image )
+					<div class="media">
+						<img src="{{asset('image/phong')}}/{{$image}}" width="50px" height="100px">
+					</div>
+					@endforeach
 
+				</div>
 			</div>
 			<div class="col-md-7">
 				<div style="margin-left: 50px">

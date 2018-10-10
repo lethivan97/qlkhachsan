@@ -8,13 +8,13 @@ class Phong extends Model {
 	public $timestamps = false;
 	protected $table = 'phong';
 	protected $fillable = [
-		'MaPhong', 'MaTT', 'MaLoai', 'TenPhong', 'MoTa',
+		'MaPhong', 'MaTT', 'MaLoai', 'TenPhong', 'Image', 'MoTa',
 	];
 	public function loaiphong() {
-		return $this->belongsTo('App\Models\LoaiPhong', 'MaLoai', 'MaPhong');
+		return $this->belongsTo('App\Models\LoaiPhong', 'MaPhong', 'MaLoai');
 	}
 	public function trangthai() {
-		return $this->belongsTo('App\Models\TrangThai', 'MaTT', 'MaPhong');
+		return $this->belongsTo('App\Models\TrangThai', 'MaPhong', 'MaTT');
 	}
 	public function phong_thietbi() {
 		return $this->hasMany('App\Models\Phong_ThietBi', 'MaPhong', 'MaPhong');
