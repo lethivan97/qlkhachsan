@@ -85,7 +85,7 @@ use App\Models\LoaiPhong;
 					</div>
 					@endif
 				<?php endforeach?>
-				<div class="testimonial_slider owl-carousel">
+				<div class="testimonial_slider owl-carousel" style="margin-top: 50px">
 					@foreach(LoaiPhong::image($phong->images) as $image )
 					<div class="media">
 						<img src="{{asset('image/phong')}}/{{$image}}" width="50px" height="100px">

@@ -38,7 +38,7 @@ use App\Models\LoaiPhong;
 					<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
 					<?php else: ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="image/phong/{{$i}}" width="100%">
+							<img src="image/phong/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 					<?php endif?>
@@ -46,7 +46,7 @@ use App\Models\LoaiPhong;
 				<div class="col-md-6">
 					<?php if ($key % 2 == 1): ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="image/phong/{{$i}}" width="100%">
+							<img src="image/phong/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 						<?php else: ?>

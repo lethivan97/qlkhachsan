@@ -70,16 +70,20 @@ use App\DAO\PhongDAO;
 							</div>
 						</div>
 					</div>
-					<div class="row collapse" id="{{$item->MaPhong}}">
-						<div class="col-md-12">
-							<p style="text-transform:uppercase ">Phương tiện phòng</p>
-						</div>
-						<?php foreach (PhongDAO::getThietBi($item->MaPhong) as $tb): ?>
-							<div class="col-md-2 text-center">
-								<img src="{{asset('image/phong')}}/{{$tb->Image}}" width="30" height="30">
-								<p>{{$tb->TenTB}}</p>
+					<div class="col-md-12">
+						<div class="col-md-12 collapse"  id="{{$item->MaPhong}}">
+							<div class="col-md-12">
+								<p style="text-transform:uppercase ">Phương tiện phòng</p>
 							</div>
-						<?php endforeach?>
+							<div class="row">
+								<?php foreach (PhongDAO::getThietBi($item->MaPhong) as $tb): ?>
+									<div class="col-md-2 text-center">
+										<img src="{{asset('image/phong')}}/{{$tb->Image}}" width="30" height="30">
+										<p>{{$tb->TenTB}}</p>
+									</div>
+								<?php endforeach?>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>

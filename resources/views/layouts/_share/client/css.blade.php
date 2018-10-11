@@ -1,3 +1,4 @@
+<link rel="icon" href="{{asset('image/favicon.png')}}" type="image/png">
 <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 <link rel="stylesheet" href="{{asset('vendors/linericon/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
