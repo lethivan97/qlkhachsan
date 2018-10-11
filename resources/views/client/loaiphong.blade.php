@@ -9,7 +9,7 @@ use App\Models\LoaiPhong;
 		<div class="page-cover text-center">
 			<h2 class="page-cover-tittle">Loại phòng & Giá Phòng</h2>
 			<ol class="breadcrumb">
-				<li><a href="{{route('home')}}">Trang chủ</a></li>
+				<li><a href="{{route('client')}}">Trang chủ</a></li>
 				<li class="active">Loại phòng & Giá Phòng</li>
 			</ol>
 		</div>

@@ -6,7 +6,7 @@
         <div class="page-cover text-center">
             <h2 class="page-cover-tittle">Liên hệ với chúng tôi</h2>
             <ol class="breadcrumb">
-                <li><a href="{{route('home')}}">Trang chủ</a></li>
+                <li><a href="{{route('client')}}">Trang chủ</a></li>
                 <li class="active">Liên hệ</li>
             </ol>
         </div>

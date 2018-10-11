@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-12">
                             <ul class="list_style">
-                                <li><a href="{{route('home')}}">Trang chủ</a></li>
+                                <li><a href="{{route('client')}}">Trang chủ</a></li>
                                 <li><a href="{{route('gioithieu')}}">Giới thiệu</a></li>
                                 <li><a href="{{route('lienhe')}}">Liên hệ</a></li>
                                 <li><a href="#">Dịch vụ</a></li>

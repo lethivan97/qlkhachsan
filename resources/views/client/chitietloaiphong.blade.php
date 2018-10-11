@@ -12,7 +12,7 @@ use App\Models\LoaiPhong;
 				<u>Hotel in Hanoi Vietnam, Khách sạn Royal Trung tâm Hà nội</u>
 			</p>
 			<ol class="breadcrumb">
-				<li><a href="{{route('home')}}">Trang chủ</a></li>
+				<li><a href="{{route('client')}}">Trang chủ</a></li>
 				<li><a href="{{route('loaiphong')}}">Loại phòng & Giá Phòng</a></li>
 				<li class="active">{{$phong->TenLoai}}</li>
 			</ol>

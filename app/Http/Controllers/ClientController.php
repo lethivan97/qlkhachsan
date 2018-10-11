@@ -7,6 +7,11 @@ use App\Models\LoaiPhong;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller {
+	/*
+		Ngăn chặn không cho sử dụng đến controller này
+		 public function __construct() {
+			$this->middleware('auth');
+	*/
 	function index() {
 		return view('index');
 	}
