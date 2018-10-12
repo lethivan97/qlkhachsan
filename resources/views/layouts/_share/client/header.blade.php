@@ -30,10 +30,34 @@ $loaiPhong = LoaiPhong::all();
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('dichvu')}}">Dịch vụ khách sạn</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Đăng nhập</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('register')}}">Đăng ký</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
+                        @endif
+                    </li>
+                    @else
+                    <li  class="nav-item submenu dropdown">
+                        <a class="nav-link text-danger" data-toggle="dropdown" role="button"  aria-expanded="false">
+                            Xin chào : {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="nav-link" href="#">Danh sách phòng đặt</a></li>
+                            <li class="nav-item" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><a href="{{ route('logout') }}" class="nav-link">{{ __('Đăng xuất') }}</a></li>
+                        </ul>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                @endguest
+            </ul>
+        </div>
+    </nav>
+</div>
 </header>

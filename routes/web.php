@@ -20,7 +20,9 @@ Route::group(['prefix' => 'loaiphong'], function () {
 	Route::get('{name}', 'ClientController@phongDetail')->name('loaiphong.chitiet');
 });
 // Login and Register
-
-Route::view('login', 'ClientController@login')->name('login');
-Route::view('register', 'ClientController@register')->name('register');
 Auth::routes();
+// Admin
+// Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role']], function () {
+// 	Route::get('/', 'PhongController@index')->name('admin');
+// 	Route::get('phong', 'PhongController@danhSachPhong')->name('admin.phong');
+// });

@@ -1,10 +1,10 @@
 @extends('layouts._share.client')
 
 @section('content')
-<div class="container" style="margin-bottom: 300px;margin-top: 300px">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin-top: 150px;margin-bottom: 100px">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">

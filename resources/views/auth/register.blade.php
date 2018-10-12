@@ -1,11 +1,11 @@
 @extends('layouts._share.client')
 
 @section('content')
-<div class="container" style="margin-bottom: 300px;margin-top: 300px">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center text-danger">{{ __('Đăng ký') }}</div>
+            <div class="card" style="margin-top: 150px;margin-bottom: 100px">
+                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -24,7 +24,6 @@
                                 @endif
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -38,7 +37,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        <input type="text" name="role" value="0" hidden>
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
