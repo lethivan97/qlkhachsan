@@ -12,6 +12,9 @@ use App\DAO\PhongDAO;
 			<h4 class="text-danger">Loại Phòng : {{$tenLoai}}</h4>
 		</div>
 		@if(count($listPhong) > 0)
+		<div>
+			<h5 class="text-primary">Có {{count($phongs)}} phòng tìm kiếm</h5>
+		</div>
 		<?php foreach ($listPhong as $key => $item): ?>
 			<section class="<?php if ($key % 2 == 1) {
 	echo 'facilities_area';
@@ -89,8 +92,11 @@ use App\DAO\PhongDAO;
 			</section>
 		<?php endforeach?>
 
+		@else
+		<div>
+			<h5 class="text-primary">Không tìm thấy phòng nào.</h5>
+		</div>
 		@endif
-
 	</div>
 </section>
 

@@ -24,15 +24,15 @@ $listLoaiPhong = LoaiPhong::all();
     <div class="hotel_booking_area position">
         <div class="container">
             <div class="hotel_booking_table">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h2>Đặt phòng<br>ngay bây giờ !</h2>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div class="boking_table">
                         <div class="row">
-                            <form class="row" method="post" style="width: 100%" method="">
+                            <form class="row" method="post" style="width: 100%">
                                 @csrf
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="book_tabel_item">
                                         <div class="form-group">
                                             <div class='input-group date' id='datetimepicker11'>
@@ -52,7 +52,7 @@ $listLoaiPhong = LoaiPhong::all();
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="book_tabel_item">
                                         <div class="input-group">
                                             <select class="wide" name="NguoiLon">
@@ -74,19 +74,11 @@ $listLoaiPhong = LoaiPhong::all();
                                                 <option data-display="Trẻ em">Trẻ em</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                                <option value="3">6</option>
-                                                <option value="1">7</option>
-                                                <option value="2">8</option>
-                                                <option value="3">9</option>
-                                                <option value="3">10</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
+                                </div> -->
+                                <div class="col-md-6">
                                     <div class="book_tabel_item">
                                         <div class="input-group">
                                             <select class="wide" name="MaLoai">
@@ -115,7 +107,7 @@ $listLoaiPhong = LoaiPhong::all();
 <section class="accomodation_area section_gap">
     <div class="container">
         <div class="section_title text-center">
-            <h2 class="title_color">Phòng của khách sạn</h2>
+            <h2 class="title_color">Loại phòng của khách sạn</h2>
             <p>Tất cả chúng ta đều sống trong thời đại trẻ trung. Cuộc sống đang trở nên cực kỳ nhanh chóng,phát triển và đầy đủ tiện nghi...</p>
         </div>
         <div class="row mb_30">
@@ -124,12 +116,15 @@ $listLoaiPhong = LoaiPhong::all();
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
                             <?php foreach (LoaiPhong::image($item->images) as $i): ?>
-                                <img src="image/phong/{{$i}}" width="262" height="270">
+                                <a href="{{route('loaiphong.chitiet',['name' => $item->BiDanh])}}" >
+                                    <img src="{{asset('image/phong')}}/{{$i}}" width="262" height="270">
+                                </a>
+
                                 @break
                             <?php endforeach?>
-                            <a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+                            <a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
                         </div>
-                        <a href="#"><h4 class="sec_h4">{{$item->TenLoai}}</h4></a>
+                        <a href="{{route('loaiphong.chitiet',['name' => $item->BiDanh])}}"><h4 class="sec_h4">{{$item->TenLoai}}</h4></a>
                         <h5>${{$item->DonGia}}/đêm</h5>
                     </div>
                 </div>

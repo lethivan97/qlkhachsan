@@ -20,14 +20,16 @@ class ClientController extends Controller {
 		$tenLoai = LoaiPhong::where('MaLoai', $request->MaLoai)->first()->TenLoai;
 		foreach ($phongs as $key => $phong) {
 			if ($phong->NgayDi == null || $phong->NgayDen = null) {
-				$listPhong[] = $phong;
+				$list[] = $phong;
 			} else if ($request->NgayDi < $phong->NgayDen) {
-				$listPhong[] = $phong;
+				$list[] = $phong;
 			} else if ($request->NgayDi > $phong->NgayDen && $request->NgayDen > $phong->NgayDi) {
-				$listPhong[] = $phong;
+				$list[] = $phong;
 			}
 		}
-		return view('client.timkiemphong', compact('listPhong', 'request', 'tenLoai'));
+		// $listPhong = PhongDAO::paginate($list, $perPage = 2, $page = null, $options = []);
+		$listPhong = $list;
+		return view('client.timkiemphong', compact('listPhong', 'request', 'tenLoai', 'phongs'));
 	}
 	function lienHe() {
 		return view('client.lienhe');
@@ -43,8 +45,8 @@ class ClientController extends Controller {
 		return view('client.loaiphong', compact('listLoaiPhong'));
 	}
 	function phongDetail($name) {
-		$phong = LoaiPhong::all()->where('BiDanh', $name)->first();
-		return view('client.chitietloaiphong', compact('phong'));
+		$loaiphong = LoaiPhong::all()->where('BiDanh', $name)->first();
+		return view('client.chitietloaiphong', compact('loaiphong'));
 	}
 	function sendMail() {
 	}
@@ -53,5 +55,8 @@ class ClientController extends Controller {
 	}
 	function register() {
 		return view('auth.register');
+	}
+	function thongTinDatPhong($name = null) {
+		echo "string";
 	}
 }
