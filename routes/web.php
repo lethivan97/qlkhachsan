@@ -11,7 +11,7 @@
 |
  */
 Route::get('/', 'ClientController@index')->name('client');
-Route::post('/', 'ClientController@timKiemPhong')->name('client');
+Route::get('/search', 'ClientController@timKiemPhong')->name('search');
 Route::get('lienhe', 'ClientController@lienHe')->name('lienhe');
 Route::get('gioithieu', 'ClientController@gioiThieu')->name('gioithieu');
 Route::get('dichvu', 'ClientController@dichVu')->name('dichvu');
