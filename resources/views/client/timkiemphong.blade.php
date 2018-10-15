@@ -1,5 +1,6 @@
 <?php
 use App\DAO\PhongDAO;
+
 ?>
 @extends('layouts._share.client')
 @section('content')
@@ -13,7 +14,7 @@ use App\DAO\PhongDAO;
 		</div>
 		@if(count($listPhong) > 0)
 		<div>
-			<h5 class="text-primary">Có {{count($phongs)}} phòng tìm kiếm</h5>
+			<h5 class="text-primary">Có tất cả {{count($phongs)}} phòng thỏa mãn tìm kiếm!</h5>
 		</div>
 		<?php foreach ($listPhong as $key => $item): ?>
 			<section class="<?php if ($key % 2 == 1) {
@@ -91,6 +92,9 @@ use App\DAO\PhongDAO;
 				</div>
 			</section>
 		<?php endforeach?>
+		<div class="col-md-offset-6" style="margin: 0 auto">
+			{{$listPhong->appends(\Illuminate\Support\Facades\Request::all())->links()}}
+		</div>
 
 		@else
 		<div>

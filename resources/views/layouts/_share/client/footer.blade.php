@@ -19,7 +19,7 @@
                                 <li><a href="{{route('client')}}">Trang chủ</a></li>
                                 <li><a href="{{route('gioithieu')}}">Giới thiệu</a></li>
                                 <li><a href="{{route('lienhe')}}">Liên hệ</a></li>
-                                <li><a href="#">Dịch vụ</a></li>
+                                <li><a href="{{route('dichvu')}}">Dịch vụ</a></li>
                             </ul>
                         </div>
                     </div>

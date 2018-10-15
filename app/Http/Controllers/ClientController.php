@@ -27,8 +27,8 @@ class ClientController extends Controller {
 				$list[] = $phong;
 			}
 		}
-		// $listPhong = PhongDAO::paginate($list, $perPage = 2, $page = null, $options = []);
-		$listPhong = $list;
+		$listPhong = PhongDAO::paginate($list, $perPage = 4, $page = null, $options = []);
+		$listPhong->withPath('search');
 		return view('client.timkiemphong', compact('listPhong', 'request', 'tenLoai', 'phongs'));
 	}
 	function lienHe() {

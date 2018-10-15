@@ -30,8 +30,7 @@ $listLoaiPhong = LoaiPhong::all();
                 <div class="col-md-8">
                     <div class="boking_table">
                         <div class="row">
-                            <form class="row" method="post" style="width: 100%">
-                                @csrf
+                            <form class="row" method="get" style="width: 100%" action="{{route('search')}}">
                                 <div class="col-md-6">
                                     <div class="book_tabel_item">
                                         <div class="form-group">
