@@ -8,7 +8,7 @@ class Phong extends Model {
 	public $timestamps = false;
 	protected $table = 'phong';
 	protected $fillable = [
-		'MaPhong', 'MaTT', 'MaLoai', 'TenPhong', 'Image', 'MoTa',
+		'MaPhong', 'MaTT', 'MaLoai', 'TenPhong', 'DonGia', 'Image', 'MoTa',
 	];
 	public function loaiphong() {
 		return $this->belongsTo('App\Models\LoaiPhong', 'MaPhong', 'MaLoai');
