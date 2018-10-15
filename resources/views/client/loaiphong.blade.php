@@ -35,10 +35,10 @@ use App\Models\LoaiPhong;
 					<h3  style="color: white">{{$item->TenLoai}}</h3>
 					<p  style="color: white">{{$item->MoTa}}</p>
 					<a href="{{route('loaiphong.chitiet',['id'=>$item->BiDanh])}}" class="btn theme_btn button_hover">Tìm hiểu thêm</a>
-					<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+					<a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 					<?php else: ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="image/phong/{{$i}}" width="100%" height="300px">
+							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 					<?php endif?>
@@ -46,14 +46,14 @@ use App\Models\LoaiPhong;
 				<div class="col-md-6">
 					<?php if ($key % 2 == 1): ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="image/phong/{{$i}}" width="100%" height="300px">
+							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 						<?php else: ?>
 							<h3>{{$item->TenLoai}}</h3>
 							<p>{{$item->MoTa}}</p>
 							<a href="{{route('loaiphong.chitiet',['id'=>$item->BiDanh])}}" class="btn theme_btn button_hover">Tìm hiểu thêm</a>
-							<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+							<a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 						<?php endif?>
 					</div>
 				</div>

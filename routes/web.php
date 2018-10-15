@@ -19,6 +19,7 @@ Route::group(['prefix' => 'loaiphong'], function () {
 	Route::get('/', 'ClientController@loaiPhong')->name('loaiphong');
 	Route::get('{name}', 'ClientController@phongDetail')->name('loaiphong.chitiet');
 });
+Route::get('datphong/{name?}', 'ClientController@thongTinDatPhong')->name('datphong');
 // Login and Register
 Auth::routes();
 // Admin

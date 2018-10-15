@@ -7,14 +7,14 @@ use App\Models\LoaiPhong;
 	<div class="overlay" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" style="opacity:0.5 !important; background-image: url('{{asset('image/loaiphong.jpg')}}')"></div>
 	<div class="container">
 		<div class="page-cover text-center">
-			<h2 class="page-cover-tittle">Phòng {{$phong->TenLoai}}</h2>
+			<h2 class="page-cover-tittle">Phòng {{$loaiphong->TenLoai}}</h2>
 			<p>
 				<u>Hotel in Hanoi Vietnam, Khách sạn Royal Trung tâm Hà nội</u>
 			</p>
 			<ol class="breadcrumb">
 				<li><a href="{{route('client')}}">Trang chủ</a></li>
 				<li><a href="{{route('loaiphong')}}">Loại phòng & Giá Phòng</a></li>
-				<li class="active">{{$phong->TenLoai}}</li>
+				<li class="active">{{$loaiphong->TenLoai}}</li>
 			</ol>
 		</div>
 	</div>
@@ -23,14 +23,14 @@ use App\Models\LoaiPhong;
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h3 style="text-transform: uppercase;text-align: center;margin-bottom: 50px">TIỆN NGHI PHÒNG {{$phong->TenLoai}}</h3>
+				<h3 style="text-transform: uppercase;text-align: center;margin-bottom: 50px">TIỆN NGHI PHÒNG {{$loaiphong->TenLoai}}</h3>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-1.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG KHÁCH</h4>
-				<p>Max : {{$phong->NguoiLon}} Người lớn
-					@if($phong->TreCon !== null)
-					+ {{$phong->TreCon}} Trẻ con
+				<p>Max : {{$loaiphong->NguoiLon}} Người lớn
+					@if($loaiphong->TreCon !== null)
+					+ {{$loaiphong->TreCon}} Trẻ con
 					@endif
 				</p>
 
@@ -38,27 +38,27 @@ use App\Models\LoaiPhong;
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-2.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG</h4>
-				<p>{{$phong->Giuong}} Giường</p>
+				<p>{{$loaiphong->Giuong}} Giường</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-3.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG PHỤ</h4>
-				<p>{{$phong->GiuongPhu}} Giường phụ</p>
+				<p>{{$loaiphong->GiuongPhu}} Giường phụ</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-4.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG PHÒNG</h4>
-				<p>Max : {{$phong->SLPhong}} Phòng</p>
+				<p>Max : {{$loaiphong->SLPhong}} Phòng</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-5.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">DIỆN TÍCH PHÒNG</h4>
-				<p>{{$phong->DienTich}}<sup>2</sup></p>
+				<p>{{$loaiphong->DienTich}}<sup>2</sup></p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
 				<img src="{{asset('image/phong/image-6.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">HƯỚNG NHÌN</h4>
-				<p>{{$phong->HuongNhin}}</p>
+				<p>{{$loaiphong->HuongNhin}}</p>
 			</div>
 		</div>
 	</div>
@@ -76,7 +76,7 @@ use App\Models\LoaiPhong;
 	<div class="container">
 		<div class="row" style="margin: 50px;color: white">
 			<div class="col-md-5 row">
-				<?php foreach (LoaiPhong::image($phong->images) as $key => $i): ?>
+				<?php foreach (LoaiPhong::image($loaiphong->images) as $key => $i): ?>
 					@if($key == 0)
 					<div class="text-center col-md-12">
 						<div class="hotel_img row">
@@ -86,7 +86,7 @@ use App\Models\LoaiPhong;
 					@endif
 				<?php endforeach?>
 				<div class="testimonial_slider owl-carousel" style="margin-top: 50px">
-					@foreach(LoaiPhong::image($phong->images) as $image )
+					@foreach(LoaiPhong::image($loaiphong->images) as $image )
 					<div class="media">
 						<img src="{{asset('image/phong')}}/{{$image}}" width="50px" height="100px">
 					</div>
@@ -96,11 +96,11 @@ use App\Models\LoaiPhong;
 			</div>
 			<div class="col-md-7">
 				<div style="margin-left: 50px">
-					<p>{{$phong->MoTaChiTiet}}</p>
+					<p>{{$loaiphong->MoTaChiTiet}}</p>
 
-					<h3 class="text-info">Giá chỉ từ : $ {{$phong->DonGia}}/đêm </h3>
+					<h3 class="text-info">Giá chỉ từ : $ {{$loaiphong->DonGia}}/đêm </h3>
 
-					<a href="#" class="btn theme_btn button_hover">Đặt phòng</a>
+					<a href="{{route('datphong',['name' => $loaiphong->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 
 				</div>
 			</div>

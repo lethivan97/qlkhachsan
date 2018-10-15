@@ -18,9 +18,10 @@ class CheckRole {
 			if (Auth::user()->role == '1') {
 				return $next($request);
 			}
+			return redirect()->route('client');
 
 		}
-		return redirect()->route('client');
+		return redirect()->route('login');
 
 	}
 }
