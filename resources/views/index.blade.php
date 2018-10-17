@@ -1,6 +1,7 @@
 <?php
 use App\Models\LoaiPhong;
 $listLoaiPhong = LoaiPhong::all();
+session_start();
 ?>
 @extends('layouts._share.client')
 @section('content')
@@ -51,37 +52,11 @@ $listLoaiPhong = LoaiPhong::all();
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4">
-                                    <div class="book_tabel_item">
-                                        <div class="input-group">
-                                            <select class="wide" name="NguoiLon">
-                                                <option data-display="Người lớn">Người lớn</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                                <option value="3">6</option>
-                                                <option value="1">7</option>
-                                                <option value="2">8</option>
-                                                <option value="3">9</option>
-                                                <option value="3">10</option>
-                                            </select>
-                                        </div>
-                                        <div class="input-group">
-                                            <select class="wide" name="TreCon">
-                                                <option data-display="Trẻ em">Trẻ em</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <div class="col-md-6">
                                     <div class="book_tabel_item">
                                         <div class="input-group">
                                             <select class="wide" name="MaLoai">
-                                                <option data-display="Loại Phòng">Loại Phòng</option>
+                                                <option data-display="Loại Phòng" value="">Loại Phòng</option>
                                                 <?php foreach ($listLoaiPhong as $item): ?>
                                                     <option value="{{$item->MaLoai}}">{{$item->TenLoai}}</option>
                                                 <?php endforeach?>

@@ -7,17 +7,18 @@ use App\DAO\PhongDAO;
 <section class="accomodation_area section_gap">
 	<div class="container">
 		<div class="section_title text-center">
-			<h2 class="title_color">Thông tin tìm kiếm với yêu cầu</h2>
-			<h4 class="text-danger">Ngày Đến : {{$request->NgayDen}}</h4>
-			<h4 class="text-danger">Ngày Đi : {{$request->NgayDi}}</h4>
-			@if($tenLoai != '')
-			<h4 class="text-danger" >Loại Phòng : {{$tenLoai}}</h4>
-			@endif
+			<h2 class="title_color text-danger">Mời bạn chọn phòng loại {{$loaiPhong->TenLoai}} </h2>
 		</div>
-		@if(count($listPhong) > 0)
+		@if(count($phongs) > 0)
+		@if(count($phongs) < $request['SoPhong'])
 		<div>
-			<h5 class="text-primary">Có tất cả {{count($phongs)}} phòng thỏa mãn tìm kiếm!</h5>
+			<h5 class="text-primary">Số phòng trống không đủ yêu cầu. Bạn có thể chọn thêm loại phòng khác ?</h5>
 		</div>
+		@else
+		<div>
+			<h5 class="text-primary">Có tất cả {{count($phongs)}} phòng !</h5>
+		</div>
+		@endif
 		<?php foreach ($listPhong as $key => $item): ?>
 			<section class="<?php if ($key % 2 == 1) {
 	echo 'facilities_area';
@@ -98,7 +99,7 @@ use App\DAO\PhongDAO;
 
 		@else
 		<div>
-			<h5 class="text-primary">Không tìm thấy phòng nào.</h5>
+			<h5 class="text-primary">Xin lỗi,Loại {{$loaiPhong->TenLoai}} đã hết phòng trống! Vui lòng đặt phòng loại khác.</h5>
 		</div>
 		@endif
 	</div>
