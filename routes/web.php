@@ -20,10 +20,7 @@ Route::group(['prefix' => 'loaiphong'], function () {
 	Route::get('{name}', 'ClientController@phongDetail')->name('loaiphong.chitiet');
 });
 Route::get('datphong/{name?}', 'ClientController@thongTinDatPhong')->name('datphong');
+Route::get('them-gio-hang/{id}', 'ClientController@roHang')->where('id', '[0-9]+')->name('them-gio-hang');
+Route::get('dat-loai-phong', 'ClientController@danhSachPhong')->name('datphong.post');
 // Login and Register
 Auth::routes();
-// Admin
-// Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'role']], function () {
-// 	Route::get('/', 'PhongController@index')->name('admin');
-// 	Route::get('phong', 'PhongController@danhSachPhong')->name('admin.phong');
-// });
