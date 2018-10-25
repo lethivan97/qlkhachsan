@@ -19,5 +19,7 @@ class Phong extends Model {
 	public function phong_thietbi() {
 		return $this->hasMany('App\Models\Phong_ThietBi', 'MaPhong', 'MaPhong');
 	}
-
+	public static function image($arr) {
+		return $listPhong = explode(",", $arr);
+	}
 }

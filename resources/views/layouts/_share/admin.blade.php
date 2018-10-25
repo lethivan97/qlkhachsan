@@ -58,7 +58,6 @@
 		<!-- /.control-sidebar -->
 
 		<!-- Main Footer -->
-		@include('layouts._share.admin.footer')
 	</div>
 	<!-- ./wrapper -->
 

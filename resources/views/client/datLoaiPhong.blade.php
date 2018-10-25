@@ -66,14 +66,14 @@ use App\DAO\PhongDAO;
 								</div>
 							</div>
 							<div class="col-md-12">
-								<p>{{$item->MoTa}}</p>
+								<p>{!!$item->MoTa!!}</p>
 							</div>
 							<div class="col-md-12">
-								<h3 class="text-primary">Giá : $ {{$item->DonGia}}/đêm </h3>
+								<h3 class="text-primary">Giá : $ {{$item->DonGia}}/ngày </h3>
 							</div>
 							<div class="col-md-12">
 								<a class="btn btn-info" data-toggle="collapse" data-target="#{{$item->MaPhong}}">Xem chi tiết phong</a>
-								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong])}}" class="btn theme_btn button_hover">Đặt phòng</a>
+								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong,'ngayden'=>$request->NgayDen,'ngaydi'=>$request->NgayDi])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 							</div>
 						</div>
 					</div>
@@ -106,7 +106,7 @@ use App\DAO\PhongDAO;
 </section>
 <div class="row">
 	<div class="col-md-offset-6" style="margin: 0 auto">
-		{{$listPhong->appends(\Illuminate\Support\Facades\Request::all())->links()}}
+		{{$listPhong->appends($request->all())->links()}}
 	</div>
 </div>
 @endsection
