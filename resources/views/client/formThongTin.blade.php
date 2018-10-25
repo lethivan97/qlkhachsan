@@ -2,8 +2,8 @@
 @section('content')
 <div class="hotel_booking_area position" style="margin-top: 200px;margin-bottom: 200px">
 	<div class="container">
-		<div class="row">
-			<h2 class="text-danger text-center">Mời bạn nhập thông tin đặt phòng !! Hãy chắc chắn bạn đã điền đầy đủ thông tin !</h2>
+		<div class="col-md-12">
+			<h4 class="text-danger text-center">Mời bạn nhập thông tin đặt phòng !! Hãy chắc chắn bạn đã điền đầy đủ thông tin !</h4>
 		</div>
 		<div class="hotel_booking_table">
 			<div class="col-md-4">

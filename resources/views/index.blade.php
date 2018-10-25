@@ -99,7 +99,7 @@ session_start();
                             <a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
                         </div>
                         <a href="{{route('loaiphong.chitiet',['name' => $item->BiDanh])}}"><h4 class="sec_h4">{{$item->TenLoai}}</h4></a>
-                        <h5>${{$item->DonGia}}/đêm</h5>
+                        <h5>${{$item->DonGia}}/ngày</h5>
                     </div>
                 </div>
             <?php endforeach?>

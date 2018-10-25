@@ -1,6 +1,5 @@
 <?php
 namespace App\DAO;
-use App\Models\Phong;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -15,11 +14,13 @@ class PhongDAO {
 
 	public function getById($id) {
 		// $result = DB::table('Phong');
-		$result = Phong::query();
+		$result = DB::table('LoaiPhong')
+			->join('Phong', 'LoaiPhong.MaLoai', '=', 'Phong.MaLoai')
+			->join('TrangThai', 'Phong.MaTT', '=', 'TrangThai.MaTT');
 		if ($id != "") {
 			$result = $result->where('Phong.MaPhong', '=', $id);
 		}
-		return $result;
+		return $result->select('Phong.MaPhong as MaPhong', 'TenPhong', 'TrangThai.MaTT as MaTT', 'TenLoai', 'TenTT', 'Phong.DonGia as DonGia', 'Phong.MoTa as MoTa', 'Phong.Image as images', 'LoaiPhong.MaLoai as MaLoai')->orderBy('Phong.MaPhong', 'desc');
 	}
 
 	public function insert($MaTT, $MaLoai, $TenPhong, $MoTa) {
@@ -75,6 +76,9 @@ class PhongDAO {
 		$page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
 		$items = $items instanceof Collection ? $items : Collection::make($items);
 		return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+	}
+	public static function getPhongByID($id) {
+
 	}
 }
 ?>

@@ -33,7 +33,7 @@ use App\Models\LoaiPhong;
 			<div class="col-lg-6 col-md-6">
 				<?php if ($key % 2 == 1): ?>
 					<h3  style="color: white">{{$item->TenLoai}}</h3>
-					<p  style="color: white">{{$item->MoTa}}</p>
+					<p  style="color: white">{!!$item->MoTa!!}</p>
 					<a href="{{route('loaiphong.chitiet',['id'=>$item->BiDanh])}}" class="btn theme_btn button_hover">Tìm hiểu thêm</a>
 					<a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 					<?php else: ?>
@@ -51,7 +51,7 @@ use App\Models\LoaiPhong;
 						<?php endforeach?>
 						<?php else: ?>
 							<h3>{{$item->TenLoai}}</h3>
-							<p>{{$item->MoTa}}</p>
+							<p>{!!$item->MoTa!!}</p>
 							<a href="{{route('loaiphong.chitiet',['id'=>$item->BiDanh])}}" class="btn theme_btn button_hover">Tìm hiểu thêm</a>
 							<a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 						<?php endif?>

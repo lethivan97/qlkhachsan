@@ -2,6 +2,9 @@
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+
+<script src="{{asset('plugins/tinymce/tinymce.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 
@@ -21,3 +24,41 @@
 
 <!-- PAGE SCRIPTS -->
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
+
+<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('js/popper.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('vendors/owl-carousel/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
+<script src="{{asset('js/mail-script.js')}}"></script>
+<script src="{{asset('vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('vendors/nice-select/js/jquery.nice-select.js')}}"></script>
+<script src="{{asset('js/mail-script.js')}}"></script>
+<script src="{{asset('js/stellar.js')}}"></script>
+<script src="{{asset('vendors/lightbox/simpleLightbox.min.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
+
+<script src="{{asset('vendors/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{asset('vendors/isotope/isotope-min.js')}}"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="{{asset('js/gmaps.min.js')}}"></script>
+<!-- contact js -->
+<script src="{{asset('js/jquery.form.js')}}"></script>
+<script src="{{asset('js/jquery.validate.min.js')}}"></script>
+<script src="{{asset('js/contact.js')}}"></script>
+<script type="text/javascript">
+	tinymce.init({
+		selector :'textarea#editor',
+		theme: 'modern',
+		plugins: [
+		'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+		'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+		'save table contextmenu directionality emoticons template paste textcolor'
+		],
+		height:300,
+		content_css: 'css/content.css',
+		toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+	})
+
+</script>

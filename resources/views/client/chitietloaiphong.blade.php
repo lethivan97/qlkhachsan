@@ -96,9 +96,9 @@ use App\Models\LoaiPhong;
 			</div>
 			<div class="col-md-7">
 				<div style="margin-left: 50px">
-					<p>{{$loaiphong->MoTaChiTiet}}</p>
+					<p>{!!$loaiphong->MoTaChiTiet!!}</p>
 
-					<h3 class="text-info">Giá chỉ từ : $ {{$loaiphong->DonGia}}/đêm </h3>
+					<h3 class="text-info">Giá chỉ từ : $ {{$loaiphong->DonGia}}/ngày </h3>
 
 					<a href="{{route('datphong',['name' => $loaiphong->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 

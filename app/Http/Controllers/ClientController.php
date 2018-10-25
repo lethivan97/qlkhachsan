@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DAO\PhongDAO;
+use App\Models\Cart;
 use App\Models\LoaiPhong;
+use App\Models\Phong;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller {
@@ -74,7 +76,12 @@ class ClientController extends Controller {
 		$listPhong->withPath('dat-loai-phong');
 		return view('client.datLoaiPhong', compact('listPhong', 'loaiPhong', 'request', 'phongs'));
 	}
-	public function roHang($id) {
-		echo "string";
+	public function ThemVaoGioHang(Request $request, $id, $ngayden, $ngaydi) {
+		$phong = Phong::where('MaPhong', $id)->first();
+		$oldCart = Session('cart') ? Session::get('cart') : null;
+		$cart = new Cart($oldCart);
+		$cart->addPhong($phong, $id, $ngayden, $ngaydi);
+		$request->session()->put('cart', $cart);
+		return redirect()->back();
 	}
 }
