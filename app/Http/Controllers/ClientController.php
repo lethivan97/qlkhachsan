@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\LoaiPhong;
 use App\Models\Phong;
 use Illuminate\Http\Request;
+use Session;
 
 class ClientController extends Controller {
 	function index() {
@@ -58,7 +59,7 @@ class ClientController extends Controller {
 	}
 	function thongTinDatPhong($name) {
 		$loaiPhong = LoaiPhong::where('BiDanh', $name)->first();
-		return view('client.formThongTin', compact('loaiPhong'));
+		return view('client.formthongtin', compact('loaiPhong'));
 	}
 	public function danhSachPhong(Request $request) {
 		$loaiPhong = LoaiPhong::where('MaLoai', $request->MaLoai)->first();
@@ -74,7 +75,7 @@ class ClientController extends Controller {
 		}
 		$listPhong = PhongDAO::paginate($list, $perPage = 4, $page = null, $options = []);
 		$listPhong->withPath('dat-loai-phong');
-		return view('client.datLoaiPhong', compact('listPhong', 'loaiPhong', 'request', 'phongs'));
+		return view('client.datloaiphong', compact('listPhong', 'loaiPhong', 'request', 'phongs'));
 	}
 	public function ThemVaoGioHang(Request $request, $id, $ngayden, $ngaydi) {
 		$phong = Phong::where('MaPhong', $id)->first();
@@ -82,6 +83,29 @@ class ClientController extends Controller {
 		$cart = new Cart($oldCart);
 		$cart->addPhong($phong, $id, $ngayden, $ngaydi);
 		$request->session()->put('cart', $cart);
+		return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+	}
+	public function danhSachPhongDat() {
+		$cart = Session::get('cart');
+		// Session::forget('cart');
+		return view('client.danhsachphongdat', compact('cart'));
+	}
+	public function xoaPhongDat($id) {
+		$oldCart = Session::has('cart') ? Session::get('cart') : null;
+		$cart = new Cart($oldCart);
+		$cart->xoaPhong($id);
+		if (count($cart->phongs) > 0) {
+			Session::put('cart', $cart);
+		} else {
+			Session::forget('cart');
+		}
 		return redirect()->back();
+	}
+	public function xoaTatCaPhong() {
+		Session::forget('cart');
+		return redirect()->back();
+	}
+	public function thanhToan() {
+		return view('client.thanhtoan');
 	}
 }

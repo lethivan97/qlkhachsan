@@ -1,5 +1,6 @@
 <?php
 namespace App\Models;
+use Carbon\Carbon;
 
 class Cart {
 	public $phongs = null;
@@ -20,22 +21,23 @@ class Cart {
 				$cart = $this->phongs[$id];
 			}
 		}
-		$tongNgay = $cart['ngaydi']->diffInDays($cart['ngayden']);
+		$ngayden = Carbon::parse($cart['ngayden']);
+		$ngaydi = Carbon::parse($cart['ngaydi']);
+		$tongNgay = (int) ($ngaydi->diffInDays($ngayden));
 		$cart['sl_phong']++;
-		$cart['dongia'] = $cart['sl_phong'] * $tongNgay;
+		$cart['dongia'] = $phong->DonGia * $cart['sl_phong'] * $tongNgay;
 		$this->phongs[$id] = $cart;
 		$this->tongPhong++;
-		$this->tongTien += $cart['dongia'];
+		$this->tongTien += $phong->DonGia * $tongNgay;
 
 	}
-	public function deleteOneRoom($id) {
+	public function xoaPhong($id) {
 		$this->tongPhong--;
 		$this->tongTien -= $this->phongs[$id]['dongia'];
-		if ($this->phongs[$id]['sl_phong'] <= 0) {
-			unset($this->phongs[$id]);
-		}
+		// dd($this->tongTien, $this->phongs[$id]);
+		unset($this->phongs[$id]);
 	}
-	public function deleteAll($id) {
+	public function xoaTatCa($id) {
 		$this->tongPhong -= $this->phongs[$id]['sl_phong'];
 		$this->tongTien -= $this->phongs[$id]['dongia'];
 		unset($this->phongs[$id]);

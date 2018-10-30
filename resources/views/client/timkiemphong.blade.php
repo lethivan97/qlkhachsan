@@ -18,6 +18,13 @@ use App\DAO\PhongDAO;
 		<div>
 			<h5 class="text-primary">Có tất cả {{count($phongs)}} phòng thỏa mãn tìm kiếm!</h5>
 		</div>
+		<div class="row">
+			@if(Session::has('thongbao'))
+			<div class="alert alert-success col-md-12" role="alert">
+				{{Session::get('thongbao')}}
+			</div>
+			@endif
+		</div>
 		<?php foreach ($listPhong as $key => $item): ?>
 			<section class="<?php if ($key % 2 == 1) {
 	echo 'facilities_area';

@@ -30,8 +30,8 @@ $loaiPhong = LoaiPhong::all();
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('dichvu')}}">Dịch vụ khách sạn</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('lienhe')}}">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        (@if(Session::has('cart')) {{Session('cart')->tongPhong}} @else 0 @endif)
+                    <li class="nav-item"><a class="nav-link" href="{{route('danh-sach-phong-dat')}}">
+                        @if(Session::has('cart'))<span class="badge badge-pill badge-danger">{{Session('cart')->tongPhong}}</span> @else <span class="badge badge-pill badge-danger">0</span> @endif
                     Danh sách phòng đặt</a>
                 </li>
 
