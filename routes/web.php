@@ -22,5 +22,9 @@ Route::group(['prefix' => 'loaiphong'], function () {
 Route::get('datphong/{name?}', 'ClientController@thongTinDatPhong')->name('datphong');
 Route::get('them-gio-hang/{id}/{ngayden?}/{ngaydi?}', 'ClientController@ThemVaoGioHang')->where('id', '[0-9]+')->name('them-gio-hang');
 Route::get('dat-loai-phong', 'ClientController@danhSachPhong')->name('datphong.post');
+Route::get('danh-sach-phong-dat', 'ClientController@danhSachPhongDat')->name('danh-sach-phong-dat');
+Route::get('xoa-phong-dat/{id}', 'ClientController@xoaPhongDat')->name('xoa-phong-dat');
+Route::get('xoa-phong', 'ClientController@xoaTatCaPhong')->name('xoa-phong');
+Route::get('thanh-toan', 'ClientController@thanhToan')->name('thanh-toan');
 // Login and Register
 Auth::routes();

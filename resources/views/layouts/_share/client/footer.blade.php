@@ -44,7 +44,7 @@
         <div class="border_line"></div>
         <div class="row footer-bottom d-flex justify-content-between align-items-center">
             <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Thực hiện bởi 3 thành viên : Lê Vân , Phùng An , Nguyễn Quân
+                Thực hiện bởi 4 thành viên : Lê Vân , Phùng An , Nguyễn Quân , Ngọc Ánh
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 <div class="col-lg-4 col-sm-12 footer-social">
                     <a href="#"><i class="fa fa-facebook"></i></a>
