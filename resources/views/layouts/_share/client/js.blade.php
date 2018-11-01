@@ -21,5 +21,3 @@
 <script src="{{asset('js/jquery.validate.min.js')}}"></script>
 <script src="{{asset('js/contact.js')}}"></script>
 <!-- Thanh toán -->
-<!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="{{asset('js/checkout.js')}}"></script> -->
