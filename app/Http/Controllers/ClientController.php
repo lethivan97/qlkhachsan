@@ -11,7 +11,10 @@ use App\Models\Phong;
 use App\Models\Phong_DatPhong;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ClientController extends Controller {
 	function index() {
@@ -110,33 +113,34 @@ class ClientController extends Controller {
 		return redirect()->back();
 	}
 	public function thanhToan() {
-		return view('client.thanhtoan');
+		if (Auth::check()) {
+			$user = Auth::user();
+		}
+		return view('client.thanhtoan', compact('user'));
 	}
 	public function postthanhToan(Request $request) {
-
 		if (!Session::has('cart')) {
 			return redirect()->route('client');
 		}
 		$oldCart = Session::has('cart') ? Session::get('cart') : null;
 		$cart = new Cart($oldCart);
+		dd($request->all());
 		if ($request->LuaChon == 0) {
 			$this->validate($request,
 				[
 					'TenKH' => 'required|max:40',
-					'Email' => 'required|email|unique:khachhang,Email',
+					'Email' => 'required|email',
 					'DiaChi' => 'min:6|max:50',
-					'SDT' => 'numeric|size:10',
+					'SDT' => 'numeric',
 				],
 				[
 					'Email.required' => 'Vui lòng nhập email',
 					'Email.email' => 'Không đúng định dạng email',
-					'Email.unique' => 'Email đã có người sử dụng',
 					'TenKH.required' => 'Vui lòng nhập tên khách hàng',
 					'TenKH.max' => 'Tên khách hàng không được vượt quá 40 kí tự',
 					'DiaChi.min' => 'Địa chỉ ít nhất 6 kí tự',
 					'DiaChi.max' => 'Địa chỉ không được vượt quá 50 kí tự',
 					'SDT.numeric' => 'Nhập số điện thoại sai định dạng',
-					'SDT.size' => 'Số điện thoại chỉ bao gồm 11 số',
 				]);
 			$khachhang = KhachHang::create($request->all());
 			$dondat = DatPhong::create([
@@ -157,22 +161,18 @@ class ClientController extends Controller {
 			}
 
 		} elseif ($request->LuaChon == 1) {
-			echo "Online";
+			Stripe::setApiKey("sk_test_aBWzRKCBKy6L86mfuc3WqJgI");
+			$token = $request->stripeToken;
+			Charge::create([
+				"amount" => $cart->tongTien,
+				"currency" => "usd",
+				"source" => $token, // obtained with Stripe.js
+				"description" => "Charge",
+			]);
+		} else {
+			return redirect()->back()->with('thongbao', 'Hãy chọn 1 trong 2 hình thức thanh toán');
 		}
 		Session::forget('cart');
 		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! . Vui lòng kiểm tra mail để xác thực .');
-		/*Stripe::setApiKey('sk_test_aBWzRKCBKy6L86mfuc3WqJgI');
-			try {
-				Charge::create([
-					"amount" => $cart->tongTien * 100,
-					"currency" => "usd",
-					"source" => $request->input('stripeToken'), // obtained with Stripe.js
-					"description" => "Charge for jenny.rosen@example.com",
-				]);
-			} catch (Exception $e) {
-				return redirect()->route('thanh-toan')->with('error', $e->getMessage());
-			}
-			Session::forget('cart');
-		*/
 	}
 }

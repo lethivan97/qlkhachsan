@@ -101,6 +101,12 @@ use App\DAO\PhongDAO;
 									</div>
 								<?php endforeach?>
 							</div>
+							<div class="col-md-12">
+								<h5>Bình luận {{$item->TenPhong}}:</h5>
+							</div>
+							<div class="col-md-12">
+								<div class="fb-comments" data-href='http://localhost:8000/search/{{$item->MaPhong}}'></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -120,4 +126,11 @@ use App\DAO\PhongDAO;
 		{{$listPhong->appends($request->all())->links()}}
 	</div>
 </div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=284765669040134&autoLogAppEvents=1';
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @endsection
