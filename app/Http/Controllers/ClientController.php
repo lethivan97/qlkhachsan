@@ -124,7 +124,6 @@ class ClientController extends Controller {
 		}
 		$oldCart = Session::has('cart') ? Session::get('cart') : null;
 		$cart = new Cart($oldCart);
-		dd($request->all());
 		if ($request->LuaChon == 0) {
 			$this->validate($request,
 				[

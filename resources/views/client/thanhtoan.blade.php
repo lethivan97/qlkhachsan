@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="row col-md-12" style="margin-top: 30px">
 						<div class="col-md-6" style="border-right: 1px solid">
-							<form  method="post" accept-charset="utf-8" style="height: 320px">
+							<form  method="post" accept-charset="utf-8">
 								@csrf
 								<div class="row">
 									<div class="col-md-12">
@@ -135,7 +135,7 @@
 							</form>
 						</div>
 						<div class="col-md-6">
-							<form  method="post" class="col-md-12" id="payment-form" style="height: 320px">
+							<form  method="post" class="col-md-12" id="payment-form" style="height: 350px">
 								@csrf
 								<div class="row">
 									<div class="col-md-12">
@@ -143,7 +143,7 @@
 										<input type="text" name="LuaChon" value="1" hidden>
 									</div>
 								</div>
-								<div class="form-row" style="margin: 100px 0">
+								<div class="form-row" style="margin: 110px 0">
 									<div id="card-element" class="col-md-12">
 										<!-- A Stripe Element will be inserted here. -->
 									</div>
@@ -151,7 +151,7 @@
 									<!-- Used to display form errors. -->
 									<div id="card-errors" role="alert"></div>
 								</div>
-								<div class="row" style="margin-top: 20px">
+								<div class="row" style="margin-top: 50px">
 									<div class="col-md-12 text-center">
 										<a href="{{route('danh-sach-phong-dat')}}">Hủy giao dịch</a>
 										<button class="btn btn-sm btn-success" style="margin-left: 50px">Thanh toán</button>
