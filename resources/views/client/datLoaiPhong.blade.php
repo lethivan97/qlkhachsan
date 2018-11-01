@@ -3,6 +3,7 @@ use App\DAO\PhongDAO;
 
 ?>
 @extends('layouts._share.client')
+@section('title','Tìm kiếm phòng')
 @section('content')
 <section class="accomodation_area section_gap">
 	<div class="container">
@@ -17,6 +18,13 @@ use App\DAO\PhongDAO;
 		@else
 		<div>
 			<h5 class="text-primary">Có tất cả {{count($phongs)}} phòng !</h5>
+		</div>
+		<div class="row">
+			@if(Session::has('thongbao'))
+			<div class="alert alert-success col-md-12" role="alert">
+				{{Session::get('thongbao')}}
+			</div>
+			@endif
 		</div>
 		@endif
 		<?php foreach ($listPhong as $key => $item): ?>
@@ -73,7 +81,10 @@ use App\DAO\PhongDAO;
 							</div>
 							<div class="col-md-12">
 								<a class="btn btn-info" data-toggle="collapse" data-target="#{{$item->MaPhong}}">Xem chi tiết phong</a>
-								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong,'ngayden'=>$request->NgayDen,'ngaydi'=>$request->NgayDi])}}" class="btn theme_btn button_hover">Đặt phòng</a>
+								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong,'ngayden'=>$request->NgayDen,'ngaydi'=>$request->NgayDi])}}" class="btn theme_btn button_hover" <?php if (Session::has('cart') && array_key_exists($item->MaPhong, Session::get('cart')->phongs)) {
+	echo "hidden";
+}
+?> >Đặt phòng</a>
 							</div>
 						</div>
 					</div>

@@ -3,6 +3,7 @@ use App\DAO\PhongDAO;
 
 ?>
 @extends('layouts._share.client')
+@section('title','Tìm kiếm phòng')
 @section('content')
 <section class="accomodation_area section_gap">
 	<div class="container">
@@ -79,7 +80,10 @@ use App\DAO\PhongDAO;
 							</div>
 							<div class="col-md-12">
 								<a class="btn btn-info" data-toggle="collapse" data-target="#{{$item->MaPhong}}">Xem chi tiết phòng</a>
-								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong,'ngayden'=>$request->NgayDen,'ngaydi'=>$request->NgayDi])}}" class="btn theme_btn button_hover">Đặt phòng</a>
+								<a href="{{route('them-gio-hang',['id'=>$item->MaPhong,'ngayden'=>$request->NgayDen,'ngaydi'=>$request->NgayDi])}}" class="btn theme_btn button_hover" <?php if (Session::has('cart') && array_key_exists($item->MaPhong, Session::get('cart')->phongs)) {
+	echo "hidden";
+}
+?> >Đặt phòng</a>
 							</div>
 						</div>
 					</div>
@@ -95,6 +99,12 @@ use App\DAO\PhongDAO;
 										<p>{{$tb->TenTB}}</p>
 									</div>
 								<?php endforeach?>
+							</div>
+							<div class="col-md-12">
+								<h5>Bình luận {{$item->TenPhong}}:</h5>
+							</div>
+							<div class="col-md-12">
+								<div class="fb-comments" data-href='http://localhost:8000/search/{{$item->MaPhong}}'></div>
 							</div>
 						</div>
 					</div>
@@ -115,4 +125,11 @@ use App\DAO\PhongDAO;
 		{{$listPhong->appends($request->all())->links()}}
 	</div>
 </div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=284765669040134&autoLogAppEvents=1';
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @endsection

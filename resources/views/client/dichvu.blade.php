@@ -1,4 +1,5 @@
 @extends('layouts._share.client')
+@section('title','Dịch vụ')
 @section('content')
 <section class="breadcrumb_area">
     <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>

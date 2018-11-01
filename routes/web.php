@@ -26,5 +26,6 @@ Route::get('danh-sach-phong-dat', 'ClientController@danhSachPhongDat')->name('da
 Route::get('xoa-phong-dat/{id}', 'ClientController@xoaPhongDat')->name('xoa-phong-dat');
 Route::get('xoa-phong', 'ClientController@xoaTatCaPhong')->name('xoa-phong');
 Route::get('thanh-toan', 'ClientController@thanhToan')->name('thanh-toan');
+Route::post('thanh-toan', 'ClientController@postthanhToan')->name('thanh-toan');
 // Login and Register
 Auth::routes();

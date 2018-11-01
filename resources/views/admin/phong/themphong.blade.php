@@ -5,7 +5,7 @@
 		<h3 class="text-success" style="margin: 50px 0">Thêm mới phòng</h3>
 	</div>
 	<div class="row">
-		<form class="col-md-8" method="POST">
+		<form class="col-md-8" method="post">
 			@csrf
 			<div class="form-group row">
 				<label for="TenPhong" class="col-sm-2 col-form-label">Tên Phòng</label>

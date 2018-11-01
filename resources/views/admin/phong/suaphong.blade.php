@@ -71,7 +71,7 @@ $images = Phong::image($phong->Image);
 			<div class="form-group row">
 				<div class="col-md-12  text-center ">
 					<button type="submit" class="btn btn-sm btn-primary">Lưu</button>
-					<button type="button" class="btn btn-sm">Thoát</button>
+					<a href="{{route('admin.phong')}}" class="btn btn-sm">Thoát</a>
 				</div>
 
 			</div>
