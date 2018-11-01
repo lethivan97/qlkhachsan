@@ -2,6 +2,7 @@
 use App\Models\LoaiPhong;
 ?>
 @extends('layouts._share.client')
+@section('title',"Loại phòng $loaiphong->TenLoai")
 @section('content')
 <section class="breadcrumb_area">
 	<div class="overlay" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" style="opacity:0.5 !important; background-image: url('{{asset('image/loaiphong.jpg')}}')"></div>
@@ -110,14 +111,29 @@ use App\Models\LoaiPhong;
 </section>
 <section class="about_history_area section_gap">
 	<div class="container">
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+		<div class="row">
+			<div class="col-md-6">
+				<h5>Bình luận loại phòng {{$loaiphong->TenLoai}}</h5>
+				<div class="fb-comments" data-href='http://localhost:8000/loaiphong/{{$loaiphong->BiDanh}}' style="width: 100% !important" ></div>
+			</div>
+			<div class="col-md-6">
+				<h5>Hãy ủng hộ page của khách sạn</h5>
+				<div class="row">
+					<div class="fb-page col-md-8" data-href="https://www.facebook.com/Royal-Hotel-2145985822332065/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Royal-Hotel-2145985822332065/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Royal-Hotel-2145985822332065/">Royal  Hotel</a></blockquote></div>
+					<div class="col-md-4">
+						<div class="fb-save" data-uri="https://www.facebook.com/Royal-Hotel-2145985822332065/" data-size="large"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=284765669040134&autoLogAppEvents=1';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
 	</div>
 </section>
 

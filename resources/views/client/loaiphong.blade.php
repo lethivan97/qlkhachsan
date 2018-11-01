@@ -2,6 +2,7 @@
 use App\Models\LoaiPhong;
 ?>
 @extends('layouts._share.client')
+@section('title','Loại phòng')
 @section('content')
 <section class="breadcrumb_area">
 	<div class="overlay" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" style="opacity:0.4 !important; background-image: url('{{asset('image/loaiphong.jpg')}}')"></div>
@@ -23,6 +24,57 @@ use App\Models\LoaiPhong;
 		</div>
 	</div>
 </section>
+<div class="hotel_booking_area position">
+	<div class="container">
+		<div class="hotel_booking_table">
+			<div class="col-md-4">
+				<h2>Đặt phòng<br>ngay bây giờ !</h2>
+			</div>
+			<div class="col-md-8">
+				<div class="boking_table">
+					<div class="row">
+						<form class="row" method="get" style="width: 100%" action="{{route('search')}}">
+							<div class="col-md-6">
+								<div class="book_tabel_item">
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker11'>
+											<input type='text' name="NgayDen" class="form-control" placeholder="Thời gian đến"/>
+											<span class="input-group-addon">
+												<i class="fa fa-calendar" aria-hidden="true"></i>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker1'>
+											<input type='text' name="NgayDi" class="form-control" placeholder="Thời gian đi"/>
+											<span class="input-group-addon">
+												<i class="fa fa-calendar" aria-hidden="true"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="book_tabel_item">
+									<div class="input-group">
+										<select class="wide" name="MaLoai">
+											<option data-display="Loại Phòng" value="">Loại Phòng</option>
+											<?php foreach ($listLoaiPhong as $item): ?>
+												<option value="{{$item->MaLoai}}">{{$item->TenLoai}}</option>
+											<?php endforeach?>
+										</select>
+									</div>
+									<button class="book_now_btn button_hover" type="submit">Tìm kiếm</button>
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <?php foreach ($listLoaiPhong as $key => $item): ?>
 	<section class="<?php if ($key % 2 == 1) {
 	echo 'facilities_area';

@@ -4,8 +4,16 @@
 }
 </style>
 @extends('layouts._share.client')
+@section('title','Danh sách đặt phòng')
 @section('content')
 <div class="container">
+	<div class="row">
+		@if(Session::has('thongbao'))
+		<div class="alert alert-success col-md-12" role="alert" style="margin-top: 200px">
+			{{Session::get('thongbao')}}
+		</div>
+		@endif
+	</div>
 	@if($cart == null || $cart->tongPhong == 0 )
 	<div class="alert alert-danger" role="alert" style="margin: 200px 0">
 		Danh sách phòng trống. Mời bạn <a href="{{route('client')}}">đặt phòng</a>!!
@@ -16,10 +24,11 @@
 			<div class="col-md-12">
 				<h3 class="text-danger text-center">Phòng đặt ( {{$cart->tongPhong}} phòng )</h3>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<h4 class="text-primary">Tổng tiền thanh toán: ${{$cart->tongTien}}</h4>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
+				<a href="{{ URL::previous() }}" class="btn btn-sm btn-success">Tiếp tục đặt phòng</a>
 				<a href="{{route('thanh-toan')}}" class="btn btn-sm btn-info">Thanh toán</a>
 				<a onclick="return confirm('Bạn có chắc chắn muốn hủy đặt {{$cart->tongPhong}} phòng không ?')" class="btn btn-sm btn-danger" href="{{route('xoa-phong')}}">
 					Xóa tất cả

@@ -1,4 +1,5 @@
 @extends('layouts._share.client')
+@section('title','Tìm kiếm phòng')
 @section('content')
 <div class="hotel_booking_area position" style="margin-top: 200px;margin-bottom: 200px">
 	<div class="container">

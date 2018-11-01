@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\DAO\PhongDAO;
 use App\Models\Cart;
+use App\Models\DatPhong;
+use App\Models\KhachHang;
 use App\Models\LoaiPhong;
 use App\Models\Phong;
+use App\Models\Phong_DatPhong;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Session;
 
@@ -75,7 +79,7 @@ class ClientController extends Controller {
 		}
 		$listPhong = PhongDAO::paginate($list, $perPage = 4, $page = null, $options = []);
 		$listPhong->withPath('dat-loai-phong');
-		return view('client.datloaiphong', compact('listPhong', 'loaiPhong', 'request', 'phongs'));
+		return view('client.datloaiphong', compact('listPhong', 'loaiPhong', 'request', 'phongs'))->with('thongbao', 'Đặt phòng thành công');
 	}
 	public function ThemVaoGioHang(Request $request, $id, $ngayden, $ngaydi) {
 		$phong = Phong::where('MaPhong', $id)->first();
@@ -83,7 +87,7 @@ class ClientController extends Controller {
 		$cart = new Cart($oldCart);
 		$cart->addPhong($phong, $id, $ngayden, $ngaydi);
 		$request->session()->put('cart', $cart);
-		return redirect()->back()->with('thongbao', 'Đặt hàng thành công');
+		return redirect()->back()->with('thongbao', 'Đặt phòng thành công');
 	}
 	public function danhSachPhongDat() {
 		$cart = Session::get('cart');
@@ -107,5 +111,68 @@ class ClientController extends Controller {
 	}
 	public function thanhToan() {
 		return view('client.thanhtoan');
+	}
+	public function postthanhToan(Request $request) {
+
+		if (!Session::has('cart')) {
+			return redirect()->route('client');
+		}
+		$oldCart = Session::has('cart') ? Session::get('cart') : null;
+		$cart = new Cart($oldCart);
+		if ($request->LuaChon == 0) {
+			$this->validate($request,
+				[
+					'TenKH' => 'required|max:40',
+					'Email' => 'required|email|unique:khachhang,Email',
+					'DiaChi' => 'min:6|max:50',
+					'SDT' => 'numeric|size:10',
+				],
+				[
+					'Email.required' => 'Vui lòng nhập email',
+					'Email.email' => 'Không đúng định dạng email',
+					'Email.unique' => 'Email đã có người sử dụng',
+					'TenKH.required' => 'Vui lòng nhập tên khách hàng',
+					'TenKH.max' => 'Tên khách hàng không được vượt quá 40 kí tự',
+					'DiaChi.min' => 'Địa chỉ ít nhất 6 kí tự',
+					'DiaChi.max' => 'Địa chỉ không được vượt quá 50 kí tự',
+					'SDT.numeric' => 'Nhập số điện thoại sai định dạng',
+					'SDT.size' => 'Số điện thoại chỉ bao gồm 11 số',
+				]);
+			$khachhang = KhachHang::create($request->all());
+			$dondat = DatPhong::create([
+				'MaKH' => $khachhang->id,
+				'NgayDat' => Carbon::now(),
+			]);
+			foreach ($cart->phongs as $phong) {
+				Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
+					'MaTT' => 2,
+				]);
+				Phong_DatPhong::create([
+					'MaPhong' => $phong['phong']->MaPhong,
+					'MaDat' => $dondat->id,
+					'NgayDen' => $phong['ngayden'],
+					'NgayDi' => $phong['ngaydi'],
+					'MoTa' => '',
+				]);
+			}
+
+		} elseif ($request->LuaChon == 1) {
+			echo "Online";
+		}
+		Session::forget('cart');
+		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! . Vui lòng kiểm tra mail để xác thực .');
+		/*Stripe::setApiKey('sk_test_aBWzRKCBKy6L86mfuc3WqJgI');
+			try {
+				Charge::create([
+					"amount" => $cart->tongTien * 100,
+					"currency" => "usd",
+					"source" => $request->input('stripeToken'), // obtained with Stripe.js
+					"description" => "Charge for jenny.rosen@example.com",
+				]);
+			} catch (Exception $e) {
+				return redirect()->route('thanh-toan')->with('error', $e->getMessage());
+			}
+			Session::forget('cart');
+		*/
 	}
 }
