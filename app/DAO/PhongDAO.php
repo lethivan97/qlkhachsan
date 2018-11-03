@@ -23,23 +23,6 @@ class PhongDAO {
 		return $result->select('Phong.MaPhong as MaPhong', 'TenPhong', 'TrangThai.MaTT as MaTT', 'TenLoai', 'TenTT', 'Phong.DonGia as DonGia', 'Phong.MoTa as MoTa', 'Phong.Image as images', 'LoaiPhong.MaLoai as MaLoai')->orderBy('Phong.MaPhong', 'desc');
 	}
 
-	public function insert($MaTT, $MaLoai, $TenPhong, $MoTa) {
-		DB::table('Phong')->insert(
-			['MaTT' => $MaTT, 'MaLoai' => $MaLoai, 'TenPhong' => $TenPhong, 'MoTa' => $MoTa]
-		);
-	}
-
-	public function update($MaPhong, $MaTT, $MaLoai, $TenPhong, $MoTa) {
-		DB::table('Phong')
-			->where('MaPhong', '=', $MaPhong)
-			->update(['MaTT' => $MaTT, 'MaLoai' => $MaLoai, 'TenPhong' => $TenPhong, 'MoTa' => $MoTa]);
-	}
-
-	public function delete($MaPhong) {
-		DB::table('Phong')
-			->where('MaPhong', '=', $MaPhong)
-			->delete();
-	}
 	public static function timKiemPhong($maLoai) {
 		if ($maLoai == null || $maLoai == '') {
 			$phongs = DB::table('LoaiPhong')
@@ -72,13 +55,10 @@ class PhongDAO {
 		return $listLoai = explode(",", $arr);
 	}
 
-	public static function paginate($items, $perPage = 15, $page = null, $options = []) {
+	public static function paginate($items, $perPage = 10, $page = null, $options = []) {
 		$page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
 		$items = $items instanceof Collection ? $items : Collection::make($items);
 		return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-	}
-	public static function getPhongByID($id) {
-
 	}
 }
 ?>

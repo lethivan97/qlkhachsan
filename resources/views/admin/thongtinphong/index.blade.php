@@ -1,6 +1,5 @@
 @extends('layouts._share.admin')
-@section('title','Trang chủ')
+@section('title',"Thông tin chi phòng")
 @section('content')
 
-<p>Xin chao</p>
 @endsection

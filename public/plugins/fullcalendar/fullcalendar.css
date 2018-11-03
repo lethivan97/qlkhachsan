@@ -5,18 +5,18 @@
  */
 
 
-.fc {
-	direction: ltr;
-	text-align: left;
-}
+ .fc {
+ 	direction: ltr;
+ 	text-align: left;
+ }
 
-.fc-rtl {
-	text-align: right;
-}
+ .fc-rtl {
+ 	text-align: right;
+ }
 
-body .fc { /* extra precedence to overcome jqui */
-	font-size: 1em;
-}
+ body .fc { /* extra precedence to overcome jqui */
+ 	font-size: 1em;
+ }
 
 
 /* Colors
@@ -123,7 +123,7 @@ body .fc { /* extra precedence to overcome jqui */
 
 /* Firefox has an annoying inner border */
 .fc button::-moz-focus-inner { margin: 0; padding: 0; }
-	
+
 .fc-state-default { /* non-theme */
 	border: 1px solid;
 }
@@ -145,59 +145,59 @@ body .fc { /* extra precedence to overcome jqui */
 	top: .05em; /* seems to be a good adjustment across browsers */
 	margin: 0 .1em;
 }
-	
+
 /*
   button states
   borrowed from twitter bootstrap (http://twitter.github.com/bootstrap/)
-*/
+  */
 
-.fc-state-default {
-	background-color: #f5f5f5;
-	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-	background-repeat: repeat-x;
-	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
-	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-	color: #333;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
+  .fc-state-default {
+  	background-color: #f5f5f5;
+  	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  	background-repeat: repeat-x;
+  	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  	color: #333;
+  	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
 
-.fc-state-hover,
-.fc-state-down,
-.fc-state-active,
-.fc-state-disabled {
-	color: #333333;
-	background-color: #e6e6e6;
-}
+  .fc-state-hover,
+  .fc-state-down,
+  .fc-state-active,
+  .fc-state-disabled {
+  	color: #333333;
+  	background-color: #e6e6e6;
+  }
 
-.fc-state-hover {
-	color: #333333;
-	text-decoration: none;
-	background-position: 0 -15px;
-	-webkit-transition: background-position 0.1s linear;
-	   -moz-transition: background-position 0.1s linear;
-	     -o-transition: background-position 0.1s linear;
-	        transition: background-position 0.1s linear;
-}
+  .fc-state-hover {
+  	color: #333333;
+  	text-decoration: none;
+  	background-position: 0 -15px;
+  	-webkit-transition: background-position 0.1s linear;
+  	-moz-transition: background-position 0.1s linear;
+  	-o-transition: background-position 0.1s linear;
+  	transition: background-position 0.1s linear;
+  }
 
-.fc-state-down,
-.fc-state-active {
-	background-color: #cccccc;
-	background-image: none;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
+  .fc-state-down,
+  .fc-state-active {
+  	background-color: #cccccc;
+  	background-image: none;
+  	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
 
-.fc-state-disabled {
-	cursor: default;
-	background-image: none;
-	opacity: 0.65;
-	filter: alpha(opacity=65);
-	box-shadow: none;
-}
+  .fc-state-disabled {
+  	cursor: default;
+  	background-image: none;
+  	opacity: 0.65;
+  	filter: alpha(opacity=65);
+  	box-shadow: none;
+  }
 
 
 /* Buttons Groups
@@ -345,7 +345,7 @@ previous button's border...
 
 .fc-row table {
 	/* don't put left/right border on anything within a fake row.
-	   the outer tbody will worry about this */
+	the outer tbody will worry about this */
 	border-left: 0 hidden transparent;
 	border-right: 0 hidden transparent;
 
@@ -471,7 +471,7 @@ temporary rendered events).
 
 .fc-not-allowed, /* causes a "warning" cursor. applied on body */
 .fc-not-allowed .fc-event { /* to override an event's custom cursor */
-	cursor: not-allowed;
+cursor: not-allowed;
 }
 
 
@@ -552,7 +552,7 @@ a.fc-more:hover {
 }
 
 .fc-limited { /* rows and cells that are hidden because of a "more" link */
-	display: none;
+display: none;
 }
 
 /* popover that appears when "more" link is clicked */
@@ -600,7 +600,7 @@ a.fc-more:hover {
 .fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
 	margin-left: 0;
 }
-	
+
 /* title text */
 
 .fc-toolbar h2 {
@@ -617,7 +617,7 @@ a.fc-more:hover {
 .fc-toolbar .ui-state-hover {
 	z-index: 2;
 }
-	
+
 .fc-toolbar .fc-state-down {
 	z-index: 3;
 }
@@ -641,14 +641,14 @@ a.fc-more:hover {
 .fc-view-container *:before,
 .fc-view-container *:after {
 	-webkit-box-sizing: content-box;
-	   -moz-box-sizing: content-box;
-	        box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 }
 
 .fc-view, /* scope positioning and z-index's for everything within the view */
 .fc-view > table { /* so dragged elements can be above the view's main element */
-	position: relative;
-	z-index: 1;
+position: relative;
+z-index: 1;
 }
 
 /* BasicView
@@ -717,7 +717,7 @@ a.fc-more:hover {
 	/* opacity with small font can sometimes look too faded
 	   might want to set the 'color' property instead
 	   making day-numbers bold also fixes the problem */
-}
+	}
 
 /* AgendaView all-day area
 --------------------------------------------------------------------------------------------------*/
@@ -773,7 +773,7 @@ a.fc-more:hover {
 }
 
 .fc-time-grid table { /* don't put outer borders on slats/bg/content/etc */
-	border: 0 hidden transparent;
+border: 0 hidden transparent;
 }
 
 .fc-time-grid > .fc-bg {
