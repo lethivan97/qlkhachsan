@@ -2,7 +2,7 @@
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 <script src="{{asset('plugins/tinymce/tinymce.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -24,8 +24,6 @@
 
 <!-- PAGE SCRIPTS -->
 <script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
-
-<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('js/popper.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('vendors/owl-carousel/owl.carousel.min.js')}}"></script>
@@ -62,3 +60,10 @@
 	})
 
 </script>
+<!-- FastClick -->
+<script src="{{asset('plugins/fastclick/fastclick.js')}}"></script>
+<!-- fullCalendar 2.2.5 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="{{asset('plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+<!-- Page specific script -->
+

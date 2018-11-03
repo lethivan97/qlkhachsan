@@ -3,6 +3,7 @@ use App\Models\Phong;
 $images = Phong::image($phong->Image);
 ?>
 @extends('layouts._share.admin')
+@section('title',"Sửa phòng")
 @section('content')
 @if(isset($phong))
 <div class="container">
@@ -71,7 +72,7 @@ $images = Phong::image($phong->Image);
 			<div class="form-group row">
 				<div class="col-md-12  text-center ">
 					<button type="submit" class="btn btn-sm btn-primary">Lưu</button>
-					<a href="{{route('admin.phong')}}" class="btn btn-sm">Thoát</a>
+					<a href="{{route('admin.phong')}}" class="btn btn-sm btn-default">Thoát</a>
 				</div>
 
 			</div>
