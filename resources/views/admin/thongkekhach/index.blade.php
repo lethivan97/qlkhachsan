@@ -2,7 +2,7 @@
 @section('title',"Thống kê khách")
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-<h2>Thống kê số lượng khách đặt và đến ngày hết hạn</h2>
+<h2>Thống kê số lượng khách đặt và số phòng đến ngày trả</h2>
 <section class="content">
 	<div class="container-fluid">
 		<div class="row">
@@ -15,7 +15,7 @@
 						<!-- the events -->
 						<div id="external-events">
 							<div class="external-event bg-warning">Số khách đặt</div>
-							<div class="external-event bg-danger">Số khách hết hạn đặt</div>
+							<div class="external-event bg-danger">Số phòng đến hạn trả</div>
 						</div>
 					</div>
 					<!-- /.card-body -->
@@ -51,7 +51,7 @@
         // it doesn't need to have a start or end
         var eventObject = {
           title: $.trim($(this).text()) // use the element's text as the event title
-      }
+        }
 
         // store the Event Object in the DOM element so we can get to it later
         $(this).data('eventObject', eventObject)
@@ -61,9 +61,9 @@
         	zIndex        : 1070,
           revert        : true, // will cause the event to go back to its
           revertDuration: 0  //  original position after the drag
-      })
+        })
 
-  })
+      })
     }
 
     ini_events($('#external-events div.external-event'))
@@ -93,19 +93,19 @@
       	start          : new Date(<?php echo \Carbon\Carbon::parse($item->NgayDat)->format('Y'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDat)->format('m-1'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDat)->format('d'); ?>),
           backgroundColor: '#ffc107 ', //red
           borderColor    : '#ffc107 ' //red,
-      },
-      @endforeach
-      @foreach($khachhethans as $item)
-      {
-      	title          : '{{$item->sl}} khách',
-      	start          : new Date(<?php echo \Carbon\Carbon::parse($item->NgayDi)->format('Y'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDi)->format('m-1'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDi)->format('d'); ?>),
+        },
+        @endforeach
+        @foreach($khachhethans as $item)
+        {
+          title          : '{{$item->sl}} phòng',
+          start          : new Date(<?php echo \Carbon\Carbon::parse($item->NgayDi)->format('Y'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDi)->format('m-1'); ?>, <?php echo \Carbon\Carbon::parse($item->NgayDi)->format('d'); ?>),
           backgroundColor: '#dc3545 ', //red
           borderColor    : '#dc3545 ' //red,
-      },
-      @endforeach
+        },
+        @endforeach
 
-      ],
-      editable  : true,
+        ],
+        editable  : true,
       droppable : true, // this allows things to be dropped onto the calendar !!!
       drop      : function (date, allDay) { // this function is called when something is dropped
 
@@ -129,12 +129,12 @@
       	if ($('#drop-remove').is(':checked')) {
       		// if so, remove the element from the "Draggable Events" list
       		$(this).remove()
+        }
+
       }
+    })
 
-  }
-})
-
-      	/* ADDING EVENTS */
+    /* ADDING EVENTS */
       var currColor = '#3c8dbc' //Red by default
       //Color chooser button
       var colorChooser = $('#color-chooser-btn')
@@ -172,10 +172,10 @@
       	//Remove event from text input
       	$('#new-event').val('')
       })
-      })
+    })
 
-      $(".fc-time").css("display", "none");
-  </script>
+$(".fc-time").css("display", "none");
+</script>
 
 
-  @endsection
+@endsection
