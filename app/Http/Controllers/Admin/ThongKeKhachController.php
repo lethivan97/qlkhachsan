@@ -9,6 +9,6 @@ class ThongKeKhachController extends Controller {
 	public function index() {
 		$khachdats = ThongKeKhachDAO::soKhachDat();
 		$khachhethans = ThongKeKhachDAO::soKhachHetHanDat();
-		return view('admin.lichphong.index', compact('khachdats', 'khachhethans'));
+		return view('admin.thongkekhach.index', compact('khachdats', 'khachhethans'));
 	}
 }
