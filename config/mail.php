@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,10 +55,7 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],
+     'from' => ['address' => 'visitor@zergitas.com', 'name' => 'visitor'],
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +81,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => 'phungan671@gmail.com',
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => 'phungan97',
 
     /*
     |--------------------------------------------------------------------------
@@ -100,6 +97,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+    'pretend' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -112,12 +110,5 @@ return [
     |
     */
 
-    'markdown' => [
-        'theme' => 'default',
-
-        'paths' => [
-            resource_path('views/vendor/mail'),
-        ],
-    ],
 
 ];
