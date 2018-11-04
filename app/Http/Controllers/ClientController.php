@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Stripe\Charge;
 use Stripe\Stripe;
+use Mail;
 
 class ClientController extends Controller {
 	function index() {
@@ -174,4 +175,9 @@ class ClientController extends Controller {
 		Session::forget('cart');
 		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! . Vui lòng kiểm tra mail để xác thực .');
 	}
+	public function get_lienhe(){
+		return view('client.lienhe');
+
+	}
+	
 }
