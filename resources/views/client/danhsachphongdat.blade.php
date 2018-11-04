@@ -15,6 +15,11 @@
 		@endif
 	</div>
 	@if($cart == null || $cart->tongPhong == 0 )
+	@if(Session::has('thongbao'))
+	<div class="alert alert-danger" role="alert" style="margin: 50px 0">
+		Danh sách phòng trống. Mời bạn <a href="{{route('client')}}">đặt phòng</a>!!
+	</div>
+	@endif
 	<div class="alert alert-danger" role="alert" style="margin: 200px 0">
 		Danh sách phòng trống. Mời bạn <a href="{{route('client')}}">đặt phòng</a>!!
 	</div>

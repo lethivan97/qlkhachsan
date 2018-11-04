@@ -15,7 +15,7 @@ class PhongController extends Controller {
 	}
 	public function danhSachPhong(Request $request) {
 		$phongDAO = new PhongDAO();
-		$result = $phongDAO->getById('')->paginate();
+		$result = $phongDAO->getById('')->paginate(10);
 		return view('admin.phong.phong', ['phongs' => $result]);
 	}
 	public function deletePhong(Request $request) {

@@ -173,7 +173,7 @@ class ClientController extends Controller {
 			return redirect()->back()->with('thongbao', 'Hãy chọn 1 trong 2 hình thức thanh toán');
 		}
 		Session::forget('cart');
-		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! . Vui lòng kiểm tra mail để xác thực .');
+		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! .');
 	}
 	public function get_lienhe(){
 		return view('client.lienhe');

@@ -1,4 +1,5 @@
 @extends('layouts._share.admin')
+@section('title',"Phòng")
 @section('content')
 <?php
 use App\DAO\PhongDAO;

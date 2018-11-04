@@ -13,5 +13,7 @@
 <!-- main css -->
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/fullcalendar/fullcalendar.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
 
 

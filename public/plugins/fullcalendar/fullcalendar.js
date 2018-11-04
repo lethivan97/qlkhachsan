@@ -4,16 +4,16 @@
  * (c) 2013 Adam Shaw
  */
 
-(function(factory) {
-	if (typeof define === 'function' && define.amd) {
-		define([ 'jquery', 'moment' ], factory);
-	}
-	else {
-		factory(jQuery, moment);
-	}
-})(function($, moment) {
+ (function(factory) {
+ 	if (typeof define === 'function' && define.amd) {
+ 		define([ 'jquery', 'moment' ], factory);
+ 	}
+ 	else {
+ 		factory(jQuery, moment);
+ 	}
+ })(function($, moment) {
 
-    var defaults = {
+ 	var defaults = {
 
 	titleRangeSeparator: ' \u2014 ', // emphasized dash
 	monthYearFormat: 'MMMM YYYY', // required for en. other languages rely on datepicker computable option
@@ -124,7 +124,7 @@ var rtlDefaults = {
 	}
 };
 
-    var fc = $.fullCalendar = { version: "2.2.5" };
+var fc = $.fullCalendar = { version: "2.2.5" };
 var fcViews = fc.views = {};
 
 
@@ -152,10 +152,10 @@ $.fn.fullCalendar = function(options) {
 		// a new calendar initialization
 		else if (!calendar) { // don't initialize twice
 			calendar = new Calendar(element, options);
-			element.data('fullCalendar', calendar);
-			calendar.render();
-		}
-	});
+		element.data('fullCalendar', calendar);
+		calendar.render();
+	}
+});
 	
 	return res;
 };
@@ -234,7 +234,7 @@ fc.datepickerLang = function(langCode, dpLangCode, dpOptions) {
 		// Make an alias so the language can be referenced either way.
 		$.datepicker.regional[dpLangCode] =
 			$.datepicker.regional[langCode] = // alias
-				dpOptions;
+			dpOptions;
 
 		// Alias 'en' to the default language data. Do this every time.
 		$.datepicker.regional.en = $.datepicker.regional[''];
@@ -289,8 +289,8 @@ var dpComputableOptions = {
 	// Produces format strings like "MMMM YYYY" -> "September 2014"
 	monthYearFormat: function(dpOptions) {
 		return dpOptions.showMonthAfterYear ?
-			'YYYY[' + dpOptions.yearSuffix + '] MMMM' :
-			'MMMM YYYY[' + dpOptions.yearSuffix + ']';
+		'YYYY[' + dpOptions.yearSuffix + '] MMMM' :
+		'MMMM YYYY[' + dpOptions.yearSuffix + ']';
 	}
 
 };
@@ -316,26 +316,26 @@ var momComputableOptions = {
 	// Produces format strings like "H(:mm)a" -> "6pm" or "6:30pm"
 	smallTimeFormat: function(momOptions) {
 		return momOptions.longDateFormat('LT')
-			.replace(':mm', '(:mm)')
+		.replace(':mm', '(:mm)')
 			.replace(/(\Wmm)$/, '($1)') // like above, but for foreign langs
 			.replace(/\s*a$/i, 'a'); // convert AM/PM/am/pm to lowercase. remove any spaces beforehand
-	},
+		},
 
 	// Produces format strings like "H(:mm)t" -> "6p" or "6:30p"
 	extraSmallTimeFormat: function(momOptions) {
 		return momOptions.longDateFormat('LT')
-			.replace(':mm', '(:mm)')
+		.replace(':mm', '(:mm)')
 			.replace(/(\Wmm)$/, '($1)') // like above, but for foreign langs
 			.replace(/\s*a$/i, 't'); // convert to AM/PM/am/pm to lowercase one-letter. remove any spaces beforehand
-	},
+		},
 
 	// Produces format strings like "H:mm" -> "6:30" (with no AM/PM)
 	noMeridiemTimeFormat: function(momOptions) {
 		return momOptions.longDateFormat('LT')
 			.replace(/\s*a$/i, ''); // remove trailing AM/PM
-	}
+		}
 
-};
+	};
 
 
 // Returns moment's internal locale data. If doesn't exist, returns English.
@@ -344,7 +344,7 @@ function getMomentLocaleData(langCode) {
 	var func = moment.localeData || moment.langData;
 	return func.call(moment, langCode) ||
 		func.call(moment, 'en'); // the newer localData could return null, so fall back to en
-}
+	}
 
 
 // Initialize English by forcing computation of moment-derived options.
@@ -514,12 +514,12 @@ function unsetScroller(containerEl) {
 // borrowed from https://github.com/jquery/jquery-ui/blob/1.11.0/ui/core.js#L51
 function getScrollParent(el) {
 	var position = el.css('position'),
-		scrollParent = el.parents().filter(function() {
-			var parent = $(this);
-			return (/(auto|scroll)/).test(
-				parent.css('overflow') + parent.css('overflow-y') + parent.css('overflow-x')
+	scrollParent = el.parents().filter(function() {
+		var parent = $(this);
+		return (/(auto|scroll)/).test(
+			parent.css('overflow') + parent.css('overflow-y') + parent.css('overflow-x')
 			);
-		}).eq(0);
+	}).eq(0);
 
 	return position === 'fixed' || !scrollParent.length ? $(el[0].ownerDocument || document) : scrollParent;
 }
@@ -599,7 +599,7 @@ function smartProperty(obj, name) { // get a camel-cased/namespaced property of 
 		return obj[name];
 	}
 	var parts = name.split(/(?=[A-Z])/),
-		i = parts.length - 1, res;
+	i = parts.length - 1, res;
 	for (; i>=0; i--) {
 		res = obj[parts[i].toLowerCase()];
 		if (res !== undefined) {
@@ -689,13 +689,13 @@ function computeIntervalAs(unit, start, end) {
 	}
 	else { // given { start, end } range object
 		val = start.end.diff(start.start, unit, true);
-	}
+}
 
-	if (val >= 1 && isInt(val)) {
-		return val;
-	}
+if (val >= 1 && isInt(val)) {
+	return val;
+}
 
-	return false;
+return false;
 }
 
 
@@ -770,11 +770,11 @@ function firstDefined() {
 
 function htmlEscape(s) {
 	return (s + '').replace(/&/g, '&amp;')
-		.replace(/</g, '&lt;')
-		.replace(/>/g, '&gt;')
-		.replace(/'/g, '&#039;')
-		.replace(/"/g, '&quot;')
-		.replace(/\n/g, '<br />');
+	.replace(/</g, '&lt;')
+	.replace(/>/g, '&gt;')
+	.replace(/'/g, '&#039;')
+	.replace(/"/g, '&quot;')
+	.replace(/\n/g, '<br />');
 }
 
 
@@ -831,9 +831,9 @@ function debounce(func, wait) {
 	};
 }
 
-    var ambigDateOfMonthRegex = /^\s*\d{4}-\d\d$/;
+var ambigDateOfMonthRegex = /^\s*\d{4}-\d\d$/;
 var ambigTimeOrZoneRegex =
-	/^\s*\d{4}-(?:(\d\d-\d\d)|(W\d\d$)|(W\d\d-\d)|(\d\d\d))((T| )(\d\d(:\d\d(:\d\d(\.\d+)?)?)?)?)?$/;
+/^\s*\d{4}-(?:(\d\d-\d\d)|(W\d\d$)|(W\d\d-\d)|(\d\d\d))((T| )(\d\d(:\d\d(:\d\d(\.\d+)?)?)?)?)?$/;
 var newMomentProto = moment.fn; // where we will attach our new methods
 var oldMomentProto = $.extend({}, newMomentProto); // copy of original moment methods
 var allowValueOptimization;
@@ -860,9 +860,9 @@ fc.moment.utc = function() {
 	// (if given a pre-existing moment for example)
 	if (mom.hasTime()) { // don't give ambiguously-timed moments a UTC zone
 		mom.utc();
-	}
+}
 
-	return mom;
+return mom;
 };
 
 // Same as fc.moment, but when given an ISO8601 string, the timezone offset is preserved.
@@ -893,10 +893,10 @@ function makeMoment(args, parseAsUTC, parseZone) {
 	}
 	else { // "parsing" is required
 		isAmbigTime = false;
-		isAmbigZone = false;
+	isAmbigZone = false;
 
-		if (isSingleString) {
-			if (ambigDateOfMonthRegex.test(input)) {
+	if (isSingleString) {
+		if (ambigDateOfMonthRegex.test(input)) {
 				// accept strings like '2014-05', but convert to the first of the month
 				input += '-01';
 				args = [ input ]; // for when we pass it on to moment's constructor
@@ -1000,9 +1000,9 @@ newMomentProto.time = function(time) {
 		// We need to set the individual fields.
 		// Can't use startOf('day') then add duration. In case of DST at start of day.
 		return this.hours(dayHours + time.hours())
-			.minutes(time.minutes())
-			.seconds(time.seconds())
-			.milliseconds(time.milliseconds());
+		.minutes(time.minutes())
+		.seconds(time.seconds())
+		.milliseconds(time.milliseconds());
 	}
 };
 
@@ -1155,8 +1155,8 @@ newMomentProto.isSame = function(input, units) {
 	else {
 		input = fc.moment.parseZone(input); // normalize input
 		return oldMomentProto.isSame.call(this, input) &&
-			Boolean(this._ambigTime) === Boolean(input._ambigTime) &&
-			Boolean(this._ambigZone) === Boolean(input._ambigZone);
+		Boolean(this._ambigTime) === Boolean(input._ambigTime) &&
+		Boolean(this._ambigZone) === Boolean(input._ambigZone);
 	}
 };
 
@@ -1164,9 +1164,9 @@ newMomentProto.isSame = function(input, units) {
 $.each([
 	'isBefore',
 	'isAfter'
-], function(i, methodName) {
-	newMomentProto[methodName] = function(input, units) {
-		var a;
+	], function(i, methodName) {
+		newMomentProto[methodName] = function(input, units) {
+			var a;
 
 		// only do custom logic if this is an enhanced moment
 		if (!this._fullCalendar) {
@@ -1241,12 +1241,12 @@ function transferAmbigs(src, dest) {
 // Inefficient because it calls each individual setter.
 function setMomentValues(mom, a) {
 	mom.year(a[0] || 0)
-		.month(a[1] || 0)
-		.date(a[2] || 0)
-		.hours(a[3] || 0)
-		.minutes(a[4] || 0)
-		.seconds(a[5] || 0)
-		.milliseconds(a[6] || 0);
+	.month(a[1] || 0)
+	.date(a[2] || 0)
+	.hours(a[3] || 0)
+	.minutes(a[4] || 0)
+	.seconds(a[5] || 0)
+	.milliseconds(a[6] || 0);
 }
 
 // Can we set the moment's internal date directly?
@@ -1272,7 +1272,7 @@ setLocalValues = allowValueOptimization ? function(mom, a) {
 		a[4] || 0,
 		a[5] || 0,
 		a[6] || 0
-	));
+		));
 	moment.updateOffset(mom, false); // keepTime=false
 } : setMomentValues;
 
@@ -1308,11 +1308,11 @@ function formatDateWithChunks(date, chunks) {
 // addition formatting tokens we want recognized
 var tokenOverrides = {
 	t: function(date) { // "a" or "p"
-		return oldMomentFormat(date, 'a').charAt(0);
-	},
+	return oldMomentFormat(date, 'a').charAt(0);
+},
 	T: function(date) { // "A" or "P"
-		return oldMomentFormat(date, 'A').charAt(0);
-	}
+	return oldMomentFormat(date, 'A').charAt(0);
+}
 };
 
 
@@ -1369,7 +1369,7 @@ function formatRange(date1, date2, formatStr, separator, isRTL) {
 		getFormatStringChunks(formatStr),
 		separator,
 		isRTL
-	);
+		);
 }
 fc.formatRange = formatRange; // expose
 
@@ -1555,12 +1555,12 @@ Options:
 	- autoHide (boolean)
 	- show (callback)
 	- hide (callback)
-*/
+	*/
 
-var Popover = Class.extend({
+	var Popover = Class.extend({
 
-	isHidden: true,
-	options: null,
+		isHidden: true,
+		options: null,
 	el: null, // the container element for the popover. generated by this object
 	documentMousedownProxy: null, // document mousedown handler bound to `this`
 	margin: 10, // the space required between the popover and the edges of the scroll container
@@ -1601,14 +1601,14 @@ var Popover = Class.extend({
 		var options = this.options;
 
 		this.el = $('<div class="fc-popover"/>')
-			.addClass(options.className || '')
-			.css({
+		.addClass(options.className || '')
+		.css({
 				// position initially to the top left to avoid creating scrollbars
 				top: 0,
 				left: 0
 			})
-			.append(options.content)
-			.appendTo(options.parentEl);
+		.append(options.content)
+		.appendTo(options.parentEl);
 
 		// when a click happens on anything inside with a 'fc-close' className, hide the popover
 		this.el.on('click', '.fc-close', function() {
@@ -1719,7 +1719,7 @@ Common interface:
 		getCell: function(x, y) {}
 	};
 
-*/
+	*/
 
 /* Coordinate map for a grid component
 ----------------------------------------------------------------------------------------------------------------------*/
@@ -1871,7 +1871,7 @@ var ComboCoordMap = Class.extend({
 });
 
     /* Tracks mouse movements over a CoordMap and raises events about which cell the mouse is over.
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // TODO: very useful to have a handler that gets called upon cellOut OR when dragging stops (for cleanup)
 
 var DragListener = Class.extend({
@@ -1961,14 +1961,14 @@ var DragListener = Class.extend({
 			}
 
 			$(document)
-				.on('mousemove', this.mousemoveProxy = $.proxy(this, 'mousemove'))
-				.on('mouseup', this.mouseupProxy = $.proxy(this, 'mouseup'))
+			.on('mousemove', this.mousemoveProxy = $.proxy(this, 'mousemove'))
+			.on('mouseup', this.mouseupProxy = $.proxy(this, 'mouseup'))
 				.on('selectstart', this.preventDefault); // prevents native selection in IE<=8
 
-			this.isListening = true;
-			this.trigger('listenStart', ev);
-		}
-	},
+				this.isListening = true;
+				this.trigger('listenStart', ev);
+			}
+		},
 
 
 	// Recomputes the drag-critical positions of elements
@@ -2087,9 +2087,9 @@ var DragListener = Class.extend({
 			}
 
 			$(document)
-				.off('mousemove', this.mousemoveProxy)
-				.off('mouseup', this.mouseupProxy)
-				.off('selectstart', this.preventDefault);
+			.off('mousemove', this.mousemoveProxy)
+			.off('mouseup', this.mouseupProxy)
+			.off('selectstart', this.preventDefault);
 
 			this.mousemoveProxy = null;
 			this.mouseupProxy = null;
@@ -2197,7 +2197,7 @@ var DragListener = Class.extend({
 			this.scrollIntervalId = setInterval(
 				$.proxy(this, 'scrollIntervalFunc'), // scope to `this`
 				this.scrollIntervalMs
-			);
+				);
 		}
 	},
 
@@ -2286,19 +2286,19 @@ function isCellsEqual(cell1, cell2) {
 
 	if (cell1 && cell2) {
 		return cell1.grid === cell2.grid &&
-			cell1.row === cell2.row &&
-			cell1.col === cell2.col;
+		cell1.row === cell2.row &&
+		cell1.col === cell2.col;
 	}
 
 	return false;
 }
 
     /* Creates a clone of an element and lets it track the mouse as it moves
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-var MouseFollower = Class.extend({
+    var MouseFollower = Class.extend({
 
-	options: null,
+    	options: null,
 
 	sourceEl: null, // the element that will be cloned and made to look like it is dragging
 	el: null, // the clone of `sourceEl` that will track the mouse
@@ -2394,8 +2394,8 @@ var MouseFollower = Class.extend({
 		if (!el) {
 			this.sourceEl.width(); // hack to force IE8 to compute correct bounding box
 			el = this.el = this.sourceEl.clone()
-				.css({
-					position: 'absolute',
+			.css({
+				position: 'absolute',
 					visibility: '', // in case original element was hidden (commonly through hideEvents())
 					display: this.isHidden ? 'none' : '', // for when initially hidden
 					margin: 0,
@@ -2406,7 +2406,7 @@ var MouseFollower = Class.extend({
 					opacity: this.options.opacity || '',
 					zIndex: this.options.zIndex
 				})
-				.appendTo(this.parentEl);
+			.appendTo(this.parentEl);
 		}
 
 		return el;
@@ -2479,7 +2479,7 @@ var MouseFollower = Class.extend({
 });
 
     /* A utility class for rendering <tr> rows.
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // It leverages methods of the subclass and the View to determine custom rendering behavior for each row "type"
 // (such as highlight rows, day rows, helper rows, etc).
 
@@ -2581,9 +2581,9 @@ var RowRenderer = Class.extend({
 });
 
     /* An abstract class comprised of a "grid" of cells that each represent a specific datetime
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-var Grid = fc.Grid = RowRenderer.extend({
+    var Grid = fc.Grid = RowRenderer.extend({
 
 	start: null, // the date of the first cell
 	end: null, // the date after the last cell
@@ -2818,10 +2818,10 @@ var Grid = fc.Grid = RowRenderer.extend({
 			if (
 				!$(ev.target).is('.fc-event-container *, .fc-more') && // not an an event element, or "more.." link
 				!$(ev.target).closest('.fc-popover').length // not on a popover (like the "more.." events one)
-			) {
+				) {
 				_this.dayMousedown(ev);
-			}
-		});
+		}
+	});
 
 		// attach event-element-related handlers. in Grid.events
 		// same garbage collection note as above.
@@ -2953,10 +2953,10 @@ var Grid = fc.Grid = RowRenderer.extend({
 	// Subclasses can override and provide additional data in the range object. Will be passed to renderSelection().
 	computeSelection: function(firstCell, lastCell) {
 		var dates = [
-			firstCell.start,
-			firstCell.end,
-			lastCell.start,
-			lastCell.end
+		firstCell.start,
+		firstCell.end,
+		lastCell.start,
+		lastCell.end
 		];
 		var range;
 
@@ -3076,9 +3076,9 @@ var Grid = fc.Grid = RowRenderer.extend({
 		var styles = stylesMethod ? stylesMethod.call(this, seg) : ''; // a semi-colon separated CSS property string
 
 		return '<' + this.fillSegTag +
-			(classes.length ? ' class="' + classes.join(' ') + '"' : '') +
-			(styles ? ' style="' + styles + '"' : '') +
-			' />';
+		(classes.length ? ' class="' + classes.join(' ') + '"' : '') +
+		(styles ? ' style="' + styles + '"' : '') +
+		' />';
 	},
 
 
@@ -3090,14 +3090,14 @@ var Grid = fc.Grid = RowRenderer.extend({
 	// TODO: move to another class. not applicable to all Grids
 	headHtml: function() {
 		return '' +
-			'<div class="fc-row ' + this.view.widgetHeaderClass + '">' +
-				'<table>' +
-					'<thead>' +
+		'<div class="fc-row ' + this.view.widgetHeaderClass + '">' +
+		'<table>' +
+		'<thead>' +
 						this.rowHtml('head') + // leverages RowRenderer
-					'</thead>' +
-				'</table>' +
-			'</div>';
-	},
+						'</thead>' +
+						'</table>' +
+						'</div>';
+					},
 
 
 	// Used by the `headHtml` method, via RowRenderer, for rendering the HTML of a day-of-week header cell
@@ -3107,9 +3107,9 @@ var Grid = fc.Grid = RowRenderer.extend({
 		var date = cell.start;
 
 		return '' +
-			'<th class="fc-day-header ' + view.widgetHeaderClass + ' fc-' + dayIDs[date.day()] + '">' +
-				htmlEscape(date.format(this.colHeadFormat)) +
-			'</th>';
+		'<th class="fc-day-header ' + view.widgetHeaderClass + ' fc-' + dayIDs[date.day()] + '">' +
+		htmlEscape(date.format(this.colHeadFormat)) +
+		'</th>';
 	},
 
 
@@ -3124,7 +3124,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 		return '<td class="' + classes.join(' ') + '"' +
 			' data-date="' + date.format('YYYY-MM-DD') + '"' + // if date has a time, won't format it
 			'></td>';
-	},
+		},
 
 
 	// Computes HTML classNames for a single-day cell
@@ -3136,32 +3136,32 @@ var Grid = fc.Grid = RowRenderer.extend({
 		if (
 			view.name === 'month' &&
 			date.month() != view.intervalStart.month()
-		) {
+			) {
 			classes.push('fc-other-month');
-		}
-
-		if (date.isSame(today, 'day')) {
-			classes.push(
-				'fc-today',
-				view.highlightStateClass
-			);
-		}
-		else if (date < today) {
-			classes.push('fc-past');
-		}
-		else {
-			classes.push('fc-future');
-		}
-
-		return classes;
 	}
+
+	if (date.isSame(today, 'day')) {
+		classes.push(
+			'fc-today',
+			view.highlightStateClass
+			);
+	}
+	else if (date < today) {
+		classes.push('fc-past');
+	}
+	else {
+		classes.push('fc-future');
+	}
+
+	return classes;
+}
 
 });
 
     /* Event-rendering and event-interaction methods for the abstract Grid class
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-Grid.mixin({
+    Grid.mixin({
 
 	mousedOverSeg: null, // the segment object the user's mouse is over. null if over nothing
 	isDraggingSeg: false, // is a segment being dragged? boolean
@@ -3241,9 +3241,9 @@ Grid.mixin({
 		if (segs.length) { // don't build an empty html string
 
 			// build a large concatenation of event segment HTML
-			for (i = 0; i < segs.length; i++) {
-				html += this.fgSegHtml(segs[i], disableResizing);
-			}
+		for (i = 0; i < segs.length; i++) {
+			html += this.fgSegHtml(segs[i], disableResizing);
+		}
 
 			// Grab individual elements from the combined HTML string. Use each as the default rendering.
 			// Then, compute the 'el' for each segment. An el might be null if the eventRender callback returned false.
@@ -3301,7 +3301,7 @@ Grid.mixin({
 		return [ 'fc-bgevent' ].concat(
 			event.className,
 			source.className || []
-		);
+			);
 	},
 
 
@@ -3316,12 +3316,12 @@ Grid.mixin({
 		var sourceColor = source.color;
 		var optionColor = view.opt('eventColor');
 		var backgroundColor =
-			event.backgroundColor ||
-			eventColor ||
-			source.backgroundColor ||
-			sourceColor ||
-			view.opt('eventBackgroundColor') ||
-			optionColor;
+		event.backgroundColor ||
+		eventColor ||
+		source.backgroundColor ||
+		sourceColor ||
+		view.opt('eventBackgroundColor') ||
+		optionColor;
 
 		if (backgroundColor) {
 			return 'background-color:' + backgroundColor;
@@ -3347,14 +3347,14 @@ Grid.mixin({
 		var view = this.view;
 
 		$.each(
-			{
-				mouseenter: function(seg, ev) {
-					_this.triggerSegMouseover(seg, ev);
-				},
-				mouseleave: function(seg, ev) {
-					_this.triggerSegMouseout(seg, ev);
-				},
-				click: function(seg, ev) {
+		{
+			mouseenter: function(seg, ev) {
+				_this.triggerSegMouseover(seg, ev);
+			},
+			mouseleave: function(seg, ev) {
+				_this.triggerSegMouseout(seg, ev);
+			},
+			click: function(seg, ev) {
 					return view.trigger('eventClick', this, seg.event, ev); // can return `false` to cancel
 				},
 				mousedown: function(seg, ev) {
@@ -3377,7 +3377,7 @@ Grid.mixin({
 					}
 				});
 			}
-		);
+			);
 	},
 
 
@@ -3680,7 +3680,7 @@ Grid.mixin({
 				if (!newEnd.isAfter(start)) { // was end moved before start?
 					newEnd = start.clone().add( // make the event span a single slot
 						diffDayTime(cell.end, cell.start) // assumes all slot durations are the same
-					);
+						);
 				}
 
 				if (newEnd.isSame(oldEnd)) {
@@ -3751,13 +3751,13 @@ Grid.mixin({
 	getSegClasses: function(seg, isDraggable, isResizable) {
 		var event = seg.event;
 		var classes = [
-			'fc-event',
-			seg.isStart ? 'fc-start' : 'fc-not-start',
-			seg.isEnd ? 'fc-end' : 'fc-not-end'
+		'fc-event',
+		seg.isStart ? 'fc-start' : 'fc-not-start',
+		seg.isEnd ? 'fc-end' : 'fc-not-end'
 		].concat(
 			event.className,
 			event.source ? event.source.className : []
-		);
+			);
 
 		if (isDraggable) {
 			classes.push('fc-draggable');
@@ -3778,23 +3778,23 @@ Grid.mixin({
 		var sourceColor = source.color;
 		var optionColor = view.opt('eventColor');
 		var backgroundColor =
-			event.backgroundColor ||
-			eventColor ||
-			source.backgroundColor ||
-			sourceColor ||
-			view.opt('eventBackgroundColor') ||
-			optionColor;
+		event.backgroundColor ||
+		eventColor ||
+		source.backgroundColor ||
+		sourceColor ||
+		view.opt('eventBackgroundColor') ||
+		optionColor;
 		var borderColor =
-			event.borderColor ||
-			eventColor ||
-			source.borderColor ||
-			sourceColor ||
-			view.opt('eventBorderColor') ||
-			optionColor;
+		event.borderColor ||
+		eventColor ||
+		source.borderColor ||
+		sourceColor ||
+		view.opt('eventBorderColor') ||
+		optionColor;
 		var textColor =
-			event.textColor ||
-			source.textColor ||
-			view.opt('eventTextColor');
+		event.textColor ||
+		source.textColor ||
+		view.opt('eventTextColor');
 		var statements = [];
 		if (backgroundColor) {
 			statements.push('background-color:' + backgroundColor);
@@ -3824,7 +3824,7 @@ Grid.mixin({
 			segs.push.apply(
 				segs,
 				this.eventRangeToSegs(eventRanges[i], rangeToSegsFunc)
-			);
+				);
 		}
 
 		return segs;
@@ -3846,9 +3846,9 @@ Grid.mixin({
 				ranges.push.apply(
 					ranges,
 					isInverseBgEvent(eventGroup[0]) ?
-						_this.eventsToInverseRanges(eventGroup) :
-						_this.eventsToNormalRanges(eventGroup)
-				);
+					_this.eventsToInverseRanges(eventGroup) :
+					_this.eventsToNormalRanges(eventGroup)
+					);
 			}
 		});
 
@@ -3998,7 +3998,7 @@ function compareSegs(seg1, seg2) {
 		seg2.eventDurationMS - seg1.eventDurationMS || // tie? longer events go first
 		seg2.event.allDay - seg1.event.allDay || // tie? put all-day events first (booleans cast to 0/1)
 		(seg1.event.title || '').localeCompare(seg2.event.title); // tie? alphabetically by title
-}
+	}
 
 fc.compareSegs = compareSegs; // export
 
@@ -4058,9 +4058,9 @@ function getDraggedElMeta(el) {
 
 
     /* A component that renders a grid of whole-days that runs horizontally. There can be multiple rows, one per week.
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-var DayGrid = Grid.extend({
+    var DayGrid = Grid.extend({
 
 	numbersVisible: false, // should render a row for day/week numbers? set by outside view. TODO: make internal
 	bottomCoordPadding: 0, // hack for extending the hit area for the last row of the coordinate grid
@@ -4120,24 +4120,24 @@ var DayGrid = Grid.extend({
 		}
 
 		return '' +
-			'<div class="' + classes.join(' ') + '">' +
-				'<div class="fc-bg">' +
-					'<table>' +
+		'<div class="' + classes.join(' ') + '">' +
+		'<div class="fc-bg">' +
+		'<table>' +
 						this.rowHtml('day', row) + // leverages RowRenderer. calls dayCellHtml()
-					'</table>' +
-				'</div>' +
-				'<div class="fc-content-skeleton">' +
-					'<table>' +
+						'</table>' +
+						'</div>' +
+						'<div class="fc-content-skeleton">' +
+						'<table>' +
 						(this.numbersVisible ?
 							'<thead>' +
 								this.rowHtml('number', row) + // leverages RowRenderer. View will define render method
-							'</thead>' :
-							''
-							) +
-					'</table>' +
-				'</div>' +
-			'</div>';
-	},
+								'</thead>' :
+								''
+								) +
+						'</table>' +
+						'</div>' +
+						'</div>';
+					},
 
 
 	// Renders the HTML for a whole-day cell. Will eventually end up in the day-row's background.
@@ -4159,7 +4159,7 @@ var DayGrid = Grid.extend({
 		}
 		else if (this.colCnt > 1) { // multiple days, so full single date string WON'T be in title text
 			return this.view.opt('dayOfMonthFormat'); // "Sat 12/10"
-		}
+	}
 		else { // single day, so full single date string will probably be in title text
 			return 'dddd'; // "Saturday"
 		}
@@ -4371,7 +4371,7 @@ var DayGrid = Grid.extend({
 		// always render a highlight underneath
 		this.renderHighlight(
 			this.view.calendar.ensureVisibleEventRange(dropLocation) // needs to be a proper range
-		);
+			);
 
 		// if a segment from the same calendar but another component is being dragged, render a helper event
 		if (seg && !seg.el.closest(this.el).length) {
@@ -4441,8 +4441,8 @@ var DayGrid = Grid.extend({
 			}
 
 			skeletonEl.css('top', skeletonTop)
-				.find('table')
-					.append(rowStructs[row].tbodyEl);
+			.find('table')
+			.append(rowStructs[row].tbodyEl);
 
 			rowEl.append(skeletonEl);
 			helperNodes.push(skeletonEl[0]);
@@ -4500,9 +4500,9 @@ var DayGrid = Grid.extend({
 
 		skeletonEl = $(
 			'<div class="fc-' + type.toLowerCase() + '-skeleton">' +
-				'<table><tr/></table>' +
+			'<table><tr/></table>' +
 			'</div>'
-		);
+			);
 		trEl = skeletonEl.find('tr');
 
 		if (startCol > 0) {
@@ -4511,7 +4511,7 @@ var DayGrid = Grid.extend({
 
 		trEl.append(
 			seg.el.attr('colspan', endCol - startCol)
-		);
+			);
 
 		if (endCol < colCnt) {
 			trEl.append('<td colspan="' + (colCnt - endCol) + '"/>');
@@ -4525,9 +4525,9 @@ var DayGrid = Grid.extend({
 });
 
     /* Event-rendering methods for the DayGrid class
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-DayGrid.mixin({
+    DayGrid.mixin({
 
 	rowStructs: null, // an array of objects, each holding information about a row's foreground event-rendering
 
@@ -4543,7 +4543,7 @@ DayGrid.mixin({
 	getEventSegs: function() {
 		return Grid.prototype.getEventSegs.call(this) // get the segments from the super-method
 			.concat(this.popoverSegs || []); // append the segments from the "more..." popover
-	},
+		},
 
 
 	// Renders the given background event segments onto the grid
@@ -4572,7 +4572,7 @@ DayGrid.mixin({
 		this.rowEls.each(function(i, rowNode) {
 			$(rowNode).find('.fc-content-skeleton > table').append(
 				rowStructs[i].tbodyEl
-			);
+				);
 		});
 
 		return segs; // return only the segs that were actually rendered
@@ -4606,7 +4606,7 @@ DayGrid.mixin({
 		for (row = 0; row < segRows.length; row++) {
 			rowStructs.push(
 				this.renderSegRow(row, segRows[row])
-			);
+				);
 		}
 
 		return rowStructs;
@@ -4621,22 +4621,21 @@ DayGrid.mixin({
 		var isResizable = !disableResizing && event.allDay && seg.isEnd && view.isEventResizable(event);
 		var classes = this.getSegClasses(seg, isDraggable, isResizable);
 		var skinCss = this.getEventSkinCss(event);
-		var timeHtml = '';
 		var titleHtml;
 
 		classes.unshift('fc-day-grid-event');
 
 		// Only display a timed events time if it is the starting segment
 		if (!event.allDay && seg.isStart) {
-			timeHtml = '<span class="fc-time">' + htmlEscape(this.getEventTimeText(event)) + '</span>';
+			//timeHtml = '<span class="fc-time">' + htmlEscape(this.getEventTimeText(event)) + '</span>';
 		}
-
+		console.log("tessssssssssssssssssss");
 		titleHtml =
-			'<span class="fc-title">' +
+		'<span class="fc-title">' +
 				(htmlEscape(event.title || '') || '&nbsp;') + // we always want one line of height
-			'</span>';
-		
-		return '<a class="' + classes.join(' ') + '"' +
+				'</span>';
+
+				return '<a class="' + classes.join(' ') + '"' +
 				(event.url ?
 					' href="' + htmlEscape(event.url) + '"' :
 					''
@@ -4645,19 +4644,18 @@ DayGrid.mixin({
 					' style="' + skinCss + '"' :
 					''
 					) +
-			'>' +
+				'>' +
 				'<div class="fc-content">' +
-					(this.isRTL ?
-						titleHtml + ' ' + timeHtml : // put a natural space in between
-						timeHtml + ' ' + titleHtml   //
+				(this.isRTL ?
+						titleHtml  // put a natural space in between
 						) +
 				'</div>' +
 				(isResizable ?
 					'<div class="fc-resizer"/>' :
 					''
 					) +
-			'</a>';
-	},
+				'</a>';
+			},
 
 
 	// Given a row # and an array of segments all in the same row, render a <tbody> element, a skeleton that contains
@@ -4685,7 +4683,7 @@ DayGrid.mixin({
 					td.attr(
 						'rowspan',
 						parseInt(td.attr('rowspan') || 1, 10) + 1
-					);
+						);
 				}
 				else {
 					td = $('<td/>');
@@ -4813,12 +4811,12 @@ function isDaySegCollision(seg, otherSegs) {
 		if (
 			otherSeg.leftCol <= seg.rightCol &&
 			otherSeg.rightCol >= seg.leftCol
-		) {
+			) {
 			return true;
-		}
 	}
+}
 
-	return false;
+return false;
 }
 
 
@@ -4828,7 +4826,7 @@ function compareDaySegCols(a, b) {
 }
 
     /* Methods relate to limiting the number events for a given day on a DayGrid
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // NOTE: all the segs being passed around in here are foreground segs
 
 DayGrid.mixin({
@@ -4954,8 +4952,8 @@ DayGrid.mixin({
 
 				if (totalSegsBelow) { // do we need to replace this segment with one or many "more" links?
 					td = cellMatrix[levelLimit - 1][seg.leftCol]; // the segment's parent cell
-					rowspan = td.attr('rowspan') || 1;
-					segMoreNodes = [];
+				rowspan = td.attr('rowspan') || 1;
+				segMoreNodes = [];
 
 					// make a replacement <td> for each column the segment occupies. will be one for each colspan
 					for (j = 0; j < colSegsBelow.length; j++) {
@@ -5005,15 +5003,15 @@ DayGrid.mixin({
 		var view = this.view;
 
 		return $('<a class="fc-more"/>')
-			.text(
-				this.getMoreLinkText(hiddenSegs.length)
+		.text(
+			this.getMoreLinkText(hiddenSegs.length)
 			)
-			.on('click', function(ev) {
-				var clickOption = view.opt('eventLimitClick');
-				var date = cell.start;
-				var moreEl = $(this);
-				var dayEl = _this.getCellDayEl(cell);
-				var allSegs = _this.getCellSegs(cell);
+		.on('click', function(ev) {
+			var clickOption = view.opt('eventLimitClick');
+			var date = cell.start;
+			var moreEl = $(this);
+			var dayEl = _this.getCellDayEl(cell);
+			var allSegs = _this.getCellSegs(cell);
 
 				// rescope the segments to be within the cell's date
 				var reslicedAllSegs = _this.resliceDaySegs(allSegs, date);
@@ -5091,18 +5089,18 @@ DayGrid.mixin({
 		var title = cell.start.format(view.opt('dayPopoverFormat'));
 		var content = $(
 			'<div class="fc-header ' + view.widgetHeaderClass + '">' +
-				'<span class="fc-close ' +
-					(isTheme ? 'ui-icon ui-icon-closethick' : 'fc-icon fc-icon-x') +
-				'"></span>' +
-				'<span class="fc-title">' +
-					htmlEscape(title) +
-				'</span>' +
-				'<div class="fc-clear"/>' +
+			'<span class="fc-close ' +
+			(isTheme ? 'ui-icon ui-icon-closethick' : 'fc-icon fc-icon-x') +
+			'"></span>' +
+			'<span class="fc-title">' +
+			htmlEscape(title) +
+			'</span>' +
+			'<div class="fc-clear"/>' +
 			'</div>' +
 			'<div class="fc-body ' + view.widgetContentClass + '">' +
-				'<div class="fc-event-container"></div>' +
+			'<div class="fc-event-container"></div>' +
 			'</div>'
-		);
+			);
 		var segContainer = content.find('.fc-event-container');
 		var i;
 
@@ -5142,7 +5140,7 @@ DayGrid.mixin({
 				var seg = intersectionToSeg(range, dayRange); // undefind if no intersection
 				return seg ? [ seg ] : []; // must return an array of segments
 			}
-		);
+			);
 	},
 
 
@@ -5181,9 +5179,9 @@ DayGrid.mixin({
 });
 
     /* A component that renders one or more columns of vertical time slots
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-var TimeGrid = Grid.extend({
+    var TimeGrid = Grid.extend({
 
 	slotDuration: null, // duration of a "slot", a distinct time segment on given day, visualized by lines
 	snapDuration: null, // granularity of time for dragging and selecting
@@ -5231,17 +5229,17 @@ var TimeGrid = Grid.extend({
 	// Renders the basic HTML skeleton for the grid
 	renderHtml: function() {
 		return '' +
-			'<div class="fc-bg">' +
-				'<table>' +
+		'<div class="fc-bg">' +
+		'<table>' +
 					this.rowHtml('slotBg') + // leverages RowRenderer, which will call slotBgCellHtml
-				'</table>' +
-			'</div>' +
-			'<div class="fc-slats">' +
-				'<table>' +
+					'</table>' +
+					'</div>' +
+					'<div class="fc-slats">' +
+					'<table>' +
 					this.slatRowHtml() +
-				'</table>' +
-			'</div>';
-	},
+					'</table>' +
+					'</div>';
+				},
 
 
 	// Renders the HTML for a vertical background cell behind the slots.
@@ -5268,27 +5266,27 @@ var TimeGrid = Grid.extend({
 			minutes = slotDate.minutes();
 
 			axisHtml =
-				'<td class="fc-axis fc-time ' + view.widgetContentClass + '" ' + view.axisStyleAttr() + '>' +
+			'<td class="fc-axis fc-time ' + view.widgetContentClass + '" ' + view.axisStyleAttr() + '>' +
 					((!slotNormal || !minutes) ? // if irregular slot duration, or on the hour, then display the time
 						'<span>' + // for matchCellWidths
-							htmlEscape(slotDate.format(this.axisFormat)) +
+						htmlEscape(slotDate.format(this.axisFormat)) +
 						'</span>' :
 						''
 						) +
-				'</td>';
+					'</td>';
 
-			html +=
-				'<tr ' + (!minutes ? '' : 'class="fc-minor"') + '>' +
+					html +=
+					'<tr ' + (!minutes ? '' : 'class="fc-minor"') + '>' +
 					(!isRTL ? axisHtml : '') +
 					'<td class="' + view.widgetContentClass + '"/>' +
 					(isRTL ? axisHtml : '') +
-				"</tr>";
+					"</tr>";
 
-			slotTime.add(this.slotDuration);
-		}
+					slotTime.add(this.slotDuration);
+				}
 
-		return html;
-	},
+				return html;
+			},
 
 
 	/* Options
@@ -5318,7 +5316,7 @@ var TimeGrid = Grid.extend({
 	computeColHeadFormat: function() {
 		if (this.colCnt > 1) { // multiple days, so full single date string WON'T be in title text
 			return this.view.opt('dayOfMonthFormat'); // "Sat 12/10"
-		}
+	}
 		else { // single day, so full single date string will probably be in title text
 			return 'dddd'; // "Saturday"
 		}
@@ -5463,8 +5461,8 @@ var TimeGrid = Grid.extend({
 		return this.computeTimeTop(
 			moment.duration(
 				date.clone().stripZone() - startOfDayDate.clone().stripTime()
-			)
-		);
+				)
+			);
 	},
 
 
@@ -5535,7 +5533,7 @@ var TimeGrid = Grid.extend({
 			// otherwise, just render a highlight
 			this.renderHighlight(
 				this.view.calendar.ensureVisibleEventRange(dropLocation) // needs to be a proper range
-			);
+				);
 		}
 	},
 
@@ -5592,8 +5590,8 @@ var TimeGrid = Grid.extend({
 		}
 
 		this.helperEl = $('<div class="fc-helper-skeleton"/>')
-			.append(tableEl)
-				.appendTo(this.el);
+		.append(tableEl)
+		.appendTo(this.el);
 	},
 
 
@@ -5652,9 +5650,9 @@ var TimeGrid = Grid.extend({
 			className = className || type.toLowerCase();
 			skeletonEl = $(
 				'<div class="fc-' + className + '-skeleton">' +
-					'<table><tr/></table>' +
+				'<table><tr/></table>' +
 				'</div>'
-			);
+				);
 			trEl = skeletonEl.find('tr');
 
 			for (col = 0; col < segCols.length; col++) {
@@ -5672,7 +5670,7 @@ var TimeGrid = Grid.extend({
 								top: this.computeDateTop(seg.start, dayDate),
 								bottom: -this.computeDateTop(seg.end, dayDate) // the y position of the bottom edge
 							})
-						);
+							);
 					}
 				}
 			}
@@ -5689,9 +5687,9 @@ var TimeGrid = Grid.extend({
 });
 
     /* Event-rendering methods for the TimeGrid class
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-TimeGrid.mixin({
+    TimeGrid.mixin({
 
 	eventSkeletonEl: null, // has cells with event-containers, which contain absolutely positioned event elements
 
@@ -5702,8 +5700,8 @@ TimeGrid.mixin({
 
 		this.el.append(
 			this.eventSkeletonEl = $('<div class="fc-content-skeleton"/>')
-				.append(this.renderSegTable(segs))
-		);
+			.append(this.renderSegTable(segs))
+			);
 
 		return segs; // return only the segs that were actually rendered
 	},
@@ -5771,7 +5769,7 @@ TimeGrid.mixin({
 		for (i = 0; i < allSegs.length; i++) {
 			allSegs[i].el.css(
 				this.generateSegVerticalCss(allSegs[i])
-			);
+				);
 		}
 	},
 
@@ -5819,38 +5817,38 @@ TimeGrid.mixin({
 		}
 
 		return '<a class="' + classes.join(' ') + '"' +
-			(event.url ?
-				' href="' + htmlEscape(event.url) + '"' :
-				''
-				) +
-			(skinCss ?
-				' style="' + skinCss + '"' :
-				''
-				) +
+		(event.url ?
+			' href="' + htmlEscape(event.url) + '"' :
+			''
+			) +
+		(skinCss ?
+			' style="' + skinCss + '"' :
+			''
+			) +
+		'>' +
+		'<div class="fc-content">' +
+		(timeText ?
+			'<div class="fc-time"' +
+			' data-start="' + htmlEscape(startTimeText) + '"' +
+			' data-full="' + htmlEscape(fullTimeText) + '"' +
 			'>' +
-				'<div class="fc-content">' +
-					(timeText ?
-						'<div class="fc-time"' +
-						' data-start="' + htmlEscape(startTimeText) + '"' +
-						' data-full="' + htmlEscape(fullTimeText) + '"' +
-						'>' +
-							'<span>' + htmlEscape(timeText) + '</span>' +
-						'</div>' :
-						''
-						) +
-					(event.title ?
-						'<div class="fc-title">' +
-							htmlEscape(event.title) +
-						'</div>' :
-						''
-						) +
-				'</div>' +
-				'<div class="fc-bg"/>' +
-				(isResizable ?
-					'<div class="fc-resizer"/>' :
-					''
-					) +
-			'</a>';
+			'<span>' + htmlEscape(timeText) + '</span>' +
+			'</div>' :
+			''
+			) +
+		(event.title ?
+			'<div class="fc-title">' +
+			htmlEscape(event.title) +
+			'</div>' :
+			''
+			) +
+		'</div>' +
+		'<div class="fc-bg"/>' +
+		(isResizable ?
+			'<div class="fc-resizer"/>' :
+			''
+			) +
+		'</a>';
 	},
 
 
@@ -6011,7 +6009,7 @@ function computeSlotSegPressures(seg) {
 			forwardPressure = Math.max(
 				forwardPressure,
 				1 + forwardSeg.forwardPressure
-			);
+				);
 		}
 
 		seg.forwardPressure = forwardPressure;
@@ -6092,12 +6090,12 @@ function compareForwardSlotSegs(seg1, seg2) {
 		(seg1.backwardCoord || 0) - (seg2.backwardCoord || 0) ||
 		// do normal sorting...
 		compareSegs(seg1, seg2);
-}
+	}
 
     /* An abstract class from which other views inherit from
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-var View = fc.View = Class.extend({
+    var View = fc.View = Class.extend({
 
 	type: null, // subclass' view name (string)
 	name: null, // deprecated. use `type` instead
@@ -6186,8 +6184,8 @@ var View = fc.View = Class.extend({
 			[name, thisObj || this].concat(
 				Array.prototype.slice.call(arguments, 2), // arguments beyond thisObj
 				[ this ] // always make the last argument a reference to the view. TODO: deprecate
-			)
-		);
+				)
+			);
 	},
 
 
@@ -6251,7 +6249,7 @@ var View = fc.View = Class.extend({
 	computePrevDate: function(date) {
 		return this.skipHiddenDays(
 			date.clone().startOf(this.intervalUnit).subtract(this.intervalDuration), -1
-		);
+			);
 	},
 
 
@@ -6259,7 +6257,7 @@ var View = fc.View = Class.extend({
 	computeNextDate: function(date) {
 		return this.skipHiddenDays(
 			date.clone().startOf(this.intervalUnit).add(this.intervalDuration)
-		);
+			);
 	},
 
 
@@ -6273,7 +6271,7 @@ var View = fc.View = Class.extend({
 			{ start: this.intervalStart, end: this.intervalEnd },
 			this.opt('titleFormat') || this.computeTitleFormat(),
 			this.opt('titleRangeSeparator')
-		);
+			);
 	},
 
 
@@ -6384,7 +6382,7 @@ var View = fc.View = Class.extend({
 		this.setHeight(
 			calendar.getSuggestedViewHeight(),
 			calendar.isHeightAuto()
-		);
+			);
 	},
 
 
@@ -6490,13 +6488,13 @@ var View = fc.View = Class.extend({
 
 		if (custom === false) { // means don't render at all
 			el = null;
-		}
-		else if (custom && custom !== true) {
-			el = $(custom);
-		}
+	}
+	else if (custom && custom !== true) {
+		el = $(custom);
+	}
 
-		return el;
-	},
+	return el;
+},
 
 
 	// Hides all rendered event segments linked to the given event
@@ -6552,7 +6550,7 @@ var View = fc.View = Class.extend({
 			event.editable,
 			source.editable,
 			this.opt('editable')
-		);
+			);
 	},
 
 
@@ -6643,7 +6641,7 @@ var View = fc.View = Class.extend({
 			event.editable,
 			source.editable,
 			this.opt('editable')
-		);
+			);
 	},
 
 
@@ -6744,12 +6742,12 @@ var View = fc.View = Class.extend({
 		for (i = 0; i < 7; i++) {
 			if (
 				!(isHiddenDayHash[i] = $.inArray(i, hiddenDays) !== -1)
-			) {
+				) {
 				dayCnt++;
-			}
 		}
+	}
 
-		if (!dayCnt) {
+	if (!dayCnt) {
 			throw 'invalid hiddenDays'; // all days were hidden? bad.
 		}
 
@@ -6776,11 +6774,11 @@ var View = fc.View = Class.extend({
 		inc = inc || 1;
 		while (
 			this.isHiddenDayHash[(out.day() + (isExclusive ? inc : 0) + 7) % 7]
-		) {
+			) {
 			out.add(inc, 'days');
-		}
-		return out;
-	},
+	}
+	return out;
+},
 
 
 	// Returns the date range of the full days the given range visually appears to occupy.
@@ -6822,7 +6820,7 @@ var View = fc.View = Class.extend({
 
 });
 
-    function Calendar(element, instanceOptions) {
+function Calendar(element, instanceOptions) {
 	var t = this;
 
 
@@ -6892,7 +6890,7 @@ var View = fc.View = Class.extend({
 
 	var localeData = createObject( // make a cheap copy
 		getMomentLocaleData(options.lang) // will fall back to en
-	);
+		);
 
 	if (options.monthNames) {
 		localeData._months = options.monthNames;
@@ -6933,9 +6931,9 @@ var View = fc.View = Class.extend({
 			// Force the moment to be local, because fc.moment doesn't guarantee it.
 			if (mom.hasTime()) { // don't give ambiguously-timed moments a local zone
 				mom.local();
-			}
 		}
-		else if (options.timezone === 'UTC') {
+	}
+	else if (options.timezone === 'UTC') {
 			mom = fc.moment.utc.apply(null, arguments); // process as UTC
 		}
 		else {
@@ -7029,7 +7027,7 @@ var View = fc.View = Class.extend({
 	// Side-effect: changes the locale of the given duration.
 	function humanizeDuration(duration) {
 		return (duration.locale || duration.lang).call(duration, options.lang) // works moment-pre-2.8
-			.humanize();
+		.humanize();
 	}
 
 
@@ -7188,7 +7186,7 @@ var View = fc.View = Class.extend({
 				!currentView.start || // never rendered before
 				delta || // explicit date window change
 				!date.isWithin(currentView.intervalStart, currentView.intervalEnd) // implicit date window change
-			) {
+				) {
 				if (elementVisible()) {
 
 					freezeContentHeight();
@@ -7288,13 +7286,13 @@ var View = fc.View = Class.extend({
 				(duration ? humanizeDuration(duration) : null) ||
 				requestedViewType;
 
-			return (viewSpecCache[requestedViewType] = {
-				'class': viewClass,
-				options: viewOptions,
-				buttonText: buttonText
-			});
+				return (viewSpecCache[requestedViewType] = {
+					'class': viewClass,
+					options: viewOptions,
+					buttonText: buttonText
+				});
+			}
 		}
-	}
 
 
 	// Returns a boolean about whether the view is okay to instantiate at some point
@@ -7357,30 +7355,30 @@ var View = fc.View = Class.extend({
 	function _calcSize() { // assumes elementVisible
 		if (typeof options.contentHeight === 'number') { // exists and not 'auto'
 			suggestedViewHeight = options.contentHeight;
-		}
+	}
 		else if (typeof options.height === 'number') { // exists and not 'auto'
 			suggestedViewHeight = options.height - (headerElement ? headerElement.outerHeight(true) : 0);
-		}
-		else {
-			suggestedViewHeight = Math.round(content.width() / Math.max(options.aspectRatio, .5));
-		}
 	}
-	
-	
-	function windowResize(ev) {
-		if (
-			!ignoreWindowResize &&
+	else {
+		suggestedViewHeight = Math.round(content.width() / Math.max(options.aspectRatio, .5));
+	}
+}
+
+
+function windowResize(ev) {
+	if (
+		!ignoreWindowResize &&
 			ev.target === window && // so we don't process jqui "resize" events that have bubbled up
 			currentView.start // view has already been rendered
-		) {
-			if (updateSize(true)) {
-				currentView.trigger('windowResize', _element);
-			}
+			) {
+		if (updateSize(true)) {
+			currentView.trigger('windowResize', _element);
 		}
 	}
-	
-	
-	
+}
+
+
+
 	/* Event Fetching/Rendering
 	-----------------------------------------------------------------------------*/
 	// TODO: going forward, most of this stuff should be directly handled by the view
@@ -7423,9 +7421,9 @@ var View = fc.View = Class.extend({
 		fetchEvents(currentView.start, currentView.end);
 			// ... will call reportEvents
 			// ... which will call renderEvents
-	}
+		}
 
-	
+
 	// called when event data arrives
 	function reportEvents(_events) {
 		events = _events;
@@ -7619,14 +7617,14 @@ var View = fc.View = Class.extend({
 			return options[name].apply(
 				thisObj || _element,
 				Array.prototype.slice.call(arguments, 2)
-			);
+				);
 		}
 	}
 
 }
 
     /* Top toolbar area with buttons and title
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // TODO: rename all header-related things to "toolbar"
 
 function Header(calendar, options) {
@@ -7655,10 +7653,10 @@ function Header(calendar, options) {
 
 		if (sections) {
 			el = $("<div class='fc-toolbar'/>")
-				.append(renderSection('left'))
-				.append(renderSection('right'))
-				.append(renderSection('center'))
-				.append('<div class="fc-clear"/>');
+			.append(renderSection('left'))
+			.append(renderSection('right'))
+			.append(renderSection('center'))
+			.append('<div class="fc-clear"/>');
 
 			return el;
 		}
@@ -7730,17 +7728,17 @@ function Header(calendar, options) {
 							}
 
 							classes = [
-								'fc-' + buttonName + '-button',
-								tm + '-button',
-								tm + '-state-default'
+							'fc-' + buttonName + '-button',
+							tm + '-button',
+							tm + '-state-default'
 							];
 
 							button = $( // type="button" so that it doesn't submit a form
 								'<button type="button" class="' + classes.join(' ') + '">' +
-									innerHtml +
+								innerHtml +
 								'</button>'
 								)
-								.click(function() {
+							.click(function() {
 									// don't process clicks for disabled buttons
 									if (!button.hasClass(tm + '-state-disabled')) {
 
@@ -7751,39 +7749,39 @@ function Header(calendar, options) {
 										if (
 											button.hasClass(tm + '-state-active') ||
 											button.hasClass(tm + '-state-disabled')
-										) {
+											) {
 											button.removeClass(tm + '-state-hover');
-										}
 									}
-								})
-								.mousedown(function() {
+								}
+							})
+							.mousedown(function() {
 									// the *down* effect (mouse pressed in).
 									// only on buttons that are not the "active" tab, or disabled
 									button
-										.not('.' + tm + '-state-active')
-										.not('.' + tm + '-state-disabled')
-										.addClass(tm + '-state-down');
+									.not('.' + tm + '-state-active')
+									.not('.' + tm + '-state-disabled')
+									.addClass(tm + '-state-down');
 								})
-								.mouseup(function() {
+							.mouseup(function() {
 									// undo the *down* effect
 									button.removeClass(tm + '-state-down');
 								})
-								.hover(
-									function() {
+							.hover(
+								function() {
 										// the *hover* effect.
 										// only on buttons that are not the "active" tab, or disabled
 										button
-											.not('.' + tm + '-state-active')
-											.not('.' + tm + '-state-disabled')
-											.addClass(tm + '-state-hover');
+										.not('.' + tm + '-state-active')
+										.not('.' + tm + '-state-disabled')
+										.addClass(tm + '-state-hover');
 									},
 									function() {
 										// undo the *hover* effect
 										button
-											.removeClass(tm + '-state-hover')
+										.removeClass(tm + '-state-hover')
 											.removeClass(tm + '-state-down'); // if mouseleave happens before mouseup
-									}
-								);
+										}
+										);
 
 							groupChildren = groupChildren.add(button);
 						}
@@ -7792,8 +7790,8 @@ function Header(calendar, options) {
 
 				if (isOnlyButtons) {
 					groupChildren
-						.first().addClass(tm + '-corner-left').end()
-						.last().addClass(tm + '-corner-right').end();
+					.first().addClass(tm + '-corner-left').end()
+					.last().addClass(tm + '-corner-right').end();
 				}
 
 				if (groupChildren.length > 1) {
@@ -7808,50 +7806,50 @@ function Header(calendar, options) {
 					sectionEl.append(groupChildren); // 1 or 0 children
 				}
 			});
-		}
+}
 
-		return sectionEl;
-	}
-	
-	
-	function updateTitle(text) {
-		el.find('h2').text(text);
-	}
-	
-	
-	function activateButton(buttonName) {
-		el.find('.fc-' + buttonName + '-button')
-			.addClass(tm + '-state-active');
-	}
-	
-	
-	function deactivateButton(buttonName) {
-		el.find('.fc-' + buttonName + '-button')
-			.removeClass(tm + '-state-active');
-	}
-	
-	
-	function disableButton(buttonName) {
-		el.find('.fc-' + buttonName + '-button')
-			.attr('disabled', 'disabled')
-			.addClass(tm + '-state-disabled');
-	}
-	
-	
-	function enableButton(buttonName) {
-		el.find('.fc-' + buttonName + '-button')
-			.removeAttr('disabled')
-			.removeClass(tm + '-state-disabled');
-	}
+return sectionEl;
+}
 
 
-	function getViewsWithButtons() {
-		return viewsWithButtons;
-	}
+function updateTitle(text) {
+	el.find('h2').text(text);
+}
+
+
+function activateButton(buttonName) {
+	el.find('.fc-' + buttonName + '-button')
+	.addClass(tm + '-state-active');
+}
+
+
+function deactivateButton(buttonName) {
+	el.find('.fc-' + buttonName + '-button')
+	.removeClass(tm + '-state-active');
+}
+
+
+function disableButton(buttonName) {
+	el.find('.fc-' + buttonName + '-button')
+	.attr('disabled', 'disabled')
+	.addClass(tm + '-state-disabled');
+}
+
+
+function enableButton(buttonName) {
+	el.find('.fc-' + buttonName + '-button')
+	.removeAttr('disabled')
+	.removeClass(tm + '-state-disabled');
+}
+
+
+function getViewsWithButtons() {
+	return viewsWithButtons;
+}
 
 }
 
-    fc.sourceNormalizers = [];
+fc.sourceNormalizers = [];
 fc.sourceFetchers = [];
 
 var ajaxDefaults = {
@@ -7904,7 +7902,7 @@ function EventManager(options) { // assumed to be a calendar
 				sources.push(source);
 			}
 		}
-	);
+		);
 	
 	
 	
@@ -7917,33 +7915,33 @@ function EventManager(options) { // assumed to be a calendar
 			// or, a part of the new range is outside of the old range? (after normalizing)
 			start.clone().stripZone() < rangeStart.clone().stripZone() ||
 			end.clone().stripZone() > rangeEnd.clone().stripZone();
-	}
-	
-	
-	function fetchEvents(start, end) {
-		rangeStart = start;
-		rangeEnd = end;
-		cache = [];
-		var fetchID = ++currentFetchID;
-		var len = sources.length;
-		pendingSourceCnt = len;
-		for (var i=0; i<len; i++) {
-			fetchEventSource(sources[i], fetchID);
 		}
-	}
-	
-	
-	function fetchEventSource(source, fetchID) {
-		_fetchEventSource(source, function(eventInputs) {
-			var isArraySource = $.isArray(source.events);
-			var i, eventInput;
-			var abstractEvent;
 
-			if (fetchID == currentFetchID) {
 
-				if (eventInputs) {
-					for (i = 0; i < eventInputs.length; i++) {
-						eventInput = eventInputs[i];
+		function fetchEvents(start, end) {
+			rangeStart = start;
+			rangeEnd = end;
+			cache = [];
+			var fetchID = ++currentFetchID;
+			var len = sources.length;
+			pendingSourceCnt = len;
+			for (var i=0; i<len; i++) {
+				fetchEventSource(sources[i], fetchID);
+			}
+		}
+
+
+		function fetchEventSource(source, fetchID) {
+			_fetchEventSource(source, function(eventInputs) {
+				var isArraySource = $.isArray(source.events);
+				var i, eventInput;
+				var abstractEvent;
+
+				if (fetchID == currentFetchID) {
+
+					if (eventInputs) {
+						for (i = 0; i < eventInputs.length; i++) {
+							eventInput = eventInputs[i];
 
 						if (isArraySource) { // array sources have already been convert to Event Objects
 							abstractEvent = eventInput;
@@ -7956,7 +7954,7 @@ function EventManager(options) { // assumed to be a calendar
 							cache.push.apply(
 								cache,
 								expandEvent(abstractEvent) // add individual expanded events to the cache
-							);
+								);
 						}
 					}
 				}
@@ -7967,25 +7965,25 @@ function EventManager(options) { // assumed to be a calendar
 				}
 			}
 		});
-	}
-	
-	
-	function _fetchEventSource(source, callback) {
-		var i;
-		var fetchers = fc.sourceFetchers;
-		var res;
+		}
 
-		for (i=0; i<fetchers.length; i++) {
-			res = fetchers[i].call(
+
+		function _fetchEventSource(source, callback) {
+			var i;
+			var fetchers = fc.sourceFetchers;
+			var res;
+
+			for (i=0; i<fetchers.length; i++) {
+				res = fetchers[i].call(
 				t, // this, the Calendar object
 				source,
 				rangeStart.clone(),
 				rangeEnd.clone(),
 				options.timezone,
 				callback
-			);
+				);
 
-			if (res === true) {
+				if (res === true) {
 				// the fetcher is in charge. made its own async request
 				return;
 			}
@@ -8009,7 +8007,7 @@ function EventManager(options) { // assumed to be a calendar
 						callback(events);
 						popLoading();
 					}
-				);
+					);
 			}
 			else if ($.isArray(events)) {
 				callback(events);
@@ -8162,7 +8160,7 @@ function EventManager(options) { // assumed to be a calendar
 			(typeof source === 'object') ? // a normalized event source?
 				(source.origArray || source.googleCalendarId || source.url || source.events) : // get the primitive
 				null
-		) ||
+				) ||
 		source; // the given argument *is* the primitive
 	}
 	
@@ -8385,7 +8383,7 @@ function EventManager(options) { // assumed to be a calendar
 				allDay = firstDefined(
 					source ? source.allDayDefault : undefined,
 					options.allDayDefault
-				);
+					);
 				// still undefined? normalizeEventDateProps will calculate it
 			}
 
@@ -8520,7 +8518,7 @@ function EventManager(options) { // assumed to be a calendar
 							start, end,
 							!startTime && !endTime, // allDay?
 							event
-						);
+							);
 						events.push(event);
 					}
 
@@ -8586,12 +8584,12 @@ function EventManager(options) { // assumed to be a calendar
 				// new duration
 				props.end,
 				props.start
-			).subtract(diffDayTime(
+				).subtract(diffDayTime(
 				// subtract old duration
 				event._end || t.getDefaultEventEnd(event._allDay, event._start),
 				event._start
-			));
-		}
+				));
+			}
 
 		// gather all non-date-related properties
 		$.each(props, function(name, val) {
@@ -8610,7 +8608,7 @@ function EventManager(options) { // assumed to be a calendar
 			dateDelta,
 			durationDelta,
 			miscProps
-		);
+			);
 
 		return {
 			dateDelta: dateDelta,
@@ -8690,12 +8688,12 @@ function EventManager(options) { // assumed to be a calendar
 				isAmbigTimezone &&
 				!newProps.allDay &&
 				(dateDelta || durationDelta)
-			) {
+				) {
 				newProps.start.stripZone();
-				if (newProps.end) {
-					newProps.end.stripZone();
-				}
+			if (newProps.end) {
+				newProps.end.stripZone();
 			}
+		}
 
 			$.extend(event, miscProps, newProps); // copy over misc props, then date-related props
 			backupEventDates(event); // regenerate internal _start/_end/_allDay
@@ -8750,7 +8748,7 @@ function EventManager(options) { // assumed to be a calendar
 				buildEventFromInput(eventInput),
 				view.start,
 				view.end
-			);
+				);
 		}
 
 		return [];
@@ -8771,12 +8769,12 @@ function EventManager(options) { // assumed to be a calendar
 			event.constraint,
 			source.constraint,
 			options.eventConstraint
-		);
+			);
 		var overlap = firstDefined(
 			event.overlap,
 			source.overlap,
 			options.eventOverlap
-		);
+			);
 
 		range = ensureVisibleEventRange(range); // ensure a proper range with an end for isRangeAllowed
 
@@ -8874,7 +8872,7 @@ function EventManager(options) { // assumed to be a calendar
 						otherEvent.overlap,
 						(otherEvent.source || {}).overlap
 						// we already considered the global `eventOverlap`
-					);
+						);
 					if (otherOverlap === false) {
 						return false;
 					}
@@ -8937,7 +8935,7 @@ function backupEventDates(event) {
 }
 
     /* An abstract class for the "basic" views, as well as month view. Renders one or more rows of day cells.
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // It is a manager for a DayGrid subcomponent, which does most of the heavy lifting.
 // It is responsible for managing width/height.
 
@@ -9018,25 +9016,25 @@ var BasicView = fcViews.basic = View.extend({
 	// The day-grid component will render inside of a container defined by this HTML.
 	renderHtml: function() {
 		return '' +
-			'<table>' +
-				'<thead>' +
-					'<tr>' +
-						'<td class="' + this.widgetHeaderClass + '">' +
+		'<table>' +
+		'<thead>' +
+		'<tr>' +
+		'<td class="' + this.widgetHeaderClass + '">' +
 							this.dayGrid.headHtml() + // render the day-of-week headers
-						'</td>' +
-					'</tr>' +
-				'</thead>' +
-				'<tbody>' +
-					'<tr>' +
-						'<td class="' + this.widgetContentClass + '">' +
+							'</td>' +
+							'</tr>' +
+							'</thead>' +
+							'<tbody>' +
+							'<tr>' +
+							'<td class="' + this.widgetContentClass + '">' +
 							'<div class="fc-day-grid-container">' +
-								'<div class="fc-day-grid"/>' +
+							'<div class="fc-day-grid"/>' +
 							'</div>' +
-						'</td>' +
-					'</tr>' +
-				'</tbody>' +
-			'</table>';
-	},
+							'</td>' +
+							'</tr>' +
+							'</tbody>' +
+							'</table>';
+						},
 
 
 	// Generates the HTML that will go before the day-of week header cells.
@@ -9044,13 +9042,13 @@ var BasicView = fcViews.basic = View.extend({
 	headIntroHtml: function() {
 		if (this.weekNumbersVisible) {
 			return '' +
-				'<th class="fc-week-number ' + this.widgetHeaderClass + '" ' + this.weekNumberStyleAttr() + '>' +
+			'<th class="fc-week-number ' + this.widgetHeaderClass + '" ' + this.weekNumberStyleAttr() + '>' +
 					'<span>' + // needed for matchCellWidths
-						htmlEscape(this.opt('weekNumberTitle')) +
+					htmlEscape(this.opt('weekNumberTitle')) +
 					'</span>' +
-				'</th>';
-		}
-	},
+					'</th>';
+				}
+			},
 
 
 	// Generates the HTML that will go before content-skeleton cells that display the day/week numbers.
@@ -9058,13 +9056,13 @@ var BasicView = fcViews.basic = View.extend({
 	numberIntroHtml: function(row) {
 		if (this.weekNumbersVisible) {
 			return '' +
-				'<td class="fc-week-number" ' + this.weekNumberStyleAttr() + '>' +
+			'<td class="fc-week-number" ' + this.weekNumberStyleAttr() + '>' +
 					'<span>' + // needed for matchCellWidths
-						this.calendar.calculateWeekNumber(this.dayGrid.getCell(row, 0).start) +
+					this.calendar.calculateWeekNumber(this.dayGrid.getCell(row, 0).start) +
 					'</span>' +
-				'</td>';
-		}
-	},
+					'</td>';
+				}
+			},
 
 
 	// Generates the HTML that goes before the day bg cells for each day-row.
@@ -9072,7 +9070,7 @@ var BasicView = fcViews.basic = View.extend({
 	dayIntroHtml: function() {
 		if (this.weekNumbersVisible) {
 			return '<td class="fc-week-number ' + this.widgetContentClass + '" ' +
-				this.weekNumberStyleAttr() + '></td>';
+			this.weekNumberStyleAttr() + '></td>';
 		}
 	},
 
@@ -9100,9 +9098,9 @@ var BasicView = fcViews.basic = View.extend({
 		classes.unshift('fc-day-number');
 
 		return '' +
-			'<td class="' + classes.join(' ') + '" data-date="' + date.format() + '">' +
-				date.date() +
-			'</td>';
+		'<td class="' + classes.join(' ') + '" data-date="' + date.format() + '">' +
+		date.date() +
+		'</td>';
 	},
 
 
@@ -9133,7 +9131,7 @@ var BasicView = fcViews.basic = View.extend({
 			// Record the width for cells created later.
 			this.weekNumberWidth = matchCellWidths(
 				this.el.find('.fc-week-number')
-			);
+				);
 		}
 	},
 
@@ -9248,13 +9246,13 @@ var BasicView = fcViews.basic = View.extend({
 });
 
     /* A month view with day cells running in rows (one-per-week) and columns
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-setDefaults({
-	fixedWeekCount: true
-});
+    setDefaults({
+    	fixedWeekCount: true
+    });
 
-var MonthView = fcViews.month = BasicView.extend({
+    var MonthView = fcViews.month = BasicView.extend({
 
 	// Produces information about what range to display
 	computeRange: function(date) {
@@ -9265,7 +9263,7 @@ var MonthView = fcViews.month = BasicView.extend({
 			range.end.add(
 				6 - range.end.diff(range.start, 'weeks'),
 				'weeks'
-			);
+				);
 		}
 
 		return range;
@@ -9297,24 +9295,24 @@ var MonthView = fcViews.month = BasicView.extend({
 
 });
 
-MonthView.duration = { months: 1 };
+    MonthView.duration = { months: 1 };
 
     /* A week view with simple day cells running horizontally
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-fcViews.basicWeek = {
-	type: 'basic',
-	duration: { weeks: 1 }
-};
+    fcViews.basicWeek = {
+    	type: 'basic',
+    	duration: { weeks: 1 }
+    };
     /* A view with a single simple day cell
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-fcViews.basicDay = {
-	type: 'basic',
-	duration: { days: 1 }
-};
+    fcViews.basicDay = {
+    	type: 'basic',
+    	duration: { days: 1 }
+    };
     /* An abstract class for all agenda-related views. Displays one more columns with time slots running vertically.
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 // Is a manager for the TimeGrid subcomponent and possibly the DayGrid subcomponent (if allDaySlot is on).
 // Responsible for managing width/height.
 
@@ -9354,7 +9352,7 @@ fcViews.agenda = View.extend({ // AgendaView
 			this.coordMap = new ComboCoordMap([
 				this.dayGrid.coordMap,
 				this.timeGrid.coordMap
-			]);
+				]);
 		}
 		else {
 			this.coordMap = this.timeGrid.coordMap;
@@ -9393,9 +9391,9 @@ fcViews.agenda = View.extend({ // AgendaView
 		this.bottomRuleEl = $('<hr class="' + this.widgetHeaderClass + '"/>')
 			.appendTo(this.timeGrid.el); // inject it into the time-grid
 
-		if (this.dayGrid) {
-			this.dayGrid.el = this.el.find('.fc-day-grid');
-			this.dayGrid.render();
+			if (this.dayGrid) {
+				this.dayGrid.el = this.el.find('.fc-day-grid');
+				this.dayGrid.render();
 
 			// have the day-grid extend it's coordinate area over the <hr> dividing the two grids
 			this.dayGrid.bottomCoordPadding = this.dayGrid.el.next('hr').outerHeight();
@@ -9419,30 +9417,30 @@ fcViews.agenda = View.extend({ // AgendaView
 	// The day-grid and time-grid components will render inside containers defined by this HTML.
 	renderHtml: function() {
 		return '' +
-			'<table>' +
-				'<thead>' +
-					'<tr>' +
-						'<td class="' + this.widgetHeaderClass + '">' +
+		'<table>' +
+		'<thead>' +
+		'<tr>' +
+		'<td class="' + this.widgetHeaderClass + '">' +
 							this.timeGrid.headHtml() + // render the day-of-week headers
-						'</td>' +
-					'</tr>' +
-				'</thead>' +
-				'<tbody>' +
-					'<tr>' +
-						'<td class="' + this.widgetContentClass + '">' +
+							'</td>' +
+							'</tr>' +
+							'</thead>' +
+							'<tbody>' +
+							'<tr>' +
+							'<td class="' + this.widgetContentClass + '">' +
 							(this.dayGrid ?
 								'<div class="fc-day-grid"/>' +
 								'<hr class="' + this.widgetHeaderClass + '"/>' :
 								''
 								) +
 							'<div class="fc-time-grid-container">' +
-								'<div class="fc-time-grid"/>' +
+							'<div class="fc-time-grid"/>' +
 							'</div>' +
-						'</td>' +
-					'</tr>' +
-				'</tbody>' +
-			'</table>';
-	},
+							'</td>' +
+							'</tr>' +
+							'</tbody>' +
+							'</table>';
+						},
 
 
 	// Generates the HTML that will go before the day-of week header cells.
@@ -9466,28 +9464,28 @@ fcViews.agenda = View.extend({ // AgendaView
 			}
 
 			return '' +
-				'<th class="fc-axis fc-week-number ' + this.widgetHeaderClass + '" ' + this.axisStyleAttr() + '>' +
+			'<th class="fc-axis fc-week-number ' + this.widgetHeaderClass + '" ' + this.axisStyleAttr() + '>' +
 					'<span>' + // needed for matchCellWidths
-						htmlEscape(weekText) +
+					htmlEscape(weekText) +
 					'</span>' +
-				'</th>';
-		}
-		else {
-			return '<th class="fc-axis ' + this.widgetHeaderClass + '" ' + this.axisStyleAttr() + '></th>';
-		}
-	},
+					'</th>';
+				}
+				else {
+					return '<th class="fc-axis ' + this.widgetHeaderClass + '" ' + this.axisStyleAttr() + '></th>';
+				}
+			},
 
 
 	// Generates the HTML that goes before the all-day cells.
 	// Queried by the DayGrid subcomponent when generating rows. Ordering depends on isRTL.
 	dayIntroHtml: function() {
 		return '' +
-			'<td class="fc-axis ' + this.widgetContentClass + '" ' + this.axisStyleAttr() + '>' +
+		'<td class="fc-axis ' + this.widgetContentClass + '" ' + this.axisStyleAttr() + '>' +
 				'<span>' + // needed for matchCellWidths
-					(this.opt('allDayHtml') || htmlEscape(this.opt('allDayText'))) +
+				(this.opt('allDayHtml') || htmlEscape(this.opt('allDayText'))) +
 				'</span>' +
-			'</td>';
-	},
+				'</td>';
+			},
 
 
 	// Generates the HTML that goes before the bg of the TimeGrid slot area. Long vertical column.
@@ -9507,7 +9505,7 @@ fcViews.agenda = View.extend({ // AgendaView
 	// Generates an HTML attribute string for setting the width of the axis, if it is known
 	axisStyleAttr: function() {
 		if (this.axisWidth !== null) {
-			 return 'style="width:' + this.axisWidth + 'px"';
+			return 'style="width:' + this.axisWidth + 'px"';
 		}
 		return '';
 	},
@@ -9644,7 +9642,7 @@ fcViews.agenda = View.extend({ // AgendaView
 	getEventSegs: function() {
 		return this.timeGrid.getEventSegs().concat(
 			this.dayGrid ? this.dayGrid.getEventSegs() : []
-		);
+			);
 	},
 
 
@@ -9716,17 +9714,17 @@ fcViews.agenda = View.extend({ // AgendaView
 });
 
     /* A week view with an all-day cell area at the top, and a time grid below
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-fcViews.agendaWeek = {
-	type: 'agenda',
-	duration: { weeks: 1 }
-};
+    fcViews.agendaWeek = {
+    	type: 'agenda',
+    	duration: { weeks: 1 }
+    };
     /* A day view with an all-day cell area at the top, and a time grid below
-----------------------------------------------------------------------------------------------------------------------*/
+    ----------------------------------------------------------------------------------------------------------------------*/
 
-fcViews.agendaDay = {
-	type: 'agenda',
-	duration: { days: 1 }
-};
+    fcViews.agendaDay = {
+    	type: 'agenda',
+    	duration: { days: 1 }
+    };
 });
