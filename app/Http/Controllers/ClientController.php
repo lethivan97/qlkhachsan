@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use Stripe\Charge;
 use Stripe\Stripe;
-use Mail;
 
 class ClientController extends Controller {
 	function index() {
@@ -142,15 +141,29 @@ class ClientController extends Controller {
 					'DiaChi.max' => 'Địa chỉ không được vượt quá 50 kí tự',
 					'SDT.numeric' => 'Nhập số điện thoại sai định dạng',
 				]);
-			$khachhang = KhachHang::create($request->all());
+			$khachhang = KhachHang::create([
+				'TenKH' => $request->TenKH,
+				'Email' => $request->Email,
+				'DiaChi' => $request->DiaChi,
+				'SDT' => $request->SDT,
+			]);
 			$dondat = DatPhong::create([
 				'MaKH' => $khachhang->id,
 				'NgayDat' => Carbon::now(),
 			]);
 			foreach ($cart->phongs as $phong) {
-				Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
-					'MaTT' => 2,
-				]);
+				$date = Carbon::now()->format('Y-M-d');
+				$NgayDen = Carbon::parse($phong['ngayden'])->format('Y-M-d');
+				if ($date == $NgayDen) {
+					Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
+						'MaTT' => 3,
+					]);
+				} else {
+					Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
+						'MaTT' => 2,
+					]);
+				}
+
 				Phong_DatPhong::create([
 					'MaPhong' => $phong['phong']->MaPhong,
 					'MaDat' => $dondat->id,
@@ -163,21 +176,20 @@ class ClientController extends Controller {
 		} elseif ($request->LuaChon == 1) {
 			Stripe::setApiKey("sk_test_aBWzRKCBKy6L86mfuc3WqJgI");
 			$token = $request->stripeToken;
-			Charge::create([
+			$stripe = Charge::create([
 				"amount" => $cart->tongTien,
 				"currency" => "usd",
 				"source" => $token, // obtained with Stripe.js
 				"description" => "Charge",
 			]);
+			$khachhang = KhachHang::create([
+				'SoThe' => $stripe->source->last4 . '_' . Carbon::now(),
+			]);
 		} else {
 			return redirect()->back()->with('thongbao', 'Hãy chọn 1 trong 2 hình thức thanh toán');
 		}
 		Session::forget('cart');
-		return redirect()->route('danh-sach-phong-dat')->with('thongbao', 'Bạn đã thanh toán thành công ! .');
+		return redirect()->back()->with('thongbao', 'Bạn đã thanh toán thành công ! .');
 	}
-	public function get_lienhe(){
-		return view('client.lienhe');
 
-	}
-	
 }

@@ -15,6 +15,7 @@ Route::get('/search', 'ClientController@timKiemPhong')->name('search');
 
 Route::get('gioithieu', 'ClientController@gioiThieu')->name('gioithieu');
 Route::get('dichvu', 'ClientController@dichVu')->name('dichvu');
+Route::get('lienhe', 'ClientController@lienHe')->name('lienhe');
 Route::group(['prefix' => 'loaiphong'], function () {
 	Route::get('/', 'ClientController@loaiPhong')->name('loaiphong');
 	Route::get('{name}', 'ClientController@phongDetail')->name('loaiphong.chitiet');

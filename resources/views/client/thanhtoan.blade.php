@@ -170,6 +170,17 @@
 		</div>
 	</div>
 </div>
+@else
+<div class="container">
+	<div class="row">
+		@if(Session::has('thongbao'))
+		<div class="alert alert-success col-md-12" role="alert" style="margin: 200px 0">
+			{{Session::get('thongbao')}}
+		</div>
+		@endif
+	</div>
+</div>
+
 @endif
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://checkout.stripe.com/checkout.js"></script>

@@ -7,19 +7,7 @@
 @section('title','Danh sách đặt phòng')
 @section('content')
 <div class="container">
-	<div class="row">
-		@if(Session::has('thongbao'))
-		<div class="alert alert-success col-md-12" role="alert" style="margin-top: 200px">
-			{{Session::get('thongbao')}}
-		</div>
-		@endif
-	</div>
 	@if($cart == null || $cart->tongPhong == 0 )
-	@if(Session::has('thongbao'))
-	<div class="alert alert-danger" role="alert" style="margin: 50px 0">
-		Danh sách phòng trống. Mời bạn <a href="{{route('client')}}">đặt phòng</a>!!
-	</div>
-	@endif
 	<div class="alert alert-danger" role="alert" style="margin: 200px 0">
 		Danh sách phòng trống. Mời bạn <a href="{{route('client')}}">đặt phòng</a>!!
 	</div>

@@ -8,6 +8,6 @@ class KhachHang extends Model {
 	public $timestamps = false;
 	protected $table = 'khachhang';
 	protected $fillable = [
-		'MaKH', 'TenKH', 'Email', 'DiaChi', 'SDT',
+		'MaKH', 'TenKH', 'Email', 'DiaChi', 'SDT', 'SoThe',
 	];
 }
