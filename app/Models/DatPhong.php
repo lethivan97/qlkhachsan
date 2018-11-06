@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DatPhong extends Model
-{
-    public $timestamps = false;
-    protected $table = 'datphong';
-    protected $fillable = [
-    	'MaDat', 'MaKH', 'NgayDat'
-    ];
+class DatPhong extends Model {
+	public $timestamps = false;
+	protected $table = 'datphong';
+	protected $fillable = [
+		'MaDat', 'MaKH', 'TongTien', 'NgayDat',
+	];
 }
