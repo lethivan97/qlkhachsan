@@ -8,6 +8,6 @@ class Phong_DatPhong extends Model {
 	public $timestamps = false;
 	protected $table = 'phong_datphong';
 	protected $fillable = [
-		'MaPhong', 'MaDat', 'NgayDen', 'NgayDi', 'MoTa',
+		'MaPhong', 'MaDat', 'NgayDen', 'NgayDi', 'SoNgay',
 	];
 }
