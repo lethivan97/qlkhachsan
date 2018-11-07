@@ -29,6 +29,14 @@ class ThongTinPhongDAO {
 			->first();
 		return $tongtien;
 	}
+	public static function tongTienTheoThang() {
+		$tongtien = DB::table('datphong')
+			->select(DB::raw('SUM(TongTien) as tien'), DB::raw("MONTH(NgayDat) as Thang"))
+			->orderBy(DB::raw("MONTH(NgayDat)"), 'asc')
+			->groupBy(DB::raw("MONTH(NgayDat)"))
+			->get();
+		return $tongtien;
+	}
 }
 
 ?>

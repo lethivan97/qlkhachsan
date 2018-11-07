@@ -10,7 +10,6 @@
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
-
 <!-- PAGE PLUGINS -->
 <!-- SparkLine -->
 <script src="{{asset('plugins/sparkline/jquery.sparkline.min.js')}}"></script>
@@ -66,4 +65,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="{{asset('plugins/fullcalendar/fullcalendar.min.js')}}"></script>
 <!-- Page specific script -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>

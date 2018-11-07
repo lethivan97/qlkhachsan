@@ -15,9 +15,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'Admin'], function () {
 	Route::post('them-moi', 'UserController@saveUser')->name('admin.user.them-moi');
 	Route::get('sua-user/{id}', 'UserController@chiTietUser')->name('admin.user.sua-user');
 	Route::post('sua-user/{id}', 'UserController@savechiTietUser')->name('admin.user.sua-user');
-	});
+});
 Route::get('thong-ke-khach', 'Admin\ThongKeKhachController@index')->name('thong-ke-khach');
 Route::get('thong-tin-phong', 'Admin\ThongTinPhongController@index')->name('thong-tin-phong');
+Route::get('bao-cao', 'Admin\BaoCaoController@index')->name('bao-cao');
 
 ?>
 
