@@ -17,5 +17,13 @@ class ThongKeKhachDAO {
 			->get();
 		return $khachhethans;
 	}
+	public static function soKhachDatTheoThang() {
+		$soluongs = DB::table('datphong')
+			->select(DB::raw('count(*) as sl_dat'), DB::raw("MONTH(NgayDat) as Thang"))
+			->orderBy(DB::raw("MONTH(NgayDat)"), 'asc')
+			->groupBy(DB::raw("MONTH(NgayDat)"))
+			->get();
+		return $soluongs;
+	}
 }
 ?>

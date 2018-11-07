@@ -43,7 +43,7 @@ $chitietDAO = new ThongTinPhongDAO();
 							<table class="table table-hover table-striped table-bordered">
 								<thead>
 									<tr>
-										<th>Tên Khách Hàng</th>
+										<th>Tên Khách Đặt</th>
 										<th>Trạng Thái</th>
 										<th>Ngày Đến</th>
 										<th>Ngày Đi</th>
@@ -87,5 +87,6 @@ $chitietDAO = new ThongTinPhongDAO();
 			{!!$phongs->links()!!}
 		</div>
 	</div>
+
 </div>
 @endsection

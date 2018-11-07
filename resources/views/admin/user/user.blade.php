@@ -1,4 +1,5 @@
 @extends('layouts._share.admin')
+@section('title','User')
 @section('content')
 <div class="container">
 	<h2>Danh sách User</h2>
@@ -19,7 +20,7 @@
 		<thead>
 			<tr>
 				<th>STT</th>
-			
+
 				<th>Tên User</th>
 				<th>Email</th>
 				<th>Role</th>
@@ -34,9 +35,9 @@
 				<td>{{$row->email}}</td>
 				<td>
 					@if($row->role == 1)
-						Admin
+					Admin
 					@else
-						Member
+					Member
 					@endif
 				</td>
 				<td>
@@ -75,12 +76,12 @@
 										</div>
 										<div class="col-md-9">
 											@if($row->role == 1)
-						Admin
-					@else
-						Member
-					@endif
+											Admin
+											@else
+											Member
+											@endif
 										</div>
-										
+
 									</div>
 								</div>
 							</div>
