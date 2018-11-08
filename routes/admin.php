@@ -1,4 +1,4 @@
-<?php
+php<?php
 Route::get('/', 'Admin\PhongController@index')->name('admin');
 Route::group(['prefix' => 'phong', 'namespace' => 'Admin'], function () {
 	Route::get('/', 'PhongController@danhSachPhong')->name('admin.phong');

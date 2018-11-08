@@ -26,4 +26,23 @@ class UserController extends Controller {
 		User::where('id', $id)->delete();
 		return redirect()->route('admin.user');
 	}
+	public function chiTietUser($id) {
+		$user = User::where('id', $id)->first();
+		
+		return view('admin.user.sua-user',compact('user'));
+	}
+	public function savechiTietUser($id, Request $request) {
+		$user = new User();
+		
+			$user->id = $request->id;
+			$user->name= $request->name;
+			$user->email = $request->email;
+			$user->role = $request->role;
+			
+			$user->password = $request->password;
+			Phong::where("id", $id)->update($user->toArray());
+		
+		return redirect()->route('admin.user');
+	}
 }
+?>
