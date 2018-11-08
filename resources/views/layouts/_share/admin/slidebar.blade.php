@@ -41,7 +41,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="{{route('admin.thietbi')}}" class="nav-link">
-              <i class="nav-icon fa fa-pie-chart"></i>
+              <i class="nav-icon fa fa-cogs"></i>
               <p>
                 Quản lý thiết bị
               </p>
@@ -64,56 +64,40 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
+            <a href="{{route('admin.user')}}" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Quản lý user
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="{{route('thong-tin-phong')}}" class="nav-link">
              <i class="nav-icon fa fa-th"></i>
              <p>
-              Quản lý thiết bị
+              Thông tin phòng
             </p>
           </a>
         </li>
         <li class="nav-item has-treeview">
-          <a href="{{route('admin.user')}}" class="nav-link">
-            <i class="nav-icon fa fa-user"></i>
-            <p>
-              Quản lý user
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="{{route('thong-ke-khach')}}" class="nav-link">
-            <i class="nav-icon fa fa-calendar"></i>
-            <p>
-              Thống kê khách
-            </p>
-          </a>
-        </li>
-        <li class="nav-item has-treeview">
-          <a href="{{route('thong-tin-phong')}}" class="nav-link">
-           <i class="nav-icon fa fa-th"></i>
+          <a href="{{route('bao-cao')}}" class="nav-link">
+           <i class="nav-icon fa fa-pie-chart"></i>
            <p>
-            Thông tin phòng
+            Báo cáo
           </p>
         </a>
       </li>
       <li class="nav-item has-treeview">
-        <a href="{{route('bao-cao')}}" class="nav-link">
-         <i class="nav-icon fa fa-pie-chart"></i>
-         <p>
-          Báo cáo
-        </p>
-      </a>
-    </li>
-    <li class="nav-item has-treeview">
-      <a href="{{route('client')}}" class="nav-link">
-        <i class="nav-icon fa fa-undo"></i>
-        <p>
-          Về trang web
-        </p>
-      </a>
-    </li>
-  </ul>
-</nav>
-<!-- /.sidebar-menu -->
+        <a href="{{route('client')}}" class="nav-link">
+          <i class="nav-icon fa fa-undo"></i>
+          <p>
+            Về trang web
+          </p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->
 </aside>

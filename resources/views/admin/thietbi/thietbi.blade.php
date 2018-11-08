@@ -2,7 +2,6 @@
 @section('title',"Thiết bị")
 @section('content')
 <?php
-use App\DAO\ThietBiDAO;
 use App\Models\ThietBi;
 
 ?>
@@ -26,7 +25,6 @@ use App\Models\ThietBi;
                 <th>Mã thiết bị</th>
                 <th>Ảnh</th>
                 <th>Tên thiết bị</th>
-                <th>Số lượng</th>
                 <th>&nbsp;</th>
             </tr>
         </thead>
@@ -37,14 +35,13 @@ use App\Models\ThietBi;
                 <td>
                     <?php foreach (ThietBi::image($thietbi->Image) as $i): ?>
                         <a href="#" >
-                            <img src="{{asset('image/phong/')}}/{{$i}}" width="100" height="100">
+                            <img src="{{asset('image/phong/')}}/{{$i}}" width="60" height="60">
                         </a>
 
                         @break
                     <?php endforeach?>
                 </td>
                 <td>{{$thietbi->TenTB}}</td>
-                <td>{{$thietbi->SoLuong}}</td>
                 <td>
                     <a href="{{route('admin.thietbi.sua-thietbi',['id'=>$thietbi->MaTB])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
                     <button class="btn btn-sm" data-toggle="modal" data-target="#chitietthietbi{{$thietbi->MaTB}}"><i class="fa fa-eye"></i></button>
@@ -65,14 +62,9 @@ use App\Models\ThietBi;
                                 <div class="row">
                                     <div class="col-md-4 row">
                                         <p>Ảnh :</p>
-                                        <div class="col-md-12 row testimonial_slider owl-carousel">
-                                            @foreach(ThietBi::image($thietbi->Image) as $image)
-                                            <div class="media">
-                                                <img src="{{asset('image/phong/')}}/{{$image}}" width="50px">
-                                            </div>
-                                            @endforeach
+                                        <div class="col-md-12">
+                                            <img src="{{asset('image/phong/')}}/{{$thietbi->Image}}" width="50px">
                                         </div>
-
                                     </div>
                                     <div class="col-md-8 row">
                                         <div class="col-md-3">
@@ -80,12 +72,6 @@ use App\Models\ThietBi;
                                         </div>
                                         <div class="col-md-9">
                                             {{$thietbi->TenTB}}
-                                        </div>
-                                        <div class="col-md-3">
-                                            Số lượng :
-                                        </div>
-                                        <div class="col-md-9">
-                                            {{$thietbi->SoLuong}}
                                         </div>
                                     </div>
                                 </div>
