@@ -149,29 +149,9 @@ class ClientController extends Controller {
 			]);
 			$dondat = DatPhong::create([
 				'MaKH' => $khachhang->id,
+				'TongTien' => $cart->tongTien,
 				'NgayDat' => Carbon::now(),
 			]);
-			foreach ($cart->phongs as $phong) {
-				$date = Carbon::now()->format('Y-M-d');
-				$NgayDen = Carbon::parse($phong['ngayden'])->format('Y-M-d');
-				if ($date == $NgayDen) {
-					Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
-						'MaTT' => 3,
-					]);
-				} else {
-					Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
-						'MaTT' => 2,
-					]);
-				}
-
-				Phong_DatPhong::create([
-					'MaPhong' => $phong['phong']->MaPhong,
-					'MaDat' => $dondat->id,
-					'NgayDen' => $phong['ngayden'],
-					'NgayDi' => $phong['ngaydi'],
-					'MoTa' => '',
-				]);
-			}
 
 		} elseif ($request->LuaChon == 1) {
 			Stripe::setApiKey("sk_test_aBWzRKCBKy6L86mfuc3WqJgI");
@@ -185,8 +165,34 @@ class ClientController extends Controller {
 			$khachhang = KhachHang::create([
 				'SoThe' => $stripe->source->last4 . '_' . Carbon::now(),
 			]);
+			$dondat = DatPhong::create([
+				'MaKH' => $khachhang->id,
+				'TongTien' => $cart->tongTien,
+				'NgayDat' => Carbon::now(),
+			]);
 		} else {
 			return redirect()->back()->with('thongbao', 'Hãy chọn 1 trong 2 hình thức thanh toán');
+		}
+		foreach ($cart->phongs as $phong) {
+			$date = Carbon::now()->format('Y-M-d');
+			$NgayDen = Carbon::parse($phong['ngayden'])->format('Y-M-d');
+			if ($date == $NgayDen) {
+				Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
+					'MaTT' => 3,
+				]);
+			} else {
+				Phong::where('MaPhong', $phong['phong']->MaPhong)->update([
+					'MaTT' => 2,
+				]);
+			}
+
+			Phong_DatPhong::create([
+				'MaPhong' => $phong['phong']->MaPhong,
+				'MaDat' => $dondat->id,
+				'NgayDen' => $phong['ngayden'],
+				'NgayDi' => $phong['ngaydi'],
+				'SoNgay' => (int) (Carbon::parse($phong['ngaydi'])->diffInDays(Carbon::parse($phong['ngayden']))),
+			]);
 		}
 		Session::forget('cart');
 		return redirect()->back()->with('thongbao', 'Bạn đã thanh toán thành công ! .');

@@ -1,5 +1,6 @@
-php<?php
-Route::get('/', 'Admin\PhongController@index')->name('admin');
+<?php
+Route::view('/', 'admin')->name('admin');
+
 Route::group(['prefix' => 'phong', 'namespace' => 'Admin'], function () {
 	Route::get('/', 'PhongController@danhSachPhong')->name('admin.phong');
 	Route::get('xoa-phong/{id}', 'PhongController@xoaPhong')->name('admin.phong.xoa-phong');
@@ -15,10 +16,19 @@ Route::group(['prefix' => 'user', 'namespace' => 'Admin'], function () {
 	Route::post('them-moi', 'UserController@saveUser')->name('admin.user.them-moi');
 	Route::get('sua-user/{id}', 'UserController@chiTietUser')->name('admin.user.sua-user');
 	Route::post('sua-user/{id}', 'UserController@savechiTietUser')->name('admin.user.sua-user');
-	});
+});
 Route::get('thong-ke-khach', 'Admin\ThongKeKhachController@index')->name('thong-ke-khach');
-Route::get('thong-tin-phong', 'Admin\ThongTinPhongController@index')->name('thong-tin-phong');
+Route::get('don-dat', 'Admin\DonDatController@index')->name('don-dat');
+Route::get('bao-cao', 'Admin\BaoCaoController@index')->name('bao-cao');
 
+Route::group(['prefix' => 'thietbi', 'namespace' => 'Admin'], function () {
+	Route::get('/', 'ThietBiController@danhSachThietBi')->name('admin.thietbi');
+	Route::get('xoa-thiet-bi/{id?}', 'ThietBiController@xoaThietBi')->name('admin.thietbi.xoa-thietbi');
+	Route::get('them-moi', 'ThietBiController@themThietBi')->name('admin.thietbi.them-moi');
+	Route::post('them-moi', 'ThietBiController@saveThietBi')->name('admin.thietbi.them-moi');
+	Route::get('sua-thietbi/{id}', 'ThietBiController@chiTietThietBi')->name('admin.thietbi.sua-thietbi');
+	Route::post('sua-thietbi/{id}', 'ThietBiController@savechiTietThietBi')->name('admin.thietbi.sua-thietbi');
+});
 ?>
 
 

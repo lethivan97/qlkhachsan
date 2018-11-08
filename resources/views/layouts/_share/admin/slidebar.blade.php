@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <a href="{{route('admin')}}" class="brand-link">
     <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
     style="opacity: .8">
     <span class="brand-text font-weight-light">Trang quản trị</span>
@@ -14,7 +14,7 @@
         <img src="{{asset('image/user/admin.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div>
-        <a href="#" class="d-block" style="margin: 10px ;font-size: 20px">{{Auth::user()->name}}</a>
+        <a href="{{route('admin')}}" class="d-block" style="margin: 10px ;font-size: 20px">{{Auth::user()->name}}</a>
       </div>
     </div>
 
@@ -40,8 +40,8 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-pie-chart"></i>
+            <a href="{{route('admin.thietbi')}}" class="nav-link">
+              <i class="nav-icon fa fa-cogs"></i>
               <p>
                 Quản lý thiết bị
               </p>
@@ -64,16 +64,32 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{route('thong-tin-phong')}}" class="nav-link">
+            <a href="{{route('don-dat')}}" class="nav-link">
              <i class="nav-icon fa fa-th"></i>
              <p>
-              Thông tin phòng
+              Đơn đặt
             </p>
           </a>
         </li>
-      </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-  </div>
-  <!-- /.sidebar -->
+        <li class="nav-item has-treeview">
+          <a href="{{route('bao-cao')}}" class="nav-link">
+           <i class="nav-icon fa fa-pie-chart"></i>
+           <p>
+            Báo cáo
+          </p>
+        </a>
+      </li>
+      <li class="nav-item has-treeview">
+        <a href="{{route('client')}}" class="nav-link">
+          <i class="nav-icon fa fa-undo"></i>
+          <p>
+            Về trang web
+          </p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->
 </aside>

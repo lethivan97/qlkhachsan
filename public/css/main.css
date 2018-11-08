@@ -1,3 +1,10 @@
 .fc-day-grid-event .fc-time{
 	display: none !important;
 }
+.small-box{
+	height: 125px !important;
+}
+.small-box .icon{
+	top: 15px !important;
+	color: white;
+}
