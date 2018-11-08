@@ -86,31 +86,31 @@ if (count($phongs) > 0) {
 									</div>
 									<div class="col-md-8 row">
 										<div class="col-md-3">
-											Tên Phòng :
+											<b>Tên Phòng :</b>
 										</div>
 										<div class="col-md-9">
 											{{$row->TenPhong}}
 										</div>
 										<div class="col-md-3">
-											Loại Phòng :
+											<b>Loại Phòng :</b>
 										</div>
 										<div class="col-md-9">
 											{{$row->TenLoai}}
 										</div>
 										<div class="col-md-3">
-											Giá/Ngày :
+											<b>Giá/Ngày :</b>
 										</div>
 										<div class="col-md-9">
 											${{$row->DonGia}}
 										</div>
 										<div class="col-md-3">
-											Mô tả :
+											<b>Mô tả :</b>
 										</div>
 										<div class="col-md-9">
 											{!!$row->MoTa!!}
 										</div>
 										<div class="col-md-3">
-											Thiết bị :
+											<b>Thiết bị :</b>
 										</div>
 										<div class="col-md-9">
 											<?php foreach (PhongDAO::getThietBi($row->MaPhong) as $tb): ?>

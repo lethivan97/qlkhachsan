@@ -1,5 +1,6 @@
 <?php
 Route::view('/', 'admin')->name('admin');
+
 Route::group(['prefix' => 'phong', 'namespace' => 'Admin'], function () {
 	Route::get('/', 'PhongController@danhSachPhong')->name('admin.phong');
 	Route::get('xoa-phong/{id}', 'PhongController@xoaPhong')->name('admin.phong.xoa-phong');

@@ -7,7 +7,7 @@
 		<div class="col-md-6">
 			<form method="get" action="{{route('admin.user')}}">
 				<input type="text" style="width: 300px;float: left;margin-right: 20px" id="search" name="key" placeholder="Nhập tên user" onkeyup="searchFunction();" class="form-control">
-				<input type="submit" value="Lọc" class="btn btn-primary">
+				<input type="submit" value="Searchphp" class="btn btn-primary">
 			</form>
 		</div>
 		<div class="col-md-6">
@@ -41,8 +41,11 @@
 					@endif
 				</td>
 				<td>
+					@if($row->role == 1)
 					<a href="{{route('admin.user.sua-user',['id'=>$row->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+					@endif
 					<button class="btn btn-sm" data-toggle="modal" data-target="#chitietuser{{$row->id}}"><i class="fa fa-eye"></i></button>
+					
 					<a onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" href="{{route('admin.user.xoa-user',['id'=>$row->id])}}"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 				</td>
 			</tr>
@@ -111,7 +114,7 @@
 		table = document.getElementById("tableId");
 		tr = table.getElementsByTagName("tr");
 		for (i = 0; i < tr.length; i++) {
-			td = tr[i].getElementsByTagName("td")[3];
+			td = tr[i].getElementsByTagName("td")[1];
 			if (td) {
 				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 					tr[i].style.display = "";
