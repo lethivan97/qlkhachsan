@@ -2,13 +2,13 @@
 @section('title',"Thông tin chi tiết phòng")
 @section('content')
 <?php
-use App\DAO\ThongTinPhongDAO;
-$chitietDAO = new ThongTinPhongDAO();
+use App\DAO\DonDatDAO;
+$chitietDAO = new DonDatDAO();
 ?>
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 <div class="container">
 	<div class="row">
-		<h2>Thông tin chi tiết phòng</h2>
+		<h2>Thông tin đơn đặt theo phòng</h2>
 	</div>
 	<div class="row">
 		@if(count($phongs) > 0)
@@ -20,7 +20,7 @@ $chitietDAO = new ThongTinPhongDAO();
 					<p>{{$phong->TenTT}}</p>
 				</div>
 				<div class="icon">
-					<i class="ion ion-person-add"></i>
+					<p>Giá : ${{$phong->DonGia}}</p>
 				</div>
 				@if($phong->MaTT == 2 || $phong->MaTT == 3)
 				<a class="small-box-footer" data-toggle="modal" data-target="#chitietphong{{$phong->MaPhong}}">

@@ -64,18 +64,10 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{route('admin.user')}}" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-                Quản lý user
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{route('thong-tin-phong')}}" class="nav-link">
+            <a href="{{route('don-dat')}}" class="nav-link">
              <i class="nav-icon fa fa-th"></i>
              <p>
-              Thông tin phòng
+              Đơn đặt
             </p>
           </a>
         </li>

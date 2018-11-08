@@ -22,7 +22,7 @@ $images = ThietBi::image($thietbi->Image);
             <div class="form-group row">
                 <label for="Image" class="col-sm-2 col-form-label">Thêm Ảnh</label>
                 <div class="col-sm-10">
-                        <input type='file' id="imgInp" name="Image" accept="image/*" onchange="loadFile(event)" />
+                    <input type='file' id="imgInp" name="Image" accept="image/*" onchange="loadFile(event)" />
 
                 </div>
             </div>
@@ -43,20 +43,18 @@ $images = ThietBi::image($thietbi->Image);
         <div class="col-md-4">
             <div class="row">
                 <p>Ảnh :</p>
-                    @foreach($images as $image)
-                       <img id="output" src="{{asset('image/phong')}}/{{$image}}" style='max-height: 128px; max-width:128px; padding: 10px;'>
-                    @endforeach
-                </div>
+                <img id="output" src="{{asset('image/phong')}}/{{$thietbi->Image}}" style='max-height: 128px; max-width:128px; padding: 10px;'>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endif
 @endsection
 
 <script type="text/javascript">
     var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-  };
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>

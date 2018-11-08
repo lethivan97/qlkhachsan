@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Charts\SampleChart;
+use App\DAO\DonDatDAO;
 use App\DAO\ThongKeKhachDAO;
-use App\DAO\ThongTinPhongDAO;
 use App\Http\Controllers\Controller;
 
 class BaoCaoController extends Controller {
@@ -14,7 +14,7 @@ class BaoCaoController extends Controller {
 		$doanhthu = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		$slkhach = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		$sltheothang = ThongKeKhachDAO::soKhachDatTheoThang();
-		$tongtien = ThongTinPhongDAO::tongTienTheoThang();
+		$tongtien = DonDatDAO::tongTienTheoThang();
 		foreach ($sltheothang as $key => $item) {
 			$slkhach[$item->Thang - 1] = $item->sl_dat;
 		}
