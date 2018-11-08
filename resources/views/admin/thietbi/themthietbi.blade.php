@@ -6,7 +6,7 @@
         <h3 class="text-success" style="margin: 50px 0">Thêm mới thiết bị</h3>
     </div>
     <div class="row">
-        <form class="col-md-8" method="POST" >
+        <form class="col-md-8" method="POST">
             @csrf
             <div class="form-group row">
                 <label for="TenTB" class="col-sm-2 col-form-label">Tên Thiết bị</label>

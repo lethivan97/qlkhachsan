@@ -23,7 +23,7 @@ Route::get('thong-tin-phong', 'Admin\ThongTinPhongController@index')->name('thon
 Route::group(['prefix' => 'thietbi', 'namespace' => 'Admin'], function () {
 	Route::get('/', 'ThietBiController@danhSachThietBi')->name('admin.thietbi');
 	Route::get('{id?}', 'ThietBiController@xoaThietBi')->name('admin.thietbi.xoa-thietbi');
-	Route::get('them-moi', 'ThietBiController@themThietBi')->name('admin.them-moi');
+	Route::get('them-moi', 'ThietBiController@themThietBi')->name('admin.thietbi.them-moi');
 	Route::post('them-moi', 'ThietBiController@saveThietBi')->name('admin.thietbi.them-moi');
 	Route::get('sua-thietbi/{id}', 'ThietBiController@chiTietThietBi')->name('admin.thietbi.sua-thietbi');
 	Route::post('sua-thietbi/{id}', 'ThietBiController@savechiTietThietBi')->name('admin.thietbi.sua-thietbi');

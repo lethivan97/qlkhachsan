@@ -22,14 +22,15 @@ $images = ThietBi::image($thietbi->Image);
             <div class="form-group row">
                 <label for="Image" class="col-sm-2 col-form-label">Thêm Ảnh</label>
                 <div class="col-sm-10">
-                    <input type="button" name="selectImg" value="Select Image"
-                onclick="selectImage();">
+                        <input type='file' id="imgInp" name="Image" accept="image/*" onchange="loadFile(event)" />
+
                 </div>
             </div>
             <div class="form-group row">
                 <label for="SoLuong" class="col-sm-2 col-form-label">Số lượng</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="SoLuong" placeholder="Nhập Số lượng Thiết bị" value="{{$thietbi->SoLuong}}">
+
                 </div>
             </div>
             <div class="form-group row">
@@ -37,21 +38,15 @@ $images = ThietBi::image($thietbi->Image);
                     <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
                     <button type="button" class="btn btn-sm">Thoát</button>
                 </div>
-
             </div>
         </form>
         <div class="col-md-4">
             <div class="row">
                 <p>Ảnh :</p>
-                <div class="col-md-12 row testimonial_slider owl-carousel">
                     @foreach($images as $image)
-                    <div class="media">
-                        <input type="hidden" id="image_url" name="image_url">
-                        <img id="img" src="{{asset('image/phong')}}/{{$image}}" width="100">
-                    </div>
+                       <img id="output" src="{{asset('image/phong')}}/{{$image}}" style='max-height: 128px; max-width:128px; padding: 10px;'>
                     @endforeach
                 </div>
-
             </div>
         </div>
     </div>
@@ -60,13 +55,8 @@ $images = ThietBi::image($thietbi->Image);
 @endsection
 
 <script type="text/javascript">
-    function selectImage()
-    {
-        open("imageThietBi.php", "", 'width=100');
-    }
-    function showImage(url)
-    {
-        document.getElementById("img").src=url;
-        document.getElementById("image_url").value=url;
-    }
+    var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
 </script>

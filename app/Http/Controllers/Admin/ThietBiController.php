@@ -34,7 +34,7 @@ class ThietBiController extends Controller
 	public function savechiTietThietBi($id, Request $request) {
 		$thietbi = new ThietBi();
 		if ($request->Image != null) {
-			ThietBi::where("MaTB", $id)->update($request->all());
+			ThietBi::where("MaTB", $id)->update(request()->except(['_token']));
 		} else {
 			$thietbi->TenTB = $request->TenTB;
 			$thietbi->Image = ThietBi::where("MaTB", $id)->first()->Image;

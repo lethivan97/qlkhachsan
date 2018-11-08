@@ -16,7 +16,7 @@ use App\Models\ThietBi;
             </form>
         </div>
         <div class="col-md-6">
-            <a href="{{route('admin.them-moi')}}" class="btn btn-info btn-sm" style="float: right;"><i class="fa fa-plus-circle"></i></a>
+            <a href="{{route('admin.thietbi.them-moi')}}" class="btn btn-info btn-sm" style="float: right;"><i class="fa fa-plus-circle"></i></a>
         </div>
     </div>
     @if(count($thietbis) > 0)
