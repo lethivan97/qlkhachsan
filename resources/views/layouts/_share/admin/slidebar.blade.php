@@ -40,8 +40,32 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-             <i class="nav-icon fa fa-cogs"></i>
+            <a href="{{route('admin.thietbi')}}" class="nav-link">
+              <i class="nav-icon fa fa-pie-chart"></i>
+              <p>
+                Quản lý thiết bị
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{route('admin.user')}}" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>
+                Quản lý user
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{route('thong-ke-khach')}}" class="nav-link">
+              <i class="nav-icon fa fa-calendar"></i>
+              <p>
+                Thống kê khách
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{route('thong-tin-phong')}}" class="nav-link">
+             <i class="nav-icon fa fa-th"></i>
              <p>
               Quản lý thiết bị
             </p>
