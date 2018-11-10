@@ -2,11 +2,11 @@
 namespace App\DAO;
 use Illuminate\Support\Facades\DB;
 
-class ThongTinPhongDAO {
+class DonDatDAO {
 	public function danhsachPhong() {
 		$phongs = DB::table('trangthai')
 			->join('phong', 'trangthai.MaTT', '=', 'phong.MaTT')
-			->select('phong.MaPhong as MaPhong', 'trangthai.MaTT as MaTT', 'trangthai.TenTT as TenTT', 'TenPhong');
+			->select('phong.MaPhong as MaPhong', 'trangthai.MaTT as MaTT', 'trangthai.TenTT as TenTT', 'TenPhong', 'DonGia');
 		return $phongs;
 	}
 	public function chitietphong($id) {

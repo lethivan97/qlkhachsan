@@ -10,9 +10,6 @@ use App\Models\TrangThai;
 use Illuminate\Http\Request;
 
 class PhongController extends Controller {
-	public function index() {
-		return view('admin');
-	}
 	public function danhSachPhong(Request $request) {
 		$phongDAO = new PhongDAO();
 		$result = $phongDAO->getById('')->paginate(10);

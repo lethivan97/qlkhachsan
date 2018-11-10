@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
            <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.loaiphong')}}" class="nav-link">
               <i class="nav-icon fa fa-dashboard"></i>
               <p>
                 Quản lý loại phòng
@@ -64,18 +64,10 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{route('admin.user')}}" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>
-                Quản lý user
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{route('thong-tin-phong')}}" class="nav-link">
+            <a href="{{route('don-dat')}}" class="nav-link">
              <i class="nav-icon fa fa-th"></i>
              <p>
-              Thông tin phòng
+              Đơn đặt
             </p>
           </a>
         </li>

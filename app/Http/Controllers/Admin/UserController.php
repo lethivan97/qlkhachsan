@@ -26,4 +26,30 @@ class UserController extends Controller {
 		User::where('id', $id)->delete();
 		return redirect()->route('admin.user');
 	}
+	public function chiTietUser($id) {
+		$user = User::where('id', $id)->first();
+		
+		return view('admin.user.sua-user',compact('user'));
+	}
+	public function savechiTietUser($id, Request $request) {
+		$user = new User();
+		$user = User::where('id', $id)->first();
+		if ($user && password_verify($request->password, $user->password)){
+			if($request->new_pass==$request->re_new_pass){
+				$user = new User();
+				$user->password = Hash::make($request->new_pass);
+				User::where("id", $id)->update($user->toArray());
+				return redirect()->route('admin.user');
+			}
+			else{
+				return redirect()->back()->with('thongbao','Password mới không trùng nhau');
+			}
+		}
+		else{
+return redirect()->back()->with('thongbao','Password không đúng');
+		}
+	}
+
+
 }
+?>
