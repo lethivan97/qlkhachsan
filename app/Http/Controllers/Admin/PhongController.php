@@ -23,12 +23,7 @@ class PhongController extends Controller {
 		$trangthais = TrangThai::all();
 		return view('admin.phong.themphong', compact('loaiphongs', 'trangthais'));
 	}
-	public function genFileName() {
-		$date = getdate();
-		$result = 'image';
-		$result .= $date['mday'] . "" . $date['mon'] . "" . $date['year'] . "" . $date['hours'] . "" . $date['minutes'] . "" . $date['seconds'];
-		return $result;
-	}
+
 	public function savePhong(Request $request) {
 		$this->validate($request,
 			[

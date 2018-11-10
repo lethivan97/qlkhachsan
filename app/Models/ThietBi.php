@@ -8,7 +8,7 @@ class ThietBi extends Model {
 	public $timestamps = false;
 	protected $table = 'thietbi';
 	protected $fillable = [
-		'MaTB', 'TenTB', 'Image', 'SoLuong',
+		'MaTB', 'TenTB', 'Image',
 	];
 	public function phong_thietbi() {
 		return $this->belongsToMany('App\Models\Phong_ThietBi', 'MaTB', 'MaTB');
