@@ -18,6 +18,11 @@ $images = ThietBi::image($thietbi->Image);
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="TenTB" placeholder="Nhập Tên Thiết bị" value="{{$thietbi->TenTB}}">
                 </div>
+                <div class="col-md-12">
+                    @if($errors->has('TenTB'))
+                    <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('TenTB')}}</p>
+                    @endif
+                </div>
             </div>
             <div class="form-group row">
                 <label for="Image" class="col-sm-2 col-form-label">Thêm Ảnh</label>
@@ -35,8 +40,8 @@ $images = ThietBi::image($thietbi->Image);
             </div>
             <div class="form-group row">
                 <div class="col-md-12  text-center ">
-                    <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-sm">Thoát</button>
+                    <button type="submit" name="upload" class="btn btn-sm btn-primary">Lưu</button>
+                    <a href="{{route('admin.thietbi')}}" class="btn btn-sm btn-default">Thoát</a>
                 </div>
             </div>
         </form>
@@ -54,7 +59,8 @@ $images = ThietBi::image($thietbi->Image);
 
 <script type="text/javascript">
     var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-    };
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
 </script>
+
