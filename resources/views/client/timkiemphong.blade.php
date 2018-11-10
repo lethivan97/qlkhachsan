@@ -56,19 +56,19 @@ use App\DAO\PhongDAO;
 							</div>
 							<div class="row col-md-12">
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/user.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/user.svg')}}" width="30" height="30">
 									<p>{{$item->NguoiLon + $item->TreCon}} người</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/bed.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/bed.svg')}}" width="30" height="30">
 									<p>{{$item->Giuong}} giường</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/giuongphu.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/giuongphu.svg')}}" width="30" height="30">
 									<p>{{$item->GiuongPhu}} giường phụ</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/dientich.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/dientich.svg')}}" width="30" height="30">
 									<p>{{$item->DienTich}} <sup>2</sup></p>
 								</div>
 							</div>

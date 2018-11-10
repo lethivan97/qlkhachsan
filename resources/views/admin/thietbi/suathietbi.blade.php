@@ -11,7 +11,7 @@ $images = ThietBi::image($thietbi->Image);
         <h3 class="text-success" style="margin: 50px 0">Sửa {{$thietbi->TenTB}}</h3>
     </div>
     <div class="row">
-        <form class="col-md-8" method="POST">
+        <form class="col-md-8" method="POST" enctype="multipart/form-data" >
             @csrf
             <div class="form-group row">
                 <label for="TenTB" class="col-sm-2 col-form-label">Tên thiết bị</label>
@@ -28,14 +28,11 @@ $images = ThietBi::image($thietbi->Image);
                 <label for="Image" class="col-sm-2 col-form-label">Thêm Ảnh</label>
                 <div class="col-sm-10">
                     <input type='file' id="imgInp" name="Image" accept="image/*" onchange="loadFile(event)" />
-
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="SoLuong" class="col-sm-2 col-form-label">Số lượng</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="SoLuong" placeholder="Nhập Số lượng Thiết bị" value="{{$thietbi->SoLuong}}">
-
+                <div class="col-md-12">
+                    @if($errors->has('Image'))
+                    <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('Image')}}</p>
+                    @endif
                 </div>
             </div>
             <div class="form-group row">
@@ -48,7 +45,7 @@ $images = ThietBi::image($thietbi->Image);
         <div class="col-md-4">
             <div class="row">
                 <p>Ảnh :</p>
-                <img id="output" src="{{asset('image/phong')}}/{{$thietbi->Image}}" style='max-height: 128px; max-width:128px; padding: 10px;'>
+                <img id="output" src="{{asset('image/thietbi')}}/{{$thietbi->Image}}" style='max-height: 128px; max-width:128px; padding: 10px;'>
             </div>
         </div>
     </div>
@@ -59,8 +56,8 @@ $images = ThietBi::image($thietbi->Image);
 
 <script type="text/javascript">
     var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-  };
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>
 

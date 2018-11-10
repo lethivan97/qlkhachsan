@@ -70,6 +70,11 @@ $images = Phong::image($phong->Image);
 				<div class="col-sm-10">
 					<input type="file" name="Image" id="imgInp" accept="image/*" onchange="loadFile(event)" >
 				</div>
+				<div class="col-md-12">
+					@if($errors->has('Image'))
+					<p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('Image')}}</p>
+					@endif
+				</div>
 			</div>
 			<div class="form-group row">
 				<label for="MoTa" class="col-sm-2 col-form-label">Mô Tả</label>
