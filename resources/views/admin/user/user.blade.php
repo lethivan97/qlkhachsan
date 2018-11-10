@@ -7,7 +7,7 @@
 		<div class="col-md-6">
 			<form method="get" action="{{route('admin.user')}}">
 				<input type="text" style="width: 300px;float: left;margin-right: 20px" id="search" name="key" placeholder="Nhập tên user" onkeyup="searchFunction();" class="form-control">
-				<input type="submit" value="Searchphp" class="btn btn-primary">
+				<input type="submit" value="Search" class="btn btn-primary">
 			</form>
 		</div>
 		<div class="col-md-6">

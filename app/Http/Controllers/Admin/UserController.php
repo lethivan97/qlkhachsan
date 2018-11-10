@@ -33,16 +33,23 @@ class UserController extends Controller {
 	}
 	public function savechiTietUser($id, Request $request) {
 		$user = new User();
-		
-			$user->id = $request->id;
-			$user->name= $request->name;
-			$user->email = $request->email;
-			$user->role = $request->role;
-			
-			$user->password = $request->password;
-			Phong::where("id", $id)->update($user->toArray());
-		
-		return redirect()->route('admin.user');
+		$user = User::where('id', $id)->first();
+		if ($user && password_verify($request->password, $user->password)){
+			if($request->new_pass==$request->re_new_pass){
+				$user = new User();
+				$user->password = Hash::make($request->new_pass);
+				User::where("id", $id)->update($user->toArray());
+				return redirect()->route('admin.user');
+			}
+			else{
+				return redirect()->back()->with('thongbao','Password mới không trùng nhau');
+			}
+		}
+		else{
+return redirect()->back()->with('thongbao','Password không đúng');
+		}
 	}
+
+
 }
 ?>
