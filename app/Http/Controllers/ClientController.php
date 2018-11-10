@@ -12,6 +12,7 @@ use App\Models\Phong_DatPhong;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 use Session;
 use Stripe\Charge;
 use Stripe\Stripe;
@@ -56,7 +57,32 @@ class ClientController extends Controller {
 		$loaiphong = LoaiPhong::all()->where('BiDanh', $name)->first();
 		return view('client.chitietloaiphong', compact('loaiphong'));
 	}
-	function sendMail() {
+	function sendMail(Request $request) {
+		$this->validate($request,
+			[
+				'name' => 'required|max:40',
+				'email' => 'required|email',
+				'subject' => 'required|min:6',
+				'message' => 'required',
+			],
+			[
+				'name.required' => 'Vui lòng nhập tên',
+				'name.max' => 'Tên không vượt quá 40 ký tự',
+				'email.email' => 'Không đúng định dạng email',
+				'email.required' => 'Vui lòng nhập email',
+				'subject.required' => 'Vui lòng nhập tiêu đề',
+				'subject.min' => 'Tiêu đề ít nhất 6 kí tự',
+				'message.marequiredx' => 'Nhập nội dung',
+			]);
+		$name = $request->get('name');
+		$email = $request->get('email');
+		$subject = $request->get('subject');
+		$message = $request->get('message');
+		Mail::send('client.noidungmail', ['name' => $name, 'email' => $email, 'subject' => $subject, 'bodyMessage' => $message], function ($mes) use ($request) {
+			$mes->from($request['email'], $request['name']);
+			$mes->to('levan.hy.97@gmail.com', 'Admin')->subject('Royal Hotel');
+		});
+		return redirect()->back()->with('thongbao', 'Thư đã được gửi đến cho Admin ! Chúng tôi sẽ gửi mail phản hồi sớm nhất cho bạn !!!');
 	}
 	function login() {
 		return view('auth.login');
