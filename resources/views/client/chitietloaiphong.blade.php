@@ -27,7 +27,7 @@ use App\Models\LoaiPhong;
 				<h3 style="text-transform: uppercase;text-align: center;margin-bottom: 50px">TIỆN NGHI PHÒNG {{$loaiphong->TenLoai}}</h3>
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-1.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-1.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG KHÁCH</h4>
 				<p>Max : {{$loaiphong->NguoiLon}} Người lớn
 					@if($loaiphong->TreCon !== null)
@@ -37,27 +37,27 @@ use App\Models\LoaiPhong;
 
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-2.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-2.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG</h4>
 				<p>{{$loaiphong->Giuong}} Giường</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-3.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-3.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">GIƯỜNG PHỤ</h4>
 				<p>{{$loaiphong->GiuongPhu}} Giường phụ</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-4.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-4.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">SỐ LƯỢNG PHÒNG</h4>
 				<p>Max : {{$loaiphong->SLPhong}} Phòng</p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-5.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-5.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">DIỆN TÍCH PHÒNG</h4>
 				<p>{{$loaiphong->DienTich}}<sup>2</sup></p>
 			</div>
 			<div class="col-md-2" style="text-align: center">
-				<img src="{{asset('image/phong/image-6.PNG')}}" height="64">
+				<img src="{{asset('image/loaiphong/image-6.PNG')}}" height="64">
 				<h4 style="margin-top: 20px" class="title_color">HƯỚNG NHÌN</h4>
 				<p>{{$loaiphong->HuongNhin}}</p>
 			</div>
@@ -81,7 +81,7 @@ use App\Models\LoaiPhong;
 					@if($key == 0)
 					<div class="text-center col-md-12">
 						<div class="hotel_img row">
-							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300">
+							<img src="{{asset('image/loaiphong')}}/{{$i}}" width="100%" height="300">
 						</div>
 					</div>
 					@endif
@@ -89,7 +89,7 @@ use App\Models\LoaiPhong;
 				<div class="testimonial_slider owl-carousel" style="margin-top: 50px">
 					@foreach(LoaiPhong::image($loaiphong->images) as $image )
 					<div class="media">
-						<img src="{{asset('image/phong')}}/{{$image}}" width="50px" height="100px">
+						<img src="{{asset('image/loaiphong')}}/{{$image}}" width="50px" height="100px">
 					</div>
 					@endforeach
 
