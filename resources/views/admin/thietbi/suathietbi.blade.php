@@ -6,6 +6,39 @@ $images = ThietBi::image($thietbi->Image);
 @section('title',"Sửa thiết bị")
 @section('content')
 @if(isset($thietbi))
+<?php
+    $uploadDir = "./image/phong";
+    $error = array();
+    $allowedExts= array("jpg","png", "gif", "jpeg", "svg");
+    if(isset($_POST["upload"]))
+    {
+        $file = $_FILES["Image"];
+        $fileName = $file["name"];
+        $tmpFile = $file["tmp_name"];
+        $size = $file["size"];
+
+        $arr = explode(".", $fileName);
+        $ext = strtolower(end($arr));
+
+        if(!in_array($ext, $allowedExts))
+        {
+            $error[]= "File extension .$ext is not allowed";
+        }
+
+        if($size > 4096000)
+        {
+            $error[] = "File size must smaller than 4MB";
+        }
+        if(empty($error))
+        {
+            move_uploaded_file($tmpFile, "$uploadDir/$fileName");
+        }
+        else
+        {
+            unlink($tmpFile);
+        }
+    }
+?>
 <div class="container">
     <div class="row">
         <h3 class="text-success" style="margin: 50px 0">Sửa {{$thietbi->TenTB}}</h3>
@@ -18,25 +51,22 @@ $images = ThietBi::image($thietbi->Image);
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="TenTB" placeholder="Nhập Tên Thiết bị" value="{{$thietbi->TenTB}}">
                 </div>
+                <div class="col-md-12">
+                    @if($errors->has('TenTB'))
+                    <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('TenTB')}}</p>
+                    @endif
+                </div>
             </div>
             <div class="form-group row">
                 <label for="Image" class="col-sm-2 col-form-label">Thêm Ảnh</label>
                 <div class="col-sm-10">
                         <input type='file' id="imgInp" name="Image" accept="image/*" onchange="loadFile(event)" />
-
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="SoLuong" class="col-sm-2 col-form-label">Số lượng</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="SoLuong" placeholder="Nhập Số lượng Thiết bị" value="{{$thietbi->SoLuong}}">
-
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-md-12  text-center ">
-                    <button type="submit" class="btn btn-sm btn-primary">Lưu</button>
-                    <button type="button" class="btn btn-sm">Thoát</button>
+                    <button type="submit" name="upload" class="btn btn-sm btn-primary">Lưu</button>
+                    <a href="{{route('admin.thietbi')}}" class="btn btn-sm btn-default">Thoát</a>
                 </div>
             </div>
         </form>

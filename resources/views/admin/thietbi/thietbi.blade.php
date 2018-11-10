@@ -3,6 +3,12 @@
 @section('content')
 <?php
 use App\Models\ThietBi;
+use App\Models\Phong;
+use App\Models\Phong_ThietBi;
+if (count($thietbis) > 0) {
+    $phongs = Phong::all();
+    $phong_thietbi = Phong_ThietBi::all();
+}
 
 ?>
 <div class="container">
