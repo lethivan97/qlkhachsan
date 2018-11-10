@@ -8,3 +8,6 @@
 	top: 15px !important;
 	color: white;
 }
+.nice-select,.list{
+	width: 100% !important;
+}

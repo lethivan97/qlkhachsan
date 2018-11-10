@@ -91,7 +91,7 @@ session_start();
                         <div class="hotel_img">
                             <?php foreach (LoaiPhong::image($item->images) as $i): ?>
                                 <a href="{{route('loaiphong.chitiet',['name' => $item->BiDanh])}}" >
-                                    <img src="{{asset('image/phong')}}/{{$i}}" width="262" height="270">
+                                    <img src="{{asset('image/loaiphong')}}/{{$i}}" width="262" height="270">
                                 </a>
 
                                 @break

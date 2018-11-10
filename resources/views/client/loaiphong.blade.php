@@ -90,7 +90,7 @@ use App\Models\LoaiPhong;
 					<a href="{{route('datphong',['name' => $item->BiDanh])}}" class="btn theme_btn button_hover">Đặt phòng</a>
 					<?php else: ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300px">
+							<img src="{{asset('image/loaiphong')}}/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 					<?php endif?>
@@ -98,7 +98,7 @@ use App\Models\LoaiPhong;
 				<div class="col-md-6">
 					<?php if ($key % 2 == 1): ?>
 						<?php foreach (LoaiPhong::image($item->images) as $i): ?>
-							<img src="{{asset('image/phong')}}/{{$i}}" width="100%" height="300px">
+							<img src="{{asset('image/loaiphong')}}/{{$i}}" width="100%" height="300px">
 							@break
 						<?php endforeach?>
 						<?php else: ?>

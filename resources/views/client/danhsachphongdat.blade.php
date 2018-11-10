@@ -38,7 +38,7 @@
 								<div class="testimonial_slider owl-carousel">
 									@foreach(App\DAO\PhongDAO::image($phong['phong']['Image']) as $image)
 									<div class="media">
-										<img src="{{asset('image/phong/chitiet')}}/{{$image}}" width="150px" height="150px">
+										<img src="{{asset('image/phong')}}/{{$image}}" width="150px" height="150px">
 									</div>
 									@endforeach
 								</div>
