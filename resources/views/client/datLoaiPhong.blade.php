@@ -11,7 +11,7 @@ use App\DAO\PhongDAO;
 			<h2 class="title_color text-danger">Mời bạn chọn phòng loại {{$loaiPhong->TenLoai}} </h2>
 		</div>
 		@if(count($phongs) > 0)
-		@if(count($phongs) < $request['SoPhong'])
+		@if(count($phongs) < $request['SoPhong'] && $request['SoPhong'] !='' )
 		<div>
 			<h5 class="text-primary">Số phòng trống không đủ yêu cầu. Bạn có thể chọn thêm loại phòng khác ?</h5>
 		</div>
@@ -96,7 +96,7 @@ use App\DAO\PhongDAO;
 							<div class="row">
 								<?php foreach (PhongDAO::getThietBi($item->MaPhong) as $tb): ?>
 									<div class="col-md-2 text-center">
-										<img src="{{asset('image/phong')}}/{{$tb->Image}}" width="30" height="30">
+										<img src="{{asset('image/thietbi')}}/{{$tb->Image}}" width="30" height="30">
 										<p>{{$tb->TenTB}}</p>
 									</div>
 								<?php endforeach?>
