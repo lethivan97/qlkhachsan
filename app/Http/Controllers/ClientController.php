@@ -35,9 +35,7 @@ class ClientController extends Controller {
 		$ngayden = Carbon::parse($request->NgayDen);
 		$ngaydi = Carbon::parse($request->NgayDi);
 		$now = Carbon::now();
-		$tongNgay = (int) ($ngaydi->diffInDays($ngayden));
-		$parse = (int) ($now->diffInDays($ngayden));
-		if ($tongNgay > 0 || $parse > 0) {
+		if ($ngaydi < $ngayden || $ngayden < $now) {
 			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
 		}
 		$tenLoai = '';
@@ -126,9 +124,7 @@ class ClientController extends Controller {
 		$ngayden = Carbon::parse($request->NgayDen);
 		$ngaydi = Carbon::parse($request->NgayDi);
 		$now = Carbon::now();
-		$tongNgay = (int) ($ngaydi->diffInDays($ngayden));
-		$parse = (int) ($now->diffInDays($ngayden));
-		if ($tongNgay > 0 || $parse > 0) {
+		if ($ngaydi < $ngayden || $ngayden < $now) {
 			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
 		}
 		$loaiPhong = LoaiPhong::where('MaLoai', $request->MaLoai)->first();
