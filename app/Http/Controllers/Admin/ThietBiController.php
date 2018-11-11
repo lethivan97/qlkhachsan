@@ -78,9 +78,8 @@ class ThietBiController extends Controller {
 					]);
 			}
 			move_uploaded_file($file['tmp_name'], $filename);
-
+			$thietbi->Image = $name;
 		}
-		$thietbi->Image = $name;
 		ThietBi::where("MaTB", $id)->update($thietbi->toArray());
 		return redirect()->route('admin.thietbi');
 	}
