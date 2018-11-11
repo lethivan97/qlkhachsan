@@ -45,13 +45,13 @@
 			<div class="form-group row">
 				<label for="DienTich" class="col-sm-2 col-form-label">Diện tích</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" name="DienTich" placeholder="Nhập diện tích" value="{{old('DienTich')}}">
+					<input type="text" class="form-control" name="DienTich" placeholder="Nhập diện tích" value="{{old('DienTich')}}">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="HuongNhin" class="col-sm-2 col-form-label">Hướng nhìn</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="HuongNhin" placeholder="Hướng nhìn"  value="{{old('HuongNhin')}}">
+					<input type="text" class="form-control" name="HuongNhin" placeholder="Hướng nhìn" >
 				</div>
 			</div>
 			<div class="form-group row">
@@ -76,13 +76,13 @@
 			<div class="form-group row">
 				<label for="MoTa" class="col-sm-2 col-form-label">Mô tả</label>
 				<div class="col-sm-10">
-					<textarea name="MoTa" class="form-control" id="editor">{{old('MoTa')}}</textarea>
+					<textarea name="MoTa" class="form-control" id="editor"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="MoTaChiTiet" class="col-sm-2 col-form-label">Mô tả chi tiết</label>
 				<div class="col-sm-10">
-					<textarea name="MoTaChiTiet" class="form-control" id="editor1">{{old('MoTaChiTiet')}}</textarea>
+					<textarea name="MoTaChiTiet" class="form-control" id="editor1"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
