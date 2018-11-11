@@ -57,8 +57,7 @@
 			<div class="form-group row">
 				<label for="TreCon" class="col-sm-2 col-form-label">Giường phụ</label>
 				<div class="col-sm-10">
-					<input type="radio" name="GiuongPhu" placeholder="Số lượng" value="1"> Có
-					<input type="radio" name="GiuongPhu" placeholder="Số lượng" value="0" checked=""> Không
+					<input type="number" name="GiuongPhu" placeholder="Nhập số giường phụ" class="form-control" >
 				</div>
 			</div>
 			<div class="form-group row">
