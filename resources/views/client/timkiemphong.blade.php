@@ -76,6 +76,12 @@ use App\DAO\PhongDAO;
 								<p>{!!$item->MoTa!!}</p>
 							</div>
 							<div class="col-md-12">
+								@if($item->NgayDen != '' && $item->NgayDi != '')
+								<h4 class="text-danger">Ngày đến : {{$item->NgayDen}}</h4>
+								<h4 class="text-danger">Ngày đến : {{$item->NgayDi}}</h4>
+								@endif
+							</div>
+							<div class="col-md-12">
 								<h3 class="text-primary">Giá : $ {{$item->DonGia}}/ngày </h3>
 							</div>
 							<div class="col-md-12">
@@ -95,7 +101,7 @@ use App\DAO\PhongDAO;
 							<div class="row">
 								<?php foreach (PhongDAO::getThietBi($item->MaPhong) as $tb): ?>
 									<div class="col-md-2 text-center">
-										<img src="{{asset('image/phong')}}/{{$tb->Image}}" width="30" height="30">
+										<img src="{{asset('image/thietbi')}}/{{$tb->Image}}" width="30" height="30">
 										<p>{{$tb->TenTB}}</p>
 									</div>
 								<?php endforeach?>

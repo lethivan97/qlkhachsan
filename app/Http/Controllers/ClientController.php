@@ -22,13 +22,31 @@ class ClientController extends Controller {
 		return view('index');
 	}
 	function timKiemPhong(Request $request) {
+		$this->validate($request,
+			[
+				'NgayDen' => 'required',
+				'NgayDi' => 'required',
+			],
+			[
+				'NgayDen.required' => "Nhập ngày đến",
+				'NgayDi.required' => "Nhập ngày đi",
+			]
+		);
+		$ngayden = Carbon::parse($request->NgayDen);
+		$ngaydi = Carbon::parse($request->NgayDi);
+		$now = Carbon::now();
+		$tongNgay = (int) ($ngaydi->diffInDays($ngayden));
+		$parse = (int) ($now->diffInDays($ngayden));
+		if ($tongNgay > 0 || $parse > 0) {
+			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
+		}
 		$tenLoai = '';
 		$phongs = PhongDAO::timKiemPhong($request->MaLoai);
-		if ($request->MaLoai != null || $request->MaLoai != '') {
+		if ($request->MaLoai != null) {
 			$tenLoai = LoaiPhong::where('MaLoai', $request->MaLoai)->first()->TenLoai;
 		}
-		foreach ($phongs as $key => $phong) {
-			if ($phong->NgayDi == null || $phong->NgayDen = null) {
+		foreach ($phongs as $phong) {
+			if ($phong->NgayDi == null && $phong->NgayDen = null) {
 				$list[] = $phong;
 			} else if ($request->NgayDi < $phong->NgayDen) {
 				$list[] = $phong;
@@ -95,10 +113,28 @@ class ClientController extends Controller {
 		return view('client.formthongtin', compact('loaiPhong'));
 	}
 	public function danhSachPhong(Request $request) {
+		$this->validate($request,
+			[
+				'NgayDen' => 'required',
+				'NgayDi' => 'required',
+			],
+			[
+				'NgayDen.required' => "Nhập ngày đến",
+				'NgayDi.required' => "Nhập ngày đi",
+			]
+		);
+		$ngayden = Carbon::parse($request->NgayDen);
+		$ngaydi = Carbon::parse($request->NgayDi);
+		$now = Carbon::now();
+		$tongNgay = (int) ($ngaydi->diffInDays($ngayden));
+		$parse = (int) ($now->diffInDays($ngayden));
+		if ($tongNgay > 0 || $parse > 0) {
+			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
+		}
 		$loaiPhong = LoaiPhong::where('MaLoai', $request->MaLoai)->first();
 		$phongs = PhongDAO::timKiemPhong($loaiPhong->MaLoai);
-		foreach ($phongs as $key => $phong) {
-			if ($phong->NgayDi == null || $phong->NgayDen = null) {
+		foreach ($phongs as $phong) {
+			if ($phong->NgayDi == null && $phong->NgayDen = null) {
 				$list[] = $phong;
 			} else if ($request->NgayDi < $phong->NgayDen) {
 				$list[] = $phong;

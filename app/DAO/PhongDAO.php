@@ -24,24 +24,15 @@ class PhongDAO {
 	}
 
 	public static function timKiemPhong($maLoai) {
-		if ($maLoai == null || $maLoai == '') {
-			$phongs = DB::table('LoaiPhong')
-				->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
-				->leftjoin('Phong_DatPhong', 'Phong.MaPhong', '=', 'Phong_DatPhong.MaPhong')
-				->where('Phong.MaTT', '<', '3')
-				->select('Phong.MaPhong as MaPhong', 'TenLoai', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'MaTT', 'TenPhong', 'NgayDen', 'NgayDi', 'Phong.MoTa as MoTa', 'GiuongPhu', 'Phong.Image as Image', 'Phong.DonGia')
-				->get();
-		} else {
-			$phongs = DB::table('LoaiPhong')
-				->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
-				->leftjoin('Phong_DatPhong', 'Phong.MaPhong', '=', 'Phong_DatPhong.MaPhong')
-				->where('Phong.MaTT', '<', '3')
-				->where('LoaiPhong.MaLoai', '=', $maLoai)
-				->select('Phong.MaPhong as MaPhong', 'TenLoai', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'MaTT', 'TenPhong', 'NgayDen', 'NgayDi', 'Phong.MoTa as MoTa', 'GiuongPhu', 'Phong.Image as Image', 'Phong.DonGia')
-				->get();
+		$phongs = DB::table('LoaiPhong')
+			->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
+			->leftjoin('Phong_DatPhong', 'Phong.MaPhong', '=', 'Phong_DatPhong.MaPhong')
+			->where('Phong.MaTT', '<', '3');
+		if ($maLoai != null) {
+			$phongs->where('LoaiPhong.MaLoai', '=', $maLoai);
 		}
-
-		return $phongs;
+		return $phongs->select('Phong.MaPhong as MaPhong', 'TenLoai', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'MaTT', 'TenPhong', 'NgayDen', 'NgayDi', 'Phong.MoTa as MoTa', 'GiuongPhu', 'Phong.Image as Image', 'Phong.DonGia')
+			->get();
 	}
 	public static function getThietBi($id) {
 		$listTB = DB::table('Phong')
