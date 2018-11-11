@@ -40,7 +40,7 @@ use App\DAO\PhongDAO;
 						<div class="testimonial_slider owl-carousel">
 							@foreach(PhongDAO::image($item->Image) as $image)
 							<div class="media">
-								<img src="{{asset('image/phong/chitiet')}}/{{$image}}" width="150px" height="150px">
+								<img src="{{asset('image/phong')}}/{{$image}}" width="150px" height="150px">
 							</div>
 							@endforeach
 
@@ -56,24 +56,30 @@ use App\DAO\PhongDAO;
 							</div>
 							<div class="row col-md-12">
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/user.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/user.svg')}}" width="30" height="30">
 									<p>{{$item->NguoiLon + $item->TreCon}} người</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/bed.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/bed.svg')}}" width="30" height="30">
 									<p>{{$item->Giuong}} giường</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/giuongphu.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/giuongphu.svg')}}" width="30" height="30">
 									<p>{{$item->GiuongPhu}} giường phụ</p>
 								</div>
 								<div class="col-md-3 text-center">
-									<img src="{{asset('image/phong/dientich.svg')}}" width="30" height="30">
+									<img src="{{asset('image/thietbi/dientich.svg')}}" width="30" height="30">
 									<p>{{$item->DienTich}} <sup>2</sup></p>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<p>{!!$item->MoTa!!}</p>
+							</div>
+							<div class="col-md-12">
+								@if($item->NgayDen != '' && $item->NgayDi != '')
+								<h4 class="text-danger">Ngày đến : {{$item->NgayDen}}</h4>
+								<h4 class="text-danger">Ngày đến : {{$item->NgayDi}}</h4>
+								@endif
 							</div>
 							<div class="col-md-12">
 								<h3 class="text-primary">Giá : $ {{$item->DonGia}}/ngày </h3>
@@ -95,7 +101,7 @@ use App\DAO\PhongDAO;
 							<div class="row">
 								<?php foreach (PhongDAO::getThietBi($item->MaPhong) as $tb): ?>
 									<div class="col-md-2 text-center">
-										<img src="{{asset('image/phong')}}/{{$tb->Image}}" width="30" height="30">
+										<img src="{{asset('image/thietbi')}}/{{$tb->Image}}" width="30" height="30">
 										<p>{{$tb->TenTB}}</p>
 									</div>
 								<?php endforeach?>

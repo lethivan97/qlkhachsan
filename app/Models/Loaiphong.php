@@ -7,7 +7,7 @@ class LoaiPhong extends Model {
 	public $timestamps = false;
 	protected $table = 'loaiphong';
 	protected $fillable = [
-		'MaLoai', 'TenLoai', 'BiDanh', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'SLPhong', 'HuongNhin', 'GiuongPhu', 'DonGia', 'MoTa', 'MoTaChiTiet', 'images',
+		'MaLoai', 'TenLoai', 'BiDanh', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'HuongNhin', 'GiuongPhu', 'DonGia', 'MoTa', 'MoTaChiTiet', 'images',
 	];
 	public static function image($arr) {
 		return $listLoai = explode(",", $arr);

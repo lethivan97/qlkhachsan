@@ -2,7 +2,13 @@
 @section('title',"Thiết bị")
 @section('content')
 <?php
+use App\Models\Phong;
+use App\Models\Phong_ThietBi;
 use App\Models\ThietBi;
+if (count($thietbis) > 0) {
+	$phongs = Phong::all();
+	$phong_thietbi = Phong_ThietBi::all();
+}
 
 ?>
 <div class="container">
@@ -35,7 +41,7 @@ use App\Models\ThietBi;
                 <td>
                     <?php foreach (ThietBi::image($thietbi->Image) as $i): ?>
                         <a href="#" >
-                            <img src="{{asset('image/phong/')}}/{{$i}}" width="60" height="60">
+                            <img src="{{asset('image/thietbi/')}}/{{$i}}" width="60" height="60">
                         </a>
 
                         @break
@@ -63,7 +69,7 @@ use App\Models\ThietBi;
                                     <div class="col-md-4 row">
                                         <p>Ảnh :</p>
                                         <div class="col-md-12">
-                                            <img src="{{asset('image/phong/')}}/{{$thietbi->Image}}" width="50px">
+                                            <img src="{{asset('image/thietbi/')}}/{{$thietbi->Image}}" width="50px">
                                         </div>
                                     </div>
                                     <div class="col-md-8 row">
@@ -72,6 +78,14 @@ use App\Models\ThietBi;
                                         </div>
                                         <div class="col-md-9">
                                             {{$thietbi->TenTB}}
+                                        </div>
+                                        <div class="col-md-3">
+                                            Phòng có thiết bị :
+                                        </div>
+                                        <div class="col-md-9">
+                                            @foreach(App\DAO\ThietBiDAO::getTenPhong($thietbi->MaTB) as $tb)
+                                            <p>{{$tb->TenPhong}}</p>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

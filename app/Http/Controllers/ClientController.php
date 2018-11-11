@@ -22,13 +22,29 @@ class ClientController extends Controller {
 		return view('index');
 	}
 	function timKiemPhong(Request $request) {
+		$this->validate($request,
+			[
+				'NgayDen' => 'required',
+				'NgayDi' => 'required',
+			],
+			[
+				'NgayDen.required' => "Nhập ngày đến",
+				'NgayDi.required' => "Nhập ngày đi",
+			]
+		);
+		$ngayden = Carbon::parse($request->NgayDen);
+		$ngaydi = Carbon::parse($request->NgayDi);
+		$now = Carbon::now();
+		if ($ngaydi < $ngayden || $ngayden < $now) {
+			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
+		}
 		$tenLoai = '';
 		$phongs = PhongDAO::timKiemPhong($request->MaLoai);
-		if ($request->MaLoai != null || $request->MaLoai != '') {
+		if ($request->MaLoai != null) {
 			$tenLoai = LoaiPhong::where('MaLoai', $request->MaLoai)->first()->TenLoai;
 		}
-		foreach ($phongs as $key => $phong) {
-			if ($phong->NgayDi == null || $phong->NgayDen = null) {
+		foreach ($phongs as $phong) {
+			if ($phong->NgayDi == null && $phong->NgayDen = null) {
 				$list[] = $phong;
 			} else if ($request->NgayDi < $phong->NgayDen) {
 				$list[] = $phong;
@@ -95,10 +111,26 @@ class ClientController extends Controller {
 		return view('client.formthongtin', compact('loaiPhong'));
 	}
 	public function danhSachPhong(Request $request) {
+		$this->validate($request,
+			[
+				'NgayDen' => 'required',
+				'NgayDi' => 'required',
+			],
+			[
+				'NgayDen.required' => "Nhập ngày đến",
+				'NgayDi.required' => "Nhập ngày đi",
+			]
+		);
+		$ngayden = Carbon::parse($request->NgayDen);
+		$ngaydi = Carbon::parse($request->NgayDi);
+		$now = Carbon::now();
+		if ($ngaydi < $ngayden || $ngayden < $now) {
+			return redirect()->back()->with("thongbao", 'Thông tin ngày đến hoặc ngày đi không hợp lệ !');
+		}
 		$loaiPhong = LoaiPhong::where('MaLoai', $request->MaLoai)->first();
 		$phongs = PhongDAO::timKiemPhong($loaiPhong->MaLoai);
-		foreach ($phongs as $key => $phong) {
-			if ($phong->NgayDi == null || $phong->NgayDen = null) {
+		foreach ($phongs as $phong) {
+			if ($phong->NgayDi == null && $phong->NgayDen = null) {
 				$list[] = $phong;
 			} else if ($request->NgayDi < $phong->NgayDen) {
 				$list[] = $phong;
@@ -120,7 +152,6 @@ class ClientController extends Controller {
 	}
 	public function danhSachPhongDat() {
 		$cart = Session::get('cart');
-		// Session::forget('cart');
 		return view('client.danhsachphongdat', compact('cart'));
 	}
 	public function xoaPhongDat($id) {
@@ -185,7 +216,7 @@ class ClientController extends Controller {
 			$stripe = Charge::create([
 				"amount" => $cart->tongTien,
 				"currency" => "usd",
-				"source" => $token, // obtained with Stripe.js
+				"source" => $token,
 				"description" => "Charge",
 			]);
 			$khachhang = KhachHang::create([

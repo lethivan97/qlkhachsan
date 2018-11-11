@@ -32,23 +32,38 @@ session_start();
                     <div class="boking_table">
                         <div class="row">
                             <form class="row" method="get" style="width: 100%" action="{{route('search')}}">
+                                <div class="col-md-12">
+                                    @if(Session::has('thongbao'))
+                                    <p class="text-danger">{{Session::get('thongbao')}}</p>
+                                    @endif
+                                </div>
                                 <div class="col-md-6">
                                     <div class="book_tabel_item">
                                         <div class="form-group">
                                             <div class='input-group date' id='datetimepicker11'>
-                                                <input type='text' name="NgayDen" class="form-control" placeholder="Thời gian đến"/>
+                                                <input type="text"  name="NgayDen" class="form-control" autocomplete="off" placeholder="Thời gian đến"/>
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            @if($errors->has('NgayDen'))
+                                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('NgayDen')}}</p>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
                                             <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' name="NgayDi" class="form-control" placeholder="Thời gian đi"/>
+                                                <input type="text"  name="NgayDi" class="form-control" autocomplete="off" placeholder="Thời gian đi"/>
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </span>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @if($errors->has('NgayDi'))
+                                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('NgayDi')}}</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +106,7 @@ session_start();
                         <div class="hotel_img">
                             <?php foreach (LoaiPhong::image($item->images) as $i): ?>
                                 <a href="{{route('loaiphong.chitiet',['name' => $item->BiDanh])}}" >
-                                    <img src="{{asset('image/phong')}}/{{$i}}" width="262" height="270">
+                                    <img src="{{asset('image/loaiphong')}}/{{$i}}" width="262" height="270">
                                 </a>
 
                                 @break

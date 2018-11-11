@@ -13,36 +13,12 @@ class LoaiPhongDAO {
 	}
 
 	public function getById($id) {
-		// $result = DB::table('Phong');
 		$result = DB::table('LoaiPhong');
-			// ->join('Phong', 'LoaiPhong.MaLoai', '=', 'Phong.MaLoai')
-			// ->join('TrangThai', 'Phong.MaTT', '=', 'TrangThai.MaTT');
 		if ($id != "") {
 			$result = $result->where('LoaiPhong.MaLoai', '=', $id);
 		}
-		return $result->select()->orderBy('LoaiPhong.MaLoai', 'desc');//select('field');
+		return $result->select()->orderBy('LoaiPhong.MaLoai', 'desc');
 	}
-
-	// public static function timKiemPhong($maLoai) {
-	// 	if ($maLoai == null || $maLoai == '') {
-	// 		$phongs = DB::table('LoaiPhong')
-	// 			->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
-	// 			->leftjoin('Phong_DatPhong', 'Phong.MaPhong', '=', 'Phong_DatPhong.MaPhong')
-	// 			->where('Phong.MaTT', '<', '3')
-	// 			->select('Phong.MaPhong as MaPhong', 'TenLoai', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'MaTT', 'TenPhong', 'NgayDen', 'NgayDi', 'Phong.MoTa as MoTa', 'GiuongPhu', 'Phong.Image as Image', 'Phong.DonGia')
-	// 			->get();
-	// 	} else {
-	// 		$phongs = DB::table('LoaiPhong')
-	// 			->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
-	// 			->leftjoin('Phong_DatPhong', 'Phong.MaPhong', '=', 'Phong_DatPhong.MaPhong')
-	// 			->where('Phong.MaTT', '<', '3')
-	// 			->where('LoaiPhong.MaLoai', '=', $maLoai)
-	// 			->select('Phong.MaPhong as MaPhong', 'TenLoai', 'Giuong', 'NguoiLon', 'TreCon', 'DienTich', 'MaTT', 'TenPhong', 'NgayDen', 'NgayDi', 'Phong.MoTa as MoTa', 'GiuongPhu', 'Phong.Image as Image', 'Phong.DonGia')
-	// 			->get();
-	// 	}
-
-	// 	return $phongs;
-	// }
 	public static function getPhongByLoai($maLoai) {
 		$listTB = DB::table('LoaiPhong')
 			->join('Phong', 'Phong.MaLoai', '=', 'LoaiPhong.MaLoai')
