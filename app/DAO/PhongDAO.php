@@ -13,7 +13,6 @@ class PhongDAO {
 	}
 
 	public function getById($id) {
-		// $result = DB::table('Phong');
 		$result = DB::table('LoaiPhong')
 			->join('Phong', 'LoaiPhong.MaLoai', '=', 'Phong.MaLoai')
 			->join('TrangThai', 'Phong.MaTT', '=', 'TrangThai.MaTT');

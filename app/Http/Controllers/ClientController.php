@@ -156,7 +156,6 @@ class ClientController extends Controller {
 	}
 	public function danhSachPhongDat() {
 		$cart = Session::get('cart');
-		// Session::forget('cart');
 		return view('client.danhsachphongdat', compact('cart'));
 	}
 	public function xoaPhongDat($id) {
@@ -221,7 +220,7 @@ class ClientController extends Controller {
 			$stripe = Charge::create([
 				"amount" => $cart->tongTien,
 				"currency" => "usd",
-				"source" => $token, // obtained with Stripe.js
+				"source" => $token,
 				"description" => "Charge",
 			]);
 			$khachhang = KhachHang::create([
