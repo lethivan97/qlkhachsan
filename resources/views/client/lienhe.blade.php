@@ -23,6 +23,13 @@
 
         </div>
         <div class="row">
+            @if(Session::has('thongbao'))
+            <div class="alert alert-success col-md-12" role="alert">
+                {{Session::get('thongbao')}}
+            </div>
+            @endif
+        </div>
+        <div class="row">
             <div class="col-md-3">
                 <div class="contact_info">
                     <div class="info_item">
@@ -43,25 +50,46 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                <form class="row" method="post" >
+                    @csrf
                     <div class="col-md-6">
                         <div class="form-group">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email">
+                            @if($errors->has('name'))
+                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('name')}}</p>
+                            @endif
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Tiêu đề">
+                            <input type="email" class="form-control" name="email" placeholder="Địa chỉ email" >
+                        </div>
+                        <div class="form-group">
+                            @if($errors->has('email'))
+                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('email')}}</p>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  name="subject" placeholder="Tiêu đề" @if(Auth::user()) value="{Auth::user()->name}" @endif>
+                        </div>
+                        <div class="form-group">
+                            @if($errors->has('subject'))
+                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('subject')}}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Nội dung"></textarea>
+                            <textarea class="form-control" name="message"  rows="6" placeholder="Nội dung"></textarea>
+                        </div>
+                        <div class="form-group">
+                            @if($errors->has('message'))
+                            <p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('message')}}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-12 text-right">
-                        <button type="submit" value="submit" class="btn theme_btn button_hover">Gửi</button>
+                        <button type="submit" class="btn theme_btn button_hover">Gửi</button>
                     </div>
                 </form>
             </div>
