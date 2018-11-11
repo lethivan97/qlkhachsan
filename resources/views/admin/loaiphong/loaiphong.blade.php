@@ -4,7 +4,6 @@
 <?php
 use App\DAO\LoaiPhongDAO;
 use App\Models\LoaiPhong;
-use App\Models\Phong;
 
 ?>
 <div class="container">
@@ -35,10 +34,10 @@ use App\Models\Phong;
 		</thead>
 		<tbody>
 			@foreach($loaiphongs as $row)
-			<?php 
-				$phongs = LoaiPhongDAO::getPhongByLoai($row->MaLoai);
-				$slPhong = $phongs->count();
-			 ?>
+			<?php
+$phongs = LoaiPhongDAO::getPhongByLoai($row->MaLoai);
+$slPhong = $phongs->count();
+?>
 			<tr>
 				<td>{{$row->MaLoai}}</td>
 				<td>
@@ -52,7 +51,7 @@ use App\Models\Phong;
 				</td>
 				<td>{{$row->TenLoai}}</td>
 				<td>{{$row->Giuong}}</td>
-				<td>{{$row->DienTich}}</td>
+				<td>{{$row->DienTich}}<sup>2</sup></td>
 				<td>
 					<a href="{{route('admin.loaiphong.sua-loaiphong',['id'=>$row->MaLoai])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
 					<button class="btn btn-sm" data-toggle="modal" data-target="#chitietloaiphong{{$row->MaLoai}}"><i class="fa fa-eye"></i></button>
@@ -99,7 +98,7 @@ use App\Models\Phong;
 											Người lớn :
 										</div>
 										<div class="col-md-9">
-											${{$row->NguoiLon}}
+											{{$row->NguoiLon}}
 										</div>
 										<div class="col-md-3">
 											Trẻ con :
@@ -135,13 +134,13 @@ use App\Models\Phong;
 											Mô tả :
 										</div>
 										<div class="col-md-9">
-											{{$row->MoTa}}
+											{!!$row->MoTa!!}
 										</div>
 										<div class="col-md-3">
 											Mô tả chi tiết :
 										</div>
 										<div class="col-md-9">
-											{{$row->MoTaChiTiet}}
+											{!!$row->MoTaChiTiet!!}
 										</div>
 										<div class="col-md-3">
 											Phòng :
@@ -196,12 +195,12 @@ use App\Models\Phong;
 			alert(err);
 	}
 </script>
-<?php 
-	if(session('error')){
-		echo '<script type="text/javascript">
-                 alertError("'.session("error").'");
-            </script>';
-	}
- ?>
+<?php
+if (session('error')) {
+	echo '<script type="text/javascript">
+	alertError("' . session("error") . '");
+	</script>';
+}
+?>
 
 @endsection
