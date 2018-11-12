@@ -13,7 +13,9 @@ $images = LoaiPhong::image($loaiphong->images);
 	<div class="row">
 		<form class="col-md-8" method="POST" enctype="multipart/form-data">
 			@csrf
-
+			@if(session('errors'))
+			<label class="text-danger">{!! session('errors') !!}</label>
+			@endif
 			<div class="form-group row">
 				<label for="TenLoai" class="col-sm-2 col-form-label">Tên loại</label>
 				<div class="col-sm-10">
@@ -59,7 +61,7 @@ $images = LoaiPhong::image($loaiphong->images);
 			<div class="form-group row">
 				<label for="TreCon" class="col-sm-2 col-form-label">Giường phụ</label>
 				<div class="col-sm-10">
-					<?php
+<!-- 					<?php
 $co = '<input type="radio" name="GiuongPhu" placeholder="Số lượng" value="1"> Có';
 $khong = '<input type="radio" name="GiuongPhu" placeholder="Số lượng" value="0"> Không';
 if ($loaiphong->GiuongPhu) {
@@ -69,7 +71,7 @@ if ($loaiphong->GiuongPhu) {
 }
 echo $co;
 echo $khong;
-?>
+?> -->				<input type="number" name="GiuongPhu" placeholder="Nhập số giường phụ" class="form-control" value="{{$loaiphong->GiuongPhu}}">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -88,13 +90,13 @@ echo $khong;
 			<div class="form-group row">
 				<label for="MoTa" class="col-sm-2 col-form-label">Mô tả</label>
 				<div class="col-sm-10">
-					<textarea name="MoTa" class="form-control" id="editor">{{$loaiphong->MoTa}}</textarea>
+					<textarea name="MoTa" class="form-control" id="editor">{!!$loaiphong->MoTa!!}</textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="MoTaChiTiet" class="col-sm-2 col-form-label">Mô tả chi tiết</label>
 				<div class="col-sm-10">
-					<textarea name="MoTaChiTiet" class="form-control" id="editor1">{{$loaiphong->MoTaChiTiet}}</textarea>
+					<textarea name="MoTaChiTiet" class="form-control" id="editor1">{!!$loaiphong->MoTaChiTiet!!}</textarea>
 				</div>
 			</div>
 			<div class="form-group row">

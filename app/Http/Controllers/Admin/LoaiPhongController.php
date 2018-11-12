@@ -70,6 +70,7 @@ class LoaiPhongController extends Controller {
 		$loaiphong->TreCon = $request->TreCon;
 		$loaiphong->DienTich = $request->DienTich;
 		$loaiphong->DonGia = $request->DonGia;
+		$loaiphong->GiuongPhu = $request->GiuongPhu;
 		$errors = $this->validateLoaiPhong($loaiphong);
 		if ($errors != "") {
 			return redirect()->back()->withInput($request->all())->with('errors', $errors);
@@ -126,9 +127,9 @@ class LoaiPhongController extends Controller {
 		if ($loaiPhong->DienTich == "") {
 			$error .= "Chưa nhập diện tích phòng!<br>";
 		}
-		if ($loaiPhong->HuongNhin == "") {
-			$error .= "Chưa nhập hướng nhìn!<br>";
-		}
+		// if ($loaiPhong->HuongNhin == "") {
+		// 	$error .= "Chưa nhập hướng nhìn!<br>";
+		// }
 		if ($loaiPhong->GiuongPhu == "") {
 			$error .= "Chưa chọn giường phụ!<br>";
 		}
