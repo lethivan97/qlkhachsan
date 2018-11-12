@@ -20,6 +20,9 @@ use App\Models\LoaiPhong;
 
 		</div>
 	</div>
+	@if(session('error'))
+		<label class="text-danger">{!! session('error') !!}</label>
+	@endif
 	@if(count($loaiphongs) > 0)
 	<table class="table table-striped" id="tableId" style="margin-top: 20px">
 		<thead>
@@ -189,18 +192,6 @@ $slPhong = $phongs->count();
 			}
 		}
 	}
-
-	function alertError(err){
-		if(err != "")
-			alert(err);
-	}
 </script>
-<?php
-if (session('error')) {
-	echo '<script type="text/javascript">
-	alertError("' . session("error") . '");
-	</script>';
-}
-?>
 
 @endsection
