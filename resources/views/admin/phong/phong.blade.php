@@ -25,6 +25,13 @@ if (count($phongs) > 0) {
 
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-12" style="margin-top: 50px">
+			@if(Session::has('thongbao'))
+			<h5 class="text-danger">{{Session::get('thongbao')}}</h5>
+			@endif
+		</div>
+	</div>
 	@if(count($phongs) > 0)
 	<table class="table table-striped" id="tableId" style="margin-top: 20px">
 		<thead>

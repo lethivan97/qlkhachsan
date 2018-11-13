@@ -50,9 +50,16 @@ $loaiPhong = LoaiPhong::all();
                         Xin chào : {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        @if(Auth::user()->role == 1)
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('admin')}}">Về Admin</a>
                         </li>
+                        @endif
+                        @if(Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('tt-ca-nhan')}}">Thông tin cá nhân</a>
+                        </li>
+                        @endif
                         <li class="nav-item" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><a href="{{ route('logout') }}" class="nav-link">{{ __('Đăng xuất') }}</a></li>
 
