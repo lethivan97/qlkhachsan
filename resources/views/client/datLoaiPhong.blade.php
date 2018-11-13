@@ -13,7 +13,7 @@ use App\DAO\PhongDAO;
 		@if(count($phongs) > 0)
 		@if(count($phongs) < $request['SoPhong'] && $request['SoPhong'] !='' )
 		<div>
-			<h5 class="text-primary">Số phòng trống không đủ yêu cầu. Bạn có thể chọn thêm loại phòng khác ?</h5>
+			<h5 class="text-primary">Số phòng trống không đủ yêu cầu. Bạn có thể chọn thêm <a href="{{route('loaiphong')}}" class="text-danger">loại phòng</a> khác ?</h5>
 		</div>
 		@else
 		<div>
