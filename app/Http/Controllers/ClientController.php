@@ -290,7 +290,7 @@ class ClientController extends Controller {
 				User::find($user->id)->update([
 					'password' => Hash::make($request->new_password),
 				]);
-
+				Auth::logout();
 				return redirect()->route('login');
 			}
 		} else {
