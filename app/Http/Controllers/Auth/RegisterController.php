@@ -50,6 +50,8 @@ class RegisterController extends Controller {
 			'name' => 'required|string|max:255',
 			'email' => 'required|string|email|max:255|unique:users',
 			'password' => 'required|string|min:6|confirmed',
+			'diachi' => 'required|string|max:255',
+			'dienthoai' => 'required|numeric',
 		]);
 	}
 
@@ -65,6 +67,8 @@ class RegisterController extends Controller {
 			'email' => $data['email'],
 			'role' => $data['role'],
 			'password' => Hash::make($data['password']),
+			'diachi' => $data['diachi'],
+			'dienthoai' => $data['dienthoai'],
 		]);
 	}
 }

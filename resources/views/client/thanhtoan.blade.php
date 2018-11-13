@@ -103,11 +103,14 @@
 										<label for="DiaChi">Địa chỉ :</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" name="DiaChi" placeholder="Nhập địa chỉ" class="form-control">
+										<input type="text" name="DiaChi" placeholder="Nhập địa chỉ" class="form-control" value="<?php if (isset($user)) {
+	echo $user->diachi;
+}
+?>">
 									</div>
 									<div class="col-md-12">
 										@if($errors->has('DiaChi'))
-										<p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('TenKH')}}</p>
+										<p class="text-danger"><i class="fa fa-exclamation-circle"></i> {{$errors->first('DiaChi')}}</p>
 										@endif
 									</div>
 								</div>
@@ -117,7 +120,10 @@
 										<label for="SDT">Điện thoại :</label>
 									</div>
 									<div class="col-md-8">
-										<input type="number" name="SDT" placeholder="Nhập số điện thoại" class="form-control">
+										<input type="number" name="SDT" placeholder="Nhập số điện thoại" class="form-control" value="<?php if (isset($user)) {
+	echo $user->dienthoai;
+}
+?>" >
 									</div>
 									<div class="col-md-12">
 										@if($errors->has('SDT'))

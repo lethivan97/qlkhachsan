@@ -9,9 +9,11 @@ use App\Models\KhachHang;
 use App\Models\LoaiPhong;
 use App\Models\Phong;
 use App\Models\Phong_DatPhong;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 use Session;
 use Stripe\Charge;
@@ -219,9 +221,18 @@ class ClientController extends Controller {
 				"source" => $token,
 				"description" => "Charge",
 			]);
-			$khachhang = KhachHang::create([
-				'SoThe' => $stripe->source->last4 . '_' . Carbon::now(),
-			]);
+			if (Auth::user()) {
+				$khachhang = KhachHang::create([
+					'TenKH' => $request->TenKH,
+					'Email' => $request->Email,
+					'DiaChi' => $request->DiaChi,
+					'SDT' => $request->SDT,
+				]);
+			} else {
+				$khachhang = KhachHang::create([
+					'SoThe' => $stripe->source->last4 . '_' . Carbon::now(),
+				]);
+			}
 			$dondat = DatPhong::create([
 				'MaKH' => $khachhang->id,
 				'TongTien' => $cart->tongTien,
@@ -254,5 +265,37 @@ class ClientController extends Controller {
 		Session::forget('cart');
 		return redirect()->back()->with('thongbao', 'Bạn đã thanh toán thành công ! .');
 	}
+	public function thongTinCaNhan() {
+		return view('client.canhan');
+	}
+	public function luuThongTinCaNhan(Request $request) {
+		$this->validate($request,
+			[
+				'password' => 'required',
+				'new_password' => 'required|min:6',
+				'password_confirmation' => 'required|min:6|same:new_password',
+			],
+			[
+				'password.required' => 'Nhập password',
+				'new_password.required' => 'Nhập password mới',
+				'new_password.min' => "Password chứa ít nhất 6 ký tự",
+				'new_password.required' => "Nhập xác nhận Password",
+				'password_confirmation' => "Password chứa ít nhất 6 ký tự",
+				'password_confirmation' => "Password không khớp",
+			]
+		);
+		$user = Auth::user();
+		if ($user && password_verify($request->password, $user->password)) {
+			if ($request->new_password === $request->password_confirmation) {
+				User::find($user->id)->update([
+					'password' => Hash::make($request->new_password),
+				]);
 
+				return redirect()->route('login');
+			}
+		} else {
+			return redirect()->back()->with('thongbao', 'Password không đúng');
+		}
+		return redirect()->route('tt-ca-nhan');
+	}
 }

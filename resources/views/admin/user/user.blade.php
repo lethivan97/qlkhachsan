@@ -24,6 +24,8 @@
 				<th>Tên User</th>
 				<th>Email</th>
 				<th>Role</th>
+				<th>Địa chỉ</th>
+				<th>Điện thoại</th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
@@ -45,7 +47,7 @@
 					<a href="{{route('admin.user.sua-user',['id'=>$row->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
 					@endif
 					<button class="btn btn-sm" data-toggle="modal" data-target="#chitietuser{{$row->id}}"><i class="fa fa-eye"></i></button>
-					
+
 					<a onclick="return confirm('Bạn có chắc chắn muốn xóa không ?')" href="{{route('admin.user.xoa-user',['id'=>$row->id])}}"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
 				</td>
 			</tr>

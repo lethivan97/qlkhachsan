@@ -6,6 +6,7 @@ use App\DAO\PhongDAO;
 use App\Http\Controllers\Controller;
 use App\Models\LoaiPhong;
 use App\Models\Phong;
+use App\Models\Phong_DatPhong;
 use App\Models\TrangThai;
 use Illuminate\Http\Request;
 
@@ -111,6 +112,10 @@ class PhongController extends Controller {
 		return redirect()->route('admin.phong');
 	}
 	public function xoaPhong($id) {
+		$count = Phong_DatPhong::where('MaPhong', $id)->count();
+		if ($count > 0) {
+			return redirect()->back()->with('thongbao', "Không thể xóa phòng này !");
+		}
 		Phong::where('MaPhong', $id)->delete();
 		return redirect()->route('admin.phong');
 	}

@@ -18,5 +18,7 @@ Route::get('xoa-phong-dat/{id}', 'ClientController@xoaPhongDat')->name('xoa-phon
 Route::get('xoa-phong', 'ClientController@xoaTatCaPhong')->name('xoa-phong');
 Route::get('thanh-toan', 'ClientController@thanhToan')->name('thanh-toan');
 Route::post('thanh-toan', 'ClientController@postthanhToan')->name('thanh-toan');
+Route::get('thong-tin-ca-nhan', 'ClientController@thongTinCaNhan')->name('tt-ca-nhan');
+Route::post('thong-tin-ca-nhan', 'ClientController@luuThongTinCaNhan')->name('tt-ca-nhan');
 // Login and Register
 Auth::routes();
